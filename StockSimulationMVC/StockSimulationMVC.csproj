@@ -238,6 +238,7 @@
     <Compile Include="Simulation-SimulationStart\SimulationVariable.cs" />
     <Compile Include="Simulation-SimulationStart\SimulationStart.cs" />
     <Compile Include="Simulation-Test\SimulateTransaction.cs" />
+    <Compile Include="Strategy\Strategy-Ben.cs" />
     <Compile Include="Strategy\Strategy-Jason1.cs" />
     <Compile Include="Strategy\Strategy-MoveLine.cs" />
     <Compile Include="Strategy\Strategy-Waiting.cs" />

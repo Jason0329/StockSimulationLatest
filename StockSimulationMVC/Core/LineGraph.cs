@@ -34,11 +34,18 @@ namespace StockSimulationMVC.Core
             }
         }
 
-        public bool CoditionSatified(string StrategyName1 , string StrategyName2 ,int DaysCounter, bool Isbigger=true)
+        public bool CoditionSatified(string StrategyName1 , string StrategyName2 ,int DaysCounter,  int Times=1)//StrategyName1 is bigger than StrategyNames2
         {
-            bool _IsConditionSatified = LineGraphDictionarny[StrategyName1][DaysCounter] > LineGraphDictionarny[StrategyName2][DaysCounter];
+            bool _IsConditionSatified = LineGraphDictionarny[StrategyName1][DaysCounter] > Times * LineGraphDictionarny[StrategyName2][DaysCounter];
 
-            return Isbigger ? _IsConditionSatified : !_IsConditionSatified;
+            return  _IsConditionSatified ;
+        }
+
+        public bool CoditionSatifiedIsBiggerValue(string StrategyName1, int DaysCounter, double Value)//StrategyName1 is bigger than StrategyNames2
+        {
+            bool _IsConditionSatified = LineGraphDictionarny[StrategyName1][DaysCounter] > Value;
+
+            return _IsConditionSatified;
         }
 
         public void AddLineGraphDictionary(string StrategyName , int Days , double BollingerParameter = 2.0 )

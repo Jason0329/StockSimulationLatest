@@ -63,9 +63,13 @@ namespace StockSimulationMVC.Models
         {
             BuySellResult = new TransactionResultModel();
             BuySellResult.Revenue = SellInstrument.Price - BuyInstrument.Price;
-            BuySellResult.RateOfReturn = System.Math.Round((SellInstrument.Price - BuyInstrument.Price) / BuyInstrument.Price * 100,2);
-            BuySellResult.HoldDays = SellInstrument.Date.Subtract(  BuyInstrument.Date).TotalDays;
-            BuySellResult.RateOfReturnYearly = System.Math.Round((SellInstrument.Price - BuyInstrument.Price) / BuyInstrument.Price * (Decimal)(365 / BuySellResult.HoldDays) * 100, 2);
+            BuySellResult.RateOfReturn = System.Math.Round((SellInstrument.Price - BuyInstrument.Price) / BuyInstrument.Price * 100, 2);
+            BuySellResult.HoldDays = SellInstrument.Date.Subtract(BuyInstrument.Date).TotalDays;
+
+            if (BuySellResult.HoldDays == 0)
+                BuySellResult.RateOfReturnYearly = 0;
+            else
+                BuySellResult.RateOfReturnYearly = System.Math.Round((SellInstrument.Price - BuyInstrument.Price) / BuyInstrument.Price * (Decimal)(365 / BuySellResult.HoldDays) * 100, 2);
         }
     }
 }

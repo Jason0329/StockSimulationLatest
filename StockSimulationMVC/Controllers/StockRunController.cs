@@ -20,7 +20,7 @@ namespace StockSimulationMVC.Controllers
         // GET: StockRun
         public ActionResult Index()
         {
-            Strategy_Jason1 Strategy = new Strategy_Jason1();
+            Strategy_Ben Strategy = new Strategy_Ben();
             SimulationStart Start = new SimulationStart(Strategy);
             TransactionList Data = Start.Run();
             Data._TransactionList.Sort();

@@ -6,6 +6,8 @@
 <table class="table">
     <thead>
         <tr>
+            <th>優化參數</th>
+
             <th>Win</th>
             <th>Loss</th>
             <th>勝率%</th>
@@ -18,10 +20,11 @@
         </tr>
     </thead>
 
-    @{ int Count = 1;}
+    @{ int Count = 1; int DisplayParameter = 0;}
 @foreach (var item in Model) {
+    {DisplayParameter = Count + 2; }
     <tr>
-        
+        <td>@DisplayParameter</td>
         <td><a href="/StockRun/Detail/@Count">
              @item.Win</a>
             @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

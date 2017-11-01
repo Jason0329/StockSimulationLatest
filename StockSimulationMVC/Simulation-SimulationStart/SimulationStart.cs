@@ -60,8 +60,13 @@ namespace StockSimulationMVC.Simulation_SimulationStart
                 DataList.AddLineGraphDictionary("MoveAverageValue", 60);
                 DataList.AddLineGraphDictionary("MinValue", 1);
                 DataList.AddLineGraphDictionary("MinValue", 10);
-                DataList.AddLineGraphDictionary("BollingerBandsDown", 5 , 1.7);
+                DataList.AddLineGraphDictionary("BollingerBandsDown", 20 , 2.1);
+                DataList.AddLineGraphDictionary("BollingerBandsUp", 20, 2.1);
                 DataList.AddLineGraphDictionary("MoveAverageValue", 1);
+
+                DataList.LineGraphData(ref DataList.TechData, "Volume");
+                DataList.AddLineGraphDictionary("MoveAverageValue", 30);
+                
 
                 if (DataList.TechData.Count == 0) continue;
 
@@ -108,6 +113,17 @@ namespace StockSimulationMVC.Simulation_SimulationStart
                         _SimulationVariable.Initial();
                     }
 
+                }
+
+                if(_SimulationVariable.HasBuy) //期末賣出
+                {
+                    transaction.Sell(DataList.TechData[DataList.TechData.Count-1].Company.ToString(), DataList.TechData[DataList.TechData.Count - 1].CompanyName,
+                        DataList.TechData[DataList.TechData.Count - 1].ClosePrice, DataList.TechData[DataList.TechData.Count - 1].Date);
+
+                    Transaction_List._TransactionList.Add(transaction);
+
+                    _SimulationVariable.HasBuy = false;
+                    _SimulationVariable.Initial();
                 }
             }
             return Transaction_List;
