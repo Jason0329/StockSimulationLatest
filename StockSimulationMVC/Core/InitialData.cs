@@ -31,44 +31,16 @@ namespace StockSimulationMVC.Core
 
             var container = builder.Build();
 
-            BasicFinancialDataModel tt = new BasicFinancialDataModel();
+            container.Resolve<IRepository<BasicFinancialDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).SetYearRange(2011, 2012);
+            InitialData_BasicFinancialData = container.Resolve<IRepository<BasicFinancialDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).GetAll().ToList();
 
-            InitialData_BasicFinancialData = container.Resolve<IRepository<BasicFinancialDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).GetAllBasic().ToList();
+            container.Resolve<IRepository<MonthRevenueModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).SetYearRange(2011, 2012);
             InitialData_MonthRevenueData = container.Resolve<IRepository<MonthRevenueModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).GetAllMonthRevenue().ToList();
+
+            container.Resolve<IRepository<TechnologicalDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).SetYearRange(2011, 2012);
             InitialData_TechnologicalData = container.Resolve<IRepository<TechnologicalDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).GetAllTech().ToList();
             InitialData_CompanyData = container.Resolve<IRepository<CompanyModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).GetAll().ToList();
 
-
-            //var ss = from data in InitialData_BasicFinancialData where data.Date.Year == 2017 && data.Date.Month > 3 select data;
-            //List<BasicFinancialDataModel> dd = ss.ToList();
-
-            //string record = "";
-            //for (int i = 0; i < dd.Count; i++)
-            //{
-            //    GenericRepository<CompanyModel> coo = new GenericRepository<CompanyModel>(new DataObjectContext());
-            //    CompanyModel co = new CompanyModel();
-
-
-
-
-
-            //    co.ID = dd[i].Company;
-            //    co.Company = dd[i].Company;
-            //    co.CompanyName = dd[i].CompanyName;
-
-
-
-            //    try
-            //    {
-            //        GenericRepository<CompanyModel> Add_Repository = new GenericRepository<CompanyModel>(new DataObjectContext());
-            //        Add_Repository.Create(co);
-            //        //container.Resolve<IRepository<CompanyModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).Create(co);
-            //    }
-            //    catch (Exception ee)
-            //    {
-            //    }
-
-            //}
         }
     }
 }

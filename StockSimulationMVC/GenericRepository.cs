@@ -12,6 +12,8 @@ namespace StockSimulationMVC
     public class GenericRepository<TEntity> : IRepository<TEntity>
        where TEntity : class
     {
+        int StartYear = 2013;
+        int EndYear = 2014;
         #region Fields
 
         private DbContext _context
@@ -32,6 +34,12 @@ namespace StockSimulationMVC
         public GenericRepository(DbContext context)
         {
             this._context = context;
+        }
+
+        public void SetYearRange(int StartYear,int EndYear)
+        {
+            this.StartYear = StartYear;
+            this.EndYear = EndYear;
         }
 
         //public GenericRepository()
@@ -111,19 +119,19 @@ namespace StockSimulationMVC
         public IQueryable<TechnologicalDataModel> GetAllTech()
         {
 
-            return this._context.Set<TechnologicalDataModel>().Where(m=>  m.Date.Year > 2013).AsQueryable();
+            return this._context.Set<TechnologicalDataModel>().Where(m => m.Date.Year >= StartYear && m.Date.Year <= EndYear).AsQueryable();
         }
 
         public IQueryable<BasicFinancialDataModel> GetAllBasic()
         {
 
-            return this._context.Set<BasicFinancialDataModel>().Where(m =>  m.Date.Year > 2007).AsQueryable();
+            return this._context.Set<BasicFinancialDataModel>().Where(m => m.Date.Year >= StartYear && m.Date.Year <= EndYear).AsQueryable();
         }
 
         public IQueryable<MonthRevenueModel> GetAllMonthRevenue()
         {
 
-            return this._context.Set<MonthRevenueModel>().Where(m =>  m.Date.Year > 2007).AsQueryable();
+            return this._context.Set<MonthRevenueModel>().Where(m => m.Date.Year >= StartYear && m.Date.Year <= EndYear).AsQueryable();
         }
 
         public void SaveChanges()

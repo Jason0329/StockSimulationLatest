@@ -20,7 +20,8 @@ namespace StockSimulationMVC.Controllers
         // GET: StockRun
         public ActionResult Index()
         {
-            Strategy_Ben Strategy = new Strategy_Ben();
+            InitialData.Initial();
+            Strategy_MoveLine Strategy = new Strategy_MoveLine();
             SimulationStart Start = new SimulationStart(Strategy);
             TransactionList Data = Start.Run();
             Data._TransactionList.Sort();
@@ -46,9 +47,9 @@ namespace StockSimulationMVC.Controllers
                 GetParameters.Add(data.Split('=')[0], data.Split('=')[1]);
             }
 
-            Strategy_Jason1 Strategy = new Strategy_Jason1();
+            Strategy_MoveLine Strategy = new Strategy_MoveLine();
 
-            for (int i=3; i<=10; i++)
+            for (int i=5; i<=15; i+=2)
             {
                 Strategy.Acc = i;
                 SimulationStart Start = new SimulationStart(Strategy);
