@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 
 namespace StockSimulationMVC.Controllers
 {
@@ -20,12 +21,26 @@ namespace StockSimulationMVC.Controllers
         // GET: StockRun
         public ActionResult Index()
         {
-            InitialData.Initial();
-            Strategy_MoveLine Strategy = new Strategy_MoveLine();
-            SimulationStart Start = new SimulationStart(Strategy);
+            string UrlQuery = Request.Url.Query;
+            //if (InitialData.StartYear != 2016)
+            //{
+                InitialData.SetYear(2015, 2017);
+                InitialData.Initial();
+            //}
+
+            Strategy___TechBigVolume Strategy = new Strategy___TechBigVolume();
+            SimulationStart Start = new SimulationStart(Strategy, UrlQuery);
             TransactionList Data = Start.Run();
             Data._TransactionList.Sort();
             Data.TransactionStatisticResult();
+
+           
+            //InitialData.Initial();
+            //Strategy = new Strategy___TechBigVolume();
+            //Start = new SimulationStart(Strategy);
+            //Data = Start.Run();
+            //Data._TransactionList.Sort();
+            //Data.TransactionStatisticResult();
 
             Session["DataResult"] = Data;
 
@@ -49,12 +64,12 @@ namespace StockSimulationMVC.Controllers
 
             Strategy_MoveLine Strategy = new Strategy_MoveLine();
 
-            for (int i=5; i<=15; i+=2)
+            for (int i=1; i<=12; i+=1)
             {
                 Strategy.Acc = i;
                 SimulationStart Start = new SimulationStart(Strategy);
                 TransactionList Data = Start.Run();
-                //Data._TransactionList.Sort();
+                Data._TransactionList.Sort();
                
                 TransactionList OptimizeData = _OptimizeStock.OptimizeCompany(Data,GetParameters);
                 OptimizeData.TransactionStatisticResult();
@@ -128,6 +143,67 @@ namespace StockSimulationMVC.Controllers
             sw.Dispose();
 
             return View("~/Views/StockRun/Detail.cshtml", OptimizeList[id]);
+        }
+
+        public ActionResult AutoOptimizeStrategyAndCompany()
+        {
+            List<TransactionList> OptimizeList = new List<TransactionList>();
+
+            OptimizeStock _OptimizeStock = new OptimizeStock();
+
+            string GetParametersQuery = Request.Url.Query;
+            Hashtable GetParameters = new Hashtable();
+
+            foreach (var data in GetParametersQuery.Trim('?').Split('&'))
+            {
+                GetParameters.Add(data.Split('=')[0], data.Split('=')[1]);
+            }
+
+            Strategy_MoveLine Strategy = new Strategy_MoveLine();
+
+            for (int i = 0; i < 1; i++)
+            {
+                InitialData.SetYear(2013 - i, 2015 - i);
+                InitialData.Initial();
+                SimulationStart Start = new SimulationStart(Strategy);
+                TransactionList Data = Start.Run();
+                //Data._TransactionList.Sort();
+
+                TransactionList OptimizeData = _OptimizeStock.OptimizeCompany(Data, GetParameters);
+                OptimizeData.TransactionStatisticResult();
+                OptimizeList.Add(OptimizeData);
+            }
+
+            Hashtable CandidateCompany = _OptimizeStock.OutputCompany(OptimizeList[0]);
+            Hashtable StoreCompany = _OptimizeStock.OutputCompany(OptimizeList[0]);
+
+          
+
+
+
+            for (int i = 1; i < OptimizeList.Count; i++)
+            {
+                Hashtable FilterCompany = _OptimizeStock.OutputCompany(OptimizeList[i]);
+
+                foreach (var check_company in CandidateCompany.Values)
+                {
+                   
+                    if (!FilterCompany.ContainsValue(check_company))
+                    {
+                        StoreCompany.Remove(check_company);
+                    }
+                }
+            }
+
+            StreamWriter sw = new StreamWriter(@"C:\Users\user\Desktop\Data\FileCompanyData.csv");
+            foreach (var company in StoreCompany.Values)
+            {
+                sw.Write(company+",");
+            }
+            sw.Close();
+
+
+            return View("~/Views/Optimize/CompanyList.cshtml", StoreCompany);
         }
     }
 }

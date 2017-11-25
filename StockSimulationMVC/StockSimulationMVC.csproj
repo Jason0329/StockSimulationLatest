@@ -242,7 +242,9 @@
     <Compile Include="Strategy\Strategy-Ben.cs" />
     <Compile Include="Strategy\Strategy-Jason1.cs" />
     <Compile Include="Strategy\Strategy-MoveLine.cs" />
+    <Compile Include="Strategy\Strategy-TechBigVolumeRaisePrice4to5Percentage.cs" />
     <Compile Include="Strategy\Strategy-Waiting.cs" />
+    <Compile Include="Strategy\TeacherStrategy-Stock-0056.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -303,6 +305,7 @@
     <Content Include="Views\Optimize\OptimizeList.cshtml" />
     <Content Include="Views\StockRun\Detail.cshtml" />
     <Content Include="Views\StockRun\SimTransaction.cshtml" />
+    <Content Include="Views\Optimize\CompanyList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

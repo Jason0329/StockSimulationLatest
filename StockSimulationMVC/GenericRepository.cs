@@ -12,8 +12,8 @@ namespace StockSimulationMVC
     public class GenericRepository<TEntity> : IRepository<TEntity>
        where TEntity : class
     {
-        int StartYear = 2013;
-        int EndYear = 2014;
+        int StartYear = 1013;
+        int EndYear = 3014;
         #region Fields
 
         private DbContext _context
@@ -118,8 +118,9 @@ namespace StockSimulationMVC
 
         public IQueryable<TechnologicalDataModel> GetAllTech()
         {
-
-            return this._context.Set<TechnologicalDataModel>().Where(m => m.Date.Year >= StartYear && m.Date.Year <= EndYear).AsQueryable();
+            DateTime StartDateTime = new DateTime(StartYear-1 , 12, 1);
+            DateTime EndDateTime = new DateTime(EndYear, 12, 31);
+            return this._context.Set<TechnologicalDataModel>().Where(m => m.Date>= StartDateTime && m.Date <= EndDateTime ).AsQueryable();
         }
 
         public IQueryable<BasicFinancialDataModel> GetAllBasic()

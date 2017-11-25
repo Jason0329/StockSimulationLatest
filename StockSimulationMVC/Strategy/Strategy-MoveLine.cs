@@ -16,12 +16,13 @@ namespace StockSimulationMVC.Strategy
 
         public bool BuyCondition(ref SimulationVariable simulationVariable, ref DataList dataList, ref BasicFinancialReportListModel financialdata, int j)
         {
-            //if (dataList.CoditionSatified("MoveAverageValue-1", "BollingerBandsDown-20", j)
-            // && dataList.CoditionSatified("BollingerBandsDown-20", "MoveAverageValue-1",j-1)
-            //        )//&& dataList.CoditionSatified("BollingerBandsDown-5", "MoveAverageValue-1", j) && financialdata.ComparerFinancial("QCashFlowPerShare",3,4))
-            if (dataList.CoditionSatified("MoveAverageValue-1", "MoveAverageValue-20", j)
-             && dataList.CoditionSatified("MoveAverageValue-20", "MoveAverageValue-1", j - 1)
-                    )
+            if (dataList.CoditionSatified("MoveAverageValue-1", "BollingerBandsDown-20", j)
+             && dataList.CoditionSatified("BollingerBandsDown-20", "MoveAverageValue-1", j - 1)
+             && dataList.CoditionSatifiedIsBiggerValue("MoveAverageValue-30", j, 200)
+                    )//&& dataList.CoditionSatified("BollingerBandsDown-5", "MoveAverageValue-1", j) && financialdata.ComparerFinancial("QCashFlowPerShare",3,4))
+                     //   if (dataList.CoditionSatified("MoveAverageValue-1", "MoveAverageValue-20", j)
+                     //&& dataList.CoditionSatified("MoveAverageValue-20", "MoveAverageValue-1", j - 1)
+                     //       )
                 return true;
             return false;
         }

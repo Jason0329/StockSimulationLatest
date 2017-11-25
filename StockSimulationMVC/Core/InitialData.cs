@@ -16,6 +16,8 @@ namespace StockSimulationMVC.Core
         public static List<MonthRevenueModel> InitialData_MonthRevenueData;
         public static List<TechnologicalDataModel> InitialData_TechnologicalData;
         public static List<CompanyModel> InitialData_CompanyData;
+        public static int StartYear=2015;
+        public static int EndYear=2017;
 
         public static void Initial()
         {
@@ -31,16 +33,22 @@ namespace StockSimulationMVC.Core
 
             var container = builder.Build();
 
-            container.Resolve<IRepository<BasicFinancialDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).SetYearRange(2011, 2012);
-            InitialData_BasicFinancialData = container.Resolve<IRepository<BasicFinancialDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).GetAll().ToList();
+            //container.Resolve<IRepository<BasicFinancialDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).SetYearRange(StartYear, EndYear);
+            //InitialData_BasicFinancialData = container.Resolve<IRepository<BasicFinancialDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).GetAll().ToList();
 
-            container.Resolve<IRepository<MonthRevenueModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).SetYearRange(2011, 2012);
-            InitialData_MonthRevenueData = container.Resolve<IRepository<MonthRevenueModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).GetAllMonthRevenue().ToList();
+            //container.Resolve<IRepository<MonthRevenueModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).SetYearRange(StartYear, EndYear);
+            //InitialData_MonthRevenueData = container.Resolve<IRepository<MonthRevenueModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).GetAllMonthRevenue().ToList();
 
-            container.Resolve<IRepository<TechnologicalDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).SetYearRange(2011, 2012);
+            container.Resolve<IRepository<TechnologicalDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).SetYearRange(StartYear, EndYear);
             InitialData_TechnologicalData = container.Resolve<IRepository<TechnologicalDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).GetAllTech().ToList();
             InitialData_CompanyData = container.Resolve<IRepository<CompanyModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).GetAll().ToList();
 
+        }
+
+        public static void SetYear(int StartYear , int EndYear)
+        {
+            InitialData.StartYear = StartYear;
+            InitialData.EndYear = EndYear;
         }
     }
 }

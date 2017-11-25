@@ -38,11 +38,21 @@ namespace StockSimulationMVC.Core
             LineGraphTable.Add(SelectDataName, SelectedData);
         }
 
-        public bool CoditionSatified(string StrategyName1 , string StrategyName2 ,int DaysCounter,  double Times=1)//StrategyName1 is bigger than StrategyNames2
+        public bool CoditionSatified(string StrategyName1 , string StrategyName2 ,int DaysCounter,  double Times=1 , bool IsBigger = true)//StrategyName1 is bigger than StrategyNames2
         {
             bool _IsConditionSatified = LineGraphDictionarny[StrategyName1][DaysCounter] > Times * LineGraphDictionarny[StrategyName2][DaysCounter];
 
+            if(!IsBigger)
+            {
+                _IsConditionSatified = !_IsConditionSatified;
+            }
+
             return  _IsConditionSatified ;
+        }
+
+        public double ReturnValue(string StrategyName1, int DaysCounter)
+        {
+            return LineGraphDictionarny[StrategyName1][DaysCounter];
         }
 
         public bool CoditionSatifiedIsBiggerValue(string StrategyName1, int DaysCounter, double Value)//StrategyName1 is bigger than StrategyNames2

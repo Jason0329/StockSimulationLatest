@@ -83,13 +83,29 @@ namespace StockSimulationMVC.Service
 
                 System.Diagnostics.Debug.WriteLine(i + " " + transactionlist._TransactionList.Count + " " + transactionlist.WinRatio);
 
-                if (transactionlist._TransactionList.Count > TransactionCount && transactionlist.WinRatio > WinRatio 
-                    && transactionlist.AverageHoldDays<AverageHoldDays)
+                if (transactionlist._TransactionList.Count >= TransactionCount && transactionlist.WinRatio >= WinRatio 
+                    && transactionlist.AverageHoldDays<=AverageHoldDays)
                     ReturnTransactionList.AddTransactionList(transactionlist._TransactionList);
             }
 
 
             return ReturnTransactionList;
+        }
+
+        public Hashtable OutputCompany(TransactionList CompanyData)
+        {
+            Hashtable Record = new Hashtable();
+            foreach(var Data in CompanyData._TransactionList)
+            {
+                try
+                {
+                    Record.Add(Data.BuyDetail.Nubmer, Data.BuyDetail.Nubmer);
+                }
+                catch (Exception e)
+                { }
+            }
+
+            return Record;
         }
     }
 }

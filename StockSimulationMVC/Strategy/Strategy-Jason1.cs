@@ -14,9 +14,10 @@ namespace StockSimulationMVC.Strategy
         int CountDropDays = 0;
         public double Acc = 5;
         public double StopEarn = 5;
-        int CountDropDaysParameter = 5;
+        int CountDropDaysParameter = 3;
+        bool StartBuy = false;
+        Decimal ReferencePrice = 0;
 
-        //double IStrategy.Acc { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public Strategy_Jason1(Hashtable Setup)
         {
@@ -44,23 +45,43 @@ namespace StockSimulationMVC.Strategy
 
             bool fin = financialdata.ComparerFinancial("QEarningPerShare", 1, 2);
             bool fin1 = financialdata.ComparerMonthlyRevenue("MoMPercentage_MonthlySale", 10,1,false);
-            if (CountDropDays== CountDropDaysParameter)//&& dataList.CoditionSatified("MoveAverageValue-1", "MoveAverageValue-10",j))//&& dataList.CoditionSatified("BollingerBandsDown-5", "MoveAverageValue-1", j) && financialdata.ComparerFinancial("QCashFlowPerShare",3,4))
+            if (CountDropDays == CountDropDaysParameter
+                &&  double.Parse(dataList.TechData[j].Volume.ToString())  > 200 //成交額大於二千萬
+                )
+
+            {
                 return true;
+                StartBuy = true;
+                ReferencePrice = dataList.TechData[j].ClosePrice;
+            }
+
+            if (StartBuy
+
+               
+                && ReferencePrice * 0.99m > dataList.TechData[j].ClosePrice
+                )
+            {
+                StartBuy = false;
+                return true;
+            }
+
+            if (StartBuy
+
+
+               //&& dataList.CoditionSatified("BollingerBandsDown-20", "MoveAverageValue-1", j)
+               && ReferencePrice * 1.05m < dataList.TechData[j].ClosePrice
+               )
+            {
+                StartBuy = false; 
+            }
 
             return false;
         }
 
         public bool SellCondition(ref SimulationVariable simulationVariable, ref DataList dataList, ref BasicFinancialReportListModel financialdata, int j)
         {
-            bool sim = simulationVariable.ConditionSatified(30, "HaveStockDayContainHoliday");
-            simulationVariable.MoveStopLoss = 3;
-            simulationVariable.MoveStopLossPercentage = Acc;
-            bool fin = financialdata.ComparerFinancial("QEarningPerShare", 0, 1 , false);
-            if (//simulationVariable.Accumulation>Acc || simulationVariable.Accumulation<-Acc)
-                sim ||
-                simulationVariable.Accumulation > StopEarn
-                || simulationVariable.ConditionSatifiedMoveStopLoss("MoveStopLossPercentage")
-                || dataList.CoditionSatified("MoveAverageValue-1", "MoveAverageValue-10", j))//simulationVariable.ConditionSatifiedMoveStopLoss("MoveStopLossPercentage"))// || dataList.CoditionSatified("MinValue-1", "MinValue-10", j))
+            if ( simulationVariable.Accumulation > 5
+                 || simulationVariable.Accumulation < -5)
                 return true;
 
             return false;
