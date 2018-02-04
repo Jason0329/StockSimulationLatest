@@ -10,7 +10,7 @@ namespace StockSimulationMVC.Strategy
 {
     public class Strategy_MoveLine : IStrategy
     {
-        public double Acc = 5;
+        public double Acc = 3;
 
         //double IStrategy.Acc { get { return Acc; } set => this.Acc = Acc; }
 
@@ -19,6 +19,7 @@ namespace StockSimulationMVC.Strategy
             if (dataList.CoditionSatified("MoveAverageValue-1", "BollingerBandsDown-20", j)
              && dataList.CoditionSatified("BollingerBandsDown-20", "MoveAverageValue-1", j - 1)
              && dataList.CoditionSatifiedIsBiggerValue("MoveAverageValue-30", j, 200)
+             //&& double.Parse(dataList.TechData[j].ClosePrice.ToString()) * double.Parse(dataList.TechData[j].Volume.ToString()) > 10000
                     )//&& dataList.CoditionSatified("BollingerBandsDown-5", "MoveAverageValue-1", j) && financialdata.ComparerFinancial("QCashFlowPerShare",3,4))
                      //   if (dataList.CoditionSatified("MoveAverageValue-1", "MoveAverageValue-20", j)
                      //&& dataList.CoditionSatified("MoveAverageValue-20", "MoveAverageValue-1", j - 1)

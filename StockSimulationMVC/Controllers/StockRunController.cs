@@ -21,14 +21,27 @@ namespace StockSimulationMVC.Controllers
         // GET: StockRun
         public ActionResult Index()
         {
+            string GetParametersQuery = Request.Url.Query;
+            Hashtable GetParameters = new Hashtable();
+
+            foreach (var reqdata in GetParametersQuery.Trim('?').Split('&'))
+            {
+                try
+                {
+                    GetParameters.Add(reqdata.Split('=')[0], reqdata.Split('=')[1]);
+                }
+                catch (Exception e)
+                { }
+            }
+
             string UrlQuery = Request.Url.Query;
             //if (InitialData.StartYear != 2016)
             //{
-                InitialData.SetYear(2015, 2017);
-                InitialData.Initial();
+            //    InitialData.SetYear(2016, 2016);
+            //    InitialData.Initial();
             //}
 
-            Strategy___TechBigVolume Strategy = new Strategy___TechBigVolume();
+            Strategy_2330 Strategy = new Strategy_2330(GetParameters);
             SimulationStart Start = new SimulationStart(Strategy, UrlQuery);
             TransactionList Data = Start.Run();
             Data._TransactionList.Sort();
@@ -51,7 +64,8 @@ namespace StockSimulationMVC.Controllers
         public ActionResult Optimize()
         {
             List<TransactionList> OptimizeList = new List<TransactionList>();
-            
+            string UrlQuery = Request.Url.Query;
+
             OptimizeStock _OptimizeStock = new OptimizeStock();
 
             string GetParametersQuery = Request.Url.Query;
@@ -62,12 +76,12 @@ namespace StockSimulationMVC.Controllers
                 GetParameters.Add(data.Split('=')[0], data.Split('=')[1]);
             }
 
-            Strategy_MoveLine Strategy = new Strategy_MoveLine();
+            Strategy_2330 Strategy = new Strategy_2330(GetParameters);
 
-            for (int i=1; i<=12; i+=1)
+            for (int i=1; i<=19; i+=1)
             {
                 Strategy.Acc = i;
-                SimulationStart Start = new SimulationStart(Strategy);
+                SimulationStart Start = new SimulationStart(Strategy, UrlQuery);
                 TransactionList Data = Start.Run();
                 Data._TransactionList.Sort();
                
@@ -159,11 +173,11 @@ namespace StockSimulationMVC.Controllers
                 GetParameters.Add(data.Split('=')[0], data.Split('=')[1]);
             }
 
-            Strategy_MoveLine Strategy = new Strategy_MoveLine();
+            Strategy_2330 Strategy = new Strategy_2330();
 
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 3; i++)
             {
-                InitialData.SetYear(2013 - i, 2015 - i);
+                InitialData.SetYear(2014 - i, 2015 - i);
                 InitialData.Initial();
                 SimulationStart Start = new SimulationStart(Strategy);
                 TransactionList Data = Start.Run();

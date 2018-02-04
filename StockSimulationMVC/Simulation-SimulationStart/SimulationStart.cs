@@ -3,6 +3,7 @@ using StockSimulationMVC.Interface;
 using StockSimulationMVC.Models;
 using StockSimulationMVC.Service;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,8 +23,26 @@ namespace StockSimulationMVC.Simulation_SimulationStart
         public SimulationStart(IStrategy strategy , string UrlQuery = "Database" )
         {
             Company = new List<int>();
-            
-           if (UrlQuery.Contains("File"))
+
+            Hashtable GetParameters = new Hashtable();
+
+            foreach (var data in UrlQuery.Trim('?').Split('&'))
+            {
+                try
+                {
+                    GetParameters.Add(data.Split('=')[0], data.Split('=')[1]);
+                }
+                catch(Exception e)
+                { }
+            }
+
+            if (GetParameters["StartYear"] != null && GetParameters["EndYear"] != null)
+            {
+                InitialData.SetYear(int.Parse(GetParameters["StartYear"].ToString()), int.Parse(GetParameters["EndYear"].ToString()));
+                InitialData.Initial();
+            }
+
+            if (UrlQuery.Contains("File"))
             {
                 StreamReader sr = new StreamReader(@"C:\Users\user\Desktop\Data\FileCompanyData.csv");
                 string[] data = sr.ReadLine().Trim(',').Split(',');
@@ -47,7 +66,7 @@ namespace StockSimulationMVC.Simulation_SimulationStart
 
 
 
-                Transaction_List = new TransactionList();
+            Transaction_List = new TransactionList();
             _strategy = strategy;
             
             
@@ -66,17 +85,20 @@ namespace StockSimulationMVC.Simulation_SimulationStart
                 //////////////////
                 DataList.LineGraphData(ref DataList.TechData, "ClosePrice");
                 DataList.LineGraphData(ref DataList.TechData, "Volume");
+                DataList.LineGraphData(ref DataList.TechData, "ReturnOnInvestment");
                 DataList.AddLineGraphDictionary("MoveAverageValue", 5);
                 DataList.AddLineGraphDictionary("MoveAverageValue", 10);
                 DataList.AddLineGraphDictionary("MoveAverageValue", 20);
                 DataList.AddLineGraphDictionary("MoveAverageValue", 60);
                 DataList.AddLineGraphDictionary("MinValue", 1);
                 DataList.AddLineGraphDictionary("MinValue", 20, "Volume");
-                DataList.AddLineGraphDictionary("BollingerBandsDown", 20, "ClosePrice", 2.4);
+                DataList.AddLineGraphDictionary("BollingerBandsDown", 20, "ClosePrice",2.1);
                 DataList.AddLineGraphDictionary("BollingerBandsUp", 20, "ClosePrice", 2.1);
                 DataList.AddLineGraphDictionary("MoveAverageValue", 1);
 
                 DataList.AddLineGraphDictionary("MoveAverageValue", 30, "Volume");
+                DataList.AddLineGraphDictionary("CountDropinDays", 20, "ReturnOnInvestment");
+                DataList.AddLineGraphDictionary("CountRaiseinDays", 20, "ReturnOnInvestment");
                 DataList.AddLineGraphDictionary("MoveAverageValue", 6, "Volume");
 
 

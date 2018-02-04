@@ -27,9 +27,9 @@ namespace StockSimulationMVC
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            InitialData.Initial();
 
-            //InitialData.Initial();
+            InitialData.SetYear(2016, 2016);
+            InitialData.Initial();
             //Strategy_Jason1 Strategy = new Strategy_Jason1();
             //SimulationStart Start = new SimulationStart(Strategy);
             //Start.Run();
