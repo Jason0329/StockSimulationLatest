@@ -28,6 +28,7 @@ namespace StockSimulationMVC.Simulation_SimulationStart
         public double startToCountDropAfterPreSell { get; set; }
         public int CountDropDay { get; set; }
         public int Circumstance { get; set; }
+        public decimal MaxRatio { get; set; }
         //public double MoveStopLossPercnetage { get; set; }
         //public double MoveStopLoss { get; set; }
         public Guid Number { get; }
@@ -50,6 +51,7 @@ namespace StockSimulationMVC.Simulation_SimulationStart
             AccumulationDrop = 0;
             AccumulationRise = 0;
             startToCountDropAfterPreSell = 0;
+            MaxRatio = 0;
 
         }
 
@@ -86,7 +88,10 @@ namespace StockSimulationMVC.Simulation_SimulationStart
         {
             HaveStockDay++;
             HaveStockDayContainHoliday = (TechData.Date-Buy.Date).Days;
-            Accumulation += (double)TechData.ReturnOnInvestment;// UnrealizedGains;
+
+            MaxRatio = (TechData.HighestPrice - Buy.ClosePrice) / Buy.ClosePrice * 100;
+
+            Accumulation = (double)((TechData.ClosePrice - Buy.ClosePrice) / Buy.ClosePrice * 100);// UnrealizedGains;
             CurrentlyTechData = TechData;
 
 
@@ -106,7 +111,7 @@ namespace StockSimulationMVC.Simulation_SimulationStart
             }
             if(Accumulation > StopLossCalPricePercentage)
             {
-                StopLossCalPricePercentage = Accumulation;
+                StopLossCalPricePercentage = (double)Accumulation;
             }
                 
         }

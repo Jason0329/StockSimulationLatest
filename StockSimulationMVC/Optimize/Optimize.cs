@@ -81,7 +81,7 @@ namespace StockSimulationMVC.Service
                 transactionlist._TransactionList = (List<Transaction>)Data.ToList();
                 transactionlist.TransactionStatisticResult();
 
-                System.Diagnostics.Debug.WriteLine(i + " " + transactionlist._TransactionList.Count + " " + transactionlist.WinRatio);
+                System.Diagnostics.Debug.WriteLine(Company[i] + " " + transactionlist._TransactionList.Count + " " + transactionlist.WinRatio);
 
                 if (transactionlist._TransactionList.Count >= TransactionCount && transactionlist.WinRatio >= WinRatio 
                     && transactionlist.AverageHoldDays<=AverageHoldDays)

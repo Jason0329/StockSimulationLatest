@@ -28,7 +28,7 @@ namespace StockSimulationMVC
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
 
-            InitialData.SetYear(2016, 2018);
+            InitialData.SetYear(2016, 2020);
             InitialData.Initial();
             //Strategy_Jason1 Strategy = new Strategy_Jason1();
             //SimulationStart Start = new SimulationStart(Strategy);

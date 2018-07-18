@@ -32,7 +32,7 @@ namespace SQLServerConnection.SQLServerConnection
                     }
                     catch(Exception AddDataException)
                     {
-                        Console.WriteLine(AddDataException);
+                        //Console.WriteLine(AddDataException);
 
                         if (AddDataException.Message.Contains("違反 PRIMARY KEY 條件約束 "))
                             return;

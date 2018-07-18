@@ -16,8 +16,8 @@ namespace StockSimulationMVC.Core
         public static List<MonthRevenueModel> InitialData_MonthRevenueData;
         public static List<TechnologicalDataModel> InitialData_TechnologicalData;
         public static List<CompanyModel> InitialData_CompanyData;
-        public static int StartYear=2015;
-        public static int EndYear = 2018;
+        public static int StartYear=2018;
+        public static int EndYear = 2020;
 
         public static void Initial()
         {

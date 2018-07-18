@@ -15,6 +15,7 @@ namespace StockSimulationMVC.Strategy
         int CountRaiseDaysParameter = 3;
         int CountRaiseDays = 0;
         bool StartBuy = false;
+        bool PreStartBuy = false;
 
         public Strate_2330_CountRaiseDays(Hashtable Setup)
         {
@@ -41,13 +42,26 @@ namespace StockSimulationMVC.Strategy
             else if (dataList.TechData[j].ReturnOnInvestment != 0 || simulationVariable.HasBuy)
                 CountRaiseDays = 0;
 
+
+            //if (PreStartBuy && dataList.TechData[j].ReturnOnInvestment < 0)
+            //{
+            //    StartBuy = true;
+            //}
+            //else if (PreStartBuy && dataList.TechData[j].ReturnOnInvestment > 0)
+            //{
+            //    PreStartBuy = false;
+            //}
+
             if (CountRaiseDays == CountRaiseDaysParameter)
                 StartBuy = true;
+
+
 
             if (StartBuy
                 //|| dataList.ReturnValue("CountRaiseinDays-20", j) > 6
                 )
             {
+                PreStartBuy = false;
                 StartBuy = false;
                 return true;
             }
@@ -59,8 +73,8 @@ namespace StockSimulationMVC.Strategy
         {
             simulationVariable.MoveStopLossPercentage = Acc;
             if (
-                // (dataList.ReturnValue("CountRaiseinDays-20", j) > 9 && simulationVariable.Accumulation > 1)
-                //|| (dataList.ReturnValue("CountRaiseinDays-20", j) > 9 && simulationVariable.Accumulation < -2)
+                 // (dataList.ReturnValue("CountRaiseinDays-20", j) > 9 && simulationVariable.Accumulation > 1)
+                 //|| (dataList.ReturnValue("CountRaiseinDays-20", j) > 9 && simulationVariable.Accumulation < -2)
                  simulationVariable.Accumulation > 2
                 || simulationVariable.Accumulation < -2
                 )

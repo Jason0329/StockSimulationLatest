@@ -239,6 +239,8 @@
     <Compile Include="Simulation-SimulationStart\SimulationVariable.cs" />
     <Compile Include="Simulation-SimulationStart\SimulationStart.cs" />
     <Compile Include="Simulation-Test\SimulateTransaction.cs" />
+    <Compile Include="Strategy\CountSerialDrop_Strategy-2892.cs" />
+    <Compile Include="Strategy\CountSerialDrop_Strategy-3679.cs" />
     <Compile Include="Strategy\Strategy-2317_CountSerialRaise.cs" />
     <Compile Include="Strategy\Strategy-2409_CountSerialRaiseDays.cs" />
     <Compile Include="Strategy\Strategy-2317_CountSerialDrop.cs" />
@@ -250,12 +252,14 @@
     <Compile Include="Strategy\Strategy-2409_CountSerialDrop.cs" />
     <Compile Include="Strategy\Strategy-2448_CountDropDays-NOUSE.cs" />
     <Compile Include="Strategy\Strategy-2448_CountSerialRaise.cs" />
+    <Compile Include="Strategy\CountSerialDrop_Strategy-2912.cs" />
     <Compile Include="Strategy\Strategy-3008_CountSerialDrop.cs" />
     <Compile Include="Strategy\Strategy-3008_CountSerialRaise-NOUSE.cs" />
     <Compile Include="Strategy\Strategy-Ben.cs" />
     <Compile Include="Strategy\Strategy-2330.cs" />
     <Compile Include="Strategy\Strategy-MoveLine.cs" />
     <Compile Include="Strategy\Strategy-TechBigVolumeRaisePrice4to5Percentage.cs" />
+    <Compile Include="Strategy\Strategy-Testing.cs" />
     <Compile Include="Strategy\Strategy-Waiting.cs" />
     <Compile Include="Strategy\TeacherStrategy-Stock-0056.cs" />
   </ItemGroup>

@@ -35,13 +35,9 @@ namespace StockSimulationMVC.Controllers
             }
 
             string UrlQuery = Request.Url.Query;
-            //if (InitialData.StartYear != 2016)
-            //{
-            //    InitialData.SetYear(2016, 2016);
-            //    InitialData.Initial();
-            //}
 
-            Strategy_2330 Strategy = new Strategy_2330(GetParameters);
+
+            Strategy_Testing Strategy = new Strategy_Testing(GetParameters);
             SimulationStart Start = new SimulationStart(Strategy, UrlQuery);
             TransactionList Data = Start.Run();
             Data._TransactionList.Sort();
@@ -173,11 +169,11 @@ namespace StockSimulationMVC.Controllers
                 GetParameters.Add(data.Split('=')[0], data.Split('=')[1]);
             }
 
-            Strategy_2330 Strategy = new Strategy_2330();
+            Strategy_Testing Strategy = new Strategy_Testing();
 
             for (int i = 0; i < 3; i++)
             {
-                InitialData.SetYear(2014 - i, 2015 - i);
+                InitialData.SetYear(2016 - i, 2018 - i);
                 InitialData.Initial();
                 SimulationStart Start = new SimulationStart(Strategy);
                 TransactionList Data = Start.Run();

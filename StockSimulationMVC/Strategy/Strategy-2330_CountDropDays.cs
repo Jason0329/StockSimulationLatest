@@ -48,9 +48,13 @@ namespace StockSimulationMVC.Strategy
         {
             simulationVariable.MoveStopLossPercentage = Acc;
             if (
-                (dataList.ReturnValue("CountRaiseinDays-20", j) > 9 &&  simulationVariable.Accumulation > 1)
-                || (dataList.ReturnValue("CountRaiseinDays-20", j) > 9 && simulationVariable.Accumulation < -2)
-                || simulationVariable.Accumulation >4
+                      //(dataList.ReturnValue("CountRaiseinDays-20", j) > 9 &&  simulationVariable.Accumulation > 1)
+                      //|| (dataList.ReturnValue("CountRaiseinDays-20", j) > 9 && simulationVariable.Accumulation < -2)
+                      //|| simulationVariable.Accumulation >4
+
+                      simulationVariable.Accumulation > 4
+                     || simulationVariable.Accumulation < -4
+                     || (simulationVariable.HaveStockDayContainHoliday > 10 && simulationVariable.Accumulation > 1)
                 )
                 return true;
             return false;

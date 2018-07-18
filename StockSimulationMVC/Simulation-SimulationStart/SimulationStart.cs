@@ -99,6 +99,10 @@ namespace StockSimulationMVC.Simulation_SimulationStart
                 DataList.AddLineGraphDictionary("MoveAverageValue", 30, "Volume");
                 DataList.AddLineGraphDictionary("CountDropinDays", 20, "ReturnOnInvestment");
                 DataList.AddLineGraphDictionary("CountRaiseinDays", 20, "ReturnOnInvestment");
+                DataList.AddLineGraphDictionary("CountRaiseinDays", 10, "ReturnOnInvestment");
+                DataList.AddLineGraphDictionary("CountDropinDays", 5, "ReturnOnInvestment");
+                DataList.AddLineGraphDictionary("CountRaiseinDays", 5, "ReturnOnInvestment");
+                DataList.AddLineGraphDictionary("CountDropinDays", 10, "ReturnOnInvestment");
                 DataList.AddLineGraphDictionary("MoveAverageValue", 6, "Volume");
 
 
@@ -267,7 +271,7 @@ namespace StockSimulationMVC.Simulation_SimulationStart
                 if (_SimulationVariable.HasBuy) //期末賣出
                 {
                     transaction.Sell(DataList.TechData[DataList.TechData.Count - 1].Company.ToString(), DataList.TechData[DataList.TechData.Count - 1].CompanyName,
-                        DataList.TechData[DataList.TechData.Count - 1].ClosePrice, DataList.TechData[DataList.TechData.Count - 1].Date);
+                        DataList.TechData[DataList.TechData.Count - 1].HighestPrice, DataList.TechData[DataList.TechData.Count - 1].Date);
                     //期末賣出的不做計算
                     //Transaction_List._TransactionList.Add(transaction);
 
