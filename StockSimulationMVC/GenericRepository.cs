@@ -120,7 +120,10 @@ namespace StockSimulationMVC
         {
             DateTime StartDateTime = new DateTime(StartYear-1 , 12, 1);
             DateTime EndDateTime = new DateTime(EndYear, 12, 31);
-            return this._context.Set<TechnologicalDataModel>().Where(m => m.Date>= StartDateTime && m.Date <= EndDateTime ).AsQueryable();
+            return this._context.Set<TechnologicalDataModel>().Where(m => m.Date>= StartDateTime && m.Date <= EndDateTime 
+                &&(m.Company == 6257 || m.Company == 1457 || m.Company == 8021 || m.Company == 2915 || m.Company == 3014 || m.Company == 2340 ||
+                m.Company == 2461 || m.Company == 8271 || m.Company == 2027 || m.Company == 8222 || m.Company == 3593 || m.Company == 8105
+               )).AsQueryable();
         }
 
         public IQueryable<BasicFinancialDataModel> GetAllBasic()

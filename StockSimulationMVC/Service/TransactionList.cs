@@ -17,6 +17,7 @@ namespace StockSimulationMVC.Service
         public decimal MaxRateOfReturn = 0;
         public decimal MinRateOfReturn = 0;
         public decimal StandardDeviationRateOfReturn = 0;
+        public decimal TotalReturnRate = 0;
 
         public TransactionList()
         {
@@ -52,6 +53,7 @@ namespace StockSimulationMVC.Service
 
             StandardDeviationRateOfReturn = Math.Round(StandardDeviationRateOfReturn / _TransactionList.Count, 2);
             StandardDeviationRateOfReturn = (decimal)Math.Sqrt((double)Math.Abs(StandardDeviationRateOfReturn - ExpectedRateOfReturn * ExpectedRateOfReturn));
+            TotalReturnRate = (ExpectedRateOfReturn - (Decimal)0.5) * (Decimal)(Win + Loss);
         }
 
         public void AddTransactionList(List<Transaction> transactiondata)

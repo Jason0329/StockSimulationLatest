@@ -53,7 +53,11 @@ namespace StockSimulationMVC.Simulation_SimulationStart
                 }
                 sr.Close();
             }
-            else 
+            else if (UrlQuery.Contains("Company"))
+            {
+                Company.Add(int.Parse(GetParameters["Company"].ToString()));
+            }
+            else
             {
                 var CoData = from _company in InitialData.InitialData_CompanyData
                                  //where _company.ID >2200 && _company.ID <2340

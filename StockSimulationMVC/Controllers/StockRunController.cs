@@ -169,7 +169,7 @@ namespace StockSimulationMVC.Controllers
                 GetParameters.Add(data.Split('=')[0], data.Split('=')[1]);
             }
 
-            Strategy_Testing Strategy = new Strategy_Testing();
+            Strategy_Testing Strategy = new Strategy_Testing(GetParameters);
 
             for (int i = 0; i < 3; i++)
             {
