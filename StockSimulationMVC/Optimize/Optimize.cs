@@ -46,19 +46,22 @@ namespace StockSimulationMVC.Service
         {
             int TransactionCount; 
             double WinRatio;
-            double AverageHoldDays; 
+            double AverageHoldDays;
+            double Expectation;
 
             try
             {
                 TransactionCount = int.Parse(parameter["TransactionCount"].ToString());
                 WinRatio = double.Parse(parameter["WinRatio"].ToString());
                 AverageHoldDays= double.Parse(parameter["AverageHoldDays"].ToString());
+                Expectation = double.Parse(parameter["Expectation"].ToString());
             }
             catch(Exception e)
             {
                 TransactionCount = 3;
                 WinRatio = 70;
                 AverageHoldDays = 3000;
+                Expectation = 0.6;
             }
 
 
@@ -84,7 +87,7 @@ namespace StockSimulationMVC.Service
                 System.Diagnostics.Debug.WriteLine(Company[i] + " " + transactionlist._TransactionList.Count + " " + transactionlist.WinRatio);
 
                 if (transactionlist._TransactionList.Count >= TransactionCount && transactionlist.WinRatio >= WinRatio 
-                    && transactionlist.AverageHoldDays<=AverageHoldDays)
+                    && transactionlist.AverageHoldDays<=AverageHoldDays && transactionlist.ExpectedRateOfReturn >= (decimal)Expectation)
                     ReturnTransactionList.AddTransactionList(transactionlist._TransactionList);
             }
 

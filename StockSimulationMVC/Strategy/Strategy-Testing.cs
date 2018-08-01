@@ -28,9 +28,9 @@ namespace StockSimulationMVC.Strategy
             try
             {
                 //CountDropDaysParameter = int.Parse(Setup["CountDropDaysParameter"].ToString());
-                Acc = int.Parse(Setup["StopEarn"].ToString());
+                //Acc = int.Parse(Setup["StopEarn"].ToString());
                 Var = double.Parse(Setup["Var"].ToString());
-                //Company = int.Parse(Setup["Company"].ToString());
+                Company = int.Parse(Setup["Company"].ToString());
             }
             catch (Exception ee)
             {
@@ -56,11 +56,17 @@ namespace StockSimulationMVC.Strategy
                 CheckCompany = true;
             }
 
-            if (
-                ((CheckCompany && Company == dataList.TechData[j].Company ) || !CheckCompany)
-                &&dataList.ReturnValue("MoveAverageValue-20", j - 1)  > dataList.ReturnValue("MoveAverageValue-1", j - 1) * Var
-                && dataList.ReturnValue("MoveAverageValue-20", j) < dataList.ReturnValue("MoveAverageValue-1", j) * Var
-                && dataList.ReturnValue("MoveAverageValue-30", j) > 200)//CountDropDays == CountDropDaysParameter )
+            if (//CountDropDays==3
+                //dataList.TechData[j-1].ReturnOnInvestment > Var && dataList.TechData[j-1].ReturnOnInvestment<Var+1
+                dataList.TechData[j - 1].ClosePrice > dataList.TechData[j - 1].OpenPrice
+
+                //&& dataList.TechData[j].OpenPrice > dataList.TechData[j-1].ClosePrice
+             //    && dataList.TechData[j-1].OpenPrice < dataList.TechData[j - 2].HighestPrice
+                //((CheckCompany && Company == dataList.TechData[j].Company ) || !CheckCompany)
+                //&&dataList.ReturnValue("MoveAverageValue-20", j - 1)  < dataList.ReturnValue("MoveAverageValue-1", j - 1) * Var
+                //&& dataList.ReturnValue("MoveAverageValue-20", j) > dataList.ReturnValue("MoveAverageValue-1", j) * Var
+                && dataList.ReturnValue("MinValue-20", j) > 200)//CountDropDays == CountDropDaysParameter )
+                
             {
                 CountDropDays = 0;
                 return true;   
@@ -73,10 +79,10 @@ namespace StockSimulationMVC.Strategy
         {
 
 
-            if ((simulationVariable.Accumulation > Acc)//&& dataList.ReturnValue("MoveAverageValue-20", j) < dataList.ReturnValue("MoveAverageValue-1", j) * 1.1)
-                || (simulationVariable.Accumulation < -StopLoss)// //|| simulationVariable.MaxRatio > 5
-                                                         //|| (simulationVariable.HaveStockDayContainHoliday > 20 && simulationVariable.Accumulation > 1)
-                 )
+            //if ((simulationVariable.Accumulation > Acc)//&& dataList.ReturnValue("MoveAverageValue-20", j) < dataList.ReturnValue("MoveAverageValue-1", j) * 1.1)
+            //    || (simulationVariable.Accumulation < -StopLoss)// //|| simulationVariable.MaxRatio > 5
+            //                                             //|| (simulationVariable.HaveStockDayContainHoliday > 20 && simulationVariable.Accumulation > 1)
+            //     )
                 return true;
 
             return false;

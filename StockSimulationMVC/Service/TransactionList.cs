@@ -30,7 +30,7 @@ namespace StockSimulationMVC.Service
 
             for(int i=0; i< _TransactionList.Count;i++)
             {
-                if (_TransactionList[i].Result.RateOfReturn > 0.5m)
+                if (_TransactionList[i].Result.RateOfReturn > 0)
                     Win++;
                 else
                     Loss++;
@@ -53,7 +53,7 @@ namespace StockSimulationMVC.Service
 
             StandardDeviationRateOfReturn = Math.Round(StandardDeviationRateOfReturn / _TransactionList.Count, 2);
             StandardDeviationRateOfReturn = (decimal)Math.Sqrt((double)Math.Abs(StandardDeviationRateOfReturn - ExpectedRateOfReturn * ExpectedRateOfReturn));
-            TotalReturnRate = (ExpectedRateOfReturn - (Decimal)0.5) * (Decimal)(Win + Loss);
+            TotalReturnRate = (ExpectedRateOfReturn ) * (Decimal)(Win + Loss);
         }
 
         public void AddTransactionList(List<Transaction> transactiondata)
