@@ -153,10 +153,10 @@ namespace StockSimulationMVC.Simulation_SimulationStart
 
                     if (_SimulationVariable.HasBuy)
                     {
-                        if ( DataList.TechData[j].HighestPrice > DataList.TechData[j].OpenPrice *1.000m   )
+                        if ( DataList.TechData[j].HighestPrice > DataList.TechData[j].OpenPrice *1.004m   )
                         {
                             transaction.Sell(DataList.TechData[j].Company.ToString(), DataList.TechData[j].CompanyName,
-                                DataList.TechData[j].OpenPrice * 1.002m, DataList.TechData[j].Date);
+                                DataList.TechData[j].OpenPrice * 1.005m, DataList.TechData[j].Date);
 
                             Transaction_List._TransactionList.Add(transaction);
 
