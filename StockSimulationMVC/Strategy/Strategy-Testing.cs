@@ -59,9 +59,12 @@ namespace StockSimulationMVC.Strategy
             if (//CountDropDays==3
                 //dataList.TechData[j-1].ReturnOnInvestment > Var && dataList.TechData[j-1].ReturnOnInvestment<Var+1
                 dataList.TechData[j - 1].ClosePrice > dataList.TechData[j - 1].OpenPrice
+                && dataList.TechData[j ].OpenPrice < dataList.TechData[j - 1].HighestPrice
+                && dataList.TechData[j].OpenPrice > dataList.TechData[j - 1].LowestPrice
+
 
                 //&& dataList.TechData[j].OpenPrice > dataList.TechData[j-1].ClosePrice
-             //    && dataList.TechData[j-1].OpenPrice < dataList.TechData[j - 2].HighestPrice
+                //    && dataList.TechData[j-1].OpenPrice < dataList.TechData[j - 2].HighestPrice
                 //((CheckCompany && Company == dataList.TechData[j].Company ) || !CheckCompany)
                 //&&dataList.ReturnValue("MoveAverageValue-20", j - 1)  < dataList.ReturnValue("MoveAverageValue-1", j - 1) * Var
                 //&& dataList.ReturnValue("MoveAverageValue-20", j) > dataList.ReturnValue("MoveAverageValue-1", j) * Var
