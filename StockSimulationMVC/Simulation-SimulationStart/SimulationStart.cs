@@ -113,7 +113,7 @@ namespace StockSimulationMVC.Simulation_SimulationStart
 
                 if (DataList.TechData.Count == 0) continue;
 
-                //BasicFinancialReportData.Initial(DataList.TechData[0].Company);
+                BasicFinancialReportData.Initial(DataList.TechData[0].Company);
                 //////////////////
                 SortedDictionary<Decimal, int> Data1 = new SortedDictionary<decimal, int>();
                 SortedDictionary<Decimal, int> Data2 = new SortedDictionary<decimal, int>();
@@ -151,34 +151,16 @@ namespace StockSimulationMVC.Simulation_SimulationStart
 
                     }
 
-                    if (_SimulationVariable.HasBuy)
+                    if (_SimulationVariable.HasBuy && !_SimulationVariable.CanBuy)
                     {
-                        if ( DataList.TechData[j].HighestPrice > DataList.TechData[j].OpenPrice *1.004m   )
-                        {
-                            transaction.Sell(DataList.TechData[j].Company.ToString(), DataList.TechData[j].CompanyName,
-                                DataList.TechData[j].OpenPrice * 1.005m, DataList.TechData[j].Date);
+                        transaction.Sell(DataList.TechData[j].Company.ToString(), DataList.TechData[j].CompanyName,
+                            DataList.TechData[j].ClosePrice, DataList.TechData[j].Date);
 
-                            Transaction_List._TransactionList.Add(transaction);
+                        Transaction_List._TransactionList.Add(transaction);
 
-                            _SimulationVariable.HasBuy = false;
-                            _SimulationVariable.Initial();
-                        }
-                        else //if (_SimulationVariable.HaveStockDay == 2)
-                        {
-                            transaction.Sell(DataList.TechData[j].Company.ToString(), DataList.TechData[j].CompanyName,
-                                DataList.TechData[j].ClosePrice, DataList.TechData[j].Date);
+                        _SimulationVariable.HasBuy = false;
+                        _SimulationVariable.Initial();
 
-                            Transaction_List._TransactionList.Add(transaction);
-
-                            _SimulationVariable.HasBuy = false;
-                            _SimulationVariable.Initial();
-                        }
-
-
-                        //Transaction_List._TransactionList.Add(transaction);
-
-                        //_SimulationVariable.HasBuy = false;
-                        //_SimulationVariable.Initial();
                     }
                     #endregion
 

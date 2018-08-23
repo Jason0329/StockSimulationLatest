@@ -28,8 +28,8 @@ namespace StockSimulationMVC
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
 
-            InitialData.SetYear(2016, 2020);
-            InitialData.Initial();
+            //InitialData.SetYear(2013, 2020);
+            //InitialData.Initial();
             //Strategy_Jason1 Strategy = new Strategy_Jason1();
             //SimulationStart Start = new SimulationStart(Strategy);
             //Start.Run();
@@ -43,20 +43,20 @@ namespace StockSimulationMVC
 
             //Database.SetInitializer<DataObjectContext>(new DropCreateDatabaseIfModelChanges<DataObjectContext>());
 
-            //var builder = new ContainerBuilder();
-            //builder.RegisterType<GenericRepository<BasicFinancialDataModel>>().As<IRepository<BasicFinancialDataModel>>()
-            //    .InstancePerLifetimeScope();
+            var builder = new ContainerBuilder();
+            builder.RegisterType<GenericRepository<BasicFinancialDataModel>>().As<IRepository<BasicFinancialDataModel>>()
+                .InstancePerLifetimeScope();
 
-            //var container = builder.Build();
+            var container = builder.Build();
 
-            //BasicFinancialDataModel tt = new BasicFinancialDataModel();
-            //tt.ID = 5;
-            //tt.LongTermLiabilities = 324;
-            //tt.OthersLiabilities = 51423;
+            BasicFinancialDataModel tt = new BasicFinancialDataModel();
+            tt.ID = 5;
+            tt.Company = 324;
+            tt.CompanyName = "51423";
             //tt.ProfitAfterTax = 325423;
-            //tt.Date = DateTime.Now;
+            tt.Date = DateTime.Now;
 
-            //container.Resolve<IRepository<BasicFinancialDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).Create(tt);
+            container.Resolve<IRepository<BasicFinancialDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).Create(tt);
 
 
 
@@ -83,28 +83,6 @@ namespace StockSimulationMVC
             //var builder1 = new ContainerBuilder();
 
 
-            //builder1.RegisterType<GenericRepository<TechnologicalDataModel>>().As<IRepository<TechnologicalDataModel>>()
-            //    .InstancePerLifetimeScope();
-
-            //var container1 = builder1.Build();
-
-            //TechnologicalDataModel tttt = new TechnologicalDataModel();
-            //tttt.ID = 5;
-            //tttt.LowestPrice = 22;
-            //tttt.OpenPrice = 20.3M;
-            //tttt.HighestPrice = 14323.3M;
-            //tttt.ClosePrice = 325.23M;
-            //tttt.Company = 2330;
-            //tttt.Date = DateTime.Now;
-            //tttt.Volume = 9000;
-            ////container.ResolveOptional<TechnologicalDataModel>(new TypedParameter(typeof(TechnologicalDataModel), new TechnologicalDataModel()));
-            //container1.Resolve<IRepository<TechnologicalDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).Create(tttt);
-            //List<TechnologicalDataModel> aall = container1.Resolve<IRepository<TechnologicalDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).GetAll().ToList();
-
-            ////TechnologicalDataListModel add = new TechnologicalDataListModel();
-
-            ////LineGraph ggg = new LineGraph();
-            ////ggg.SelectData(ref aall, "HighestPrice");
 
         }
     }

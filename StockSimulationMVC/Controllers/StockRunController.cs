@@ -37,7 +37,7 @@ namespace StockSimulationMVC.Controllers
             string UrlQuery = Request.Url.Query;
 
 
-            Strategy_Testing Strategy = new Strategy_Testing(GetParameters);
+            Strategy_Waiting Strategy = new Strategy_Waiting();
             SimulationStart Start = new SimulationStart(Strategy, UrlQuery);
             TransactionList Data = Start.Run();
             Data._TransactionList.Sort();

@@ -15,7 +15,7 @@ namespace SQLServerConnection
             Console.WriteLine("Start");
             SQLServerConnectionService sqlServerConnectionService = new SQLServerConnectionService();
 
-            TEJImport importTEJData = new TEJImport("StockMarket.txt");
+            TEJImport importTEJData = new TEJImport("Finance.txt");
             List<string> importedDataList = importTEJData.Import();
 
             int count = 0;
@@ -28,7 +28,7 @@ namespace SQLServerConnection
                 string ID = data.Split(',')[0].Trim() + data.Split(',')[2].Trim();
                 try
                 {
-                    string insertCommand = "INSERT INTO [StockDatabase].[dbo].[TechnologicalDataModels] VALUES " +
+                    string insertCommand = "INSERT INTO [StockDatabase].[dbo].[BasicFinancialDataModels] VALUES " +
                         "('" + ID + "','" + data.Split(',')[0].Trim().TrimStart(new char[] { 'T', 'W', 'N' }) + "','" + data.Split(',')[1].Trim() +
                         "','" + datetime + "'," +
                         data.Split(new char[] { ',' }, 4)[3].Replace("\t", "").Replace(" ", "").Replace(",,", ",null,")

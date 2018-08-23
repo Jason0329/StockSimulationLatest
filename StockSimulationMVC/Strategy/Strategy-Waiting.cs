@@ -79,23 +79,26 @@ namespace StockSimulationMVC.Strategy
                  //financialdata.ComparerFinancial("QNetIncomePercentage", 20, 4, true, Yearly: true)
 
                  //&& dataList.CoditionSatifiedIsBiggerValue( "MoveAverageValue-30",j ,500)
-                 && dataList.CoditionSatified("BollingerBandsDown-20", "MoveAverageValue-1", j - 1)
-                 && dataList.CoditionSatified("MoveAverageValue-1", "BollingerBandsDown-20", j)
+                 //&& dataList.CoditionSatified("BollingerBandsDown-20", "MoveAverageValue-1", j - 1)
+                 //&& dataList.CoditionSatified("MoveAverageValue-1", "BollingerBandsDown-20", j)
 )// && financialdata.ComparerFinancial("QCashFlowPerShare",3,4))
                 return true;
             return false;
         }
         public bool SellCondition(ref SimulationVariable simulationVariable, ref DataList dataList, ref BasicFinancialReportListModel financialdata, int j)
         {
+            if (j < 0 || dataList.TechData.Count - j <= 0 || financialdata.RevenueInt-1<0 || financialdata.RevenueInt >= financialdata.RevenueList.Count)
+                return false;
             simulationVariable.MoveStopLossPercentage = Acc;
-            if (dataList.TechData[j].CashYieldRate <= 2.5
+            if (
+                dataList.TechData[j].CashYieldRate <= 2.5
                 || financialdata.RevenueList[financialdata.RevenueInt].YoYPercentage_MonthlySale < -20
-                || simulationVariable.Accumulation > 50 
+                //|| simulationVariable.Accumulation > 50 
                 //|| simulationVariable.Accumulation < -Acc
                 ||(financialdata.RevenueList[financialdata.RevenueInt ].YoYPercentage_MonthlySale< -10&& financialdata.RevenueList[financialdata.RevenueInt - 1].YoYPercentage_MonthlySale<-10)
                 //|| financialdata.RevenueList[financialdata.RevenueInt ].YoYPercentage_MonthlySale<-10
                 //|| dataList.CoditionSatified("MoveAverageValue-1", "MoveAverageValue-10", j,false)//&& dataList.CoditionSatified("BollingerBandsDown-5", "MoveAverageValue-1", j - 1,false)
-                || simulationVariable.ConditionSatifiedMoveStopLoss("MoveStopLossPercentage")
+                //|| simulationVariable.ConditionSatifiedMoveStopLoss("MoveStopLossPercentage")
                 //|| ( dataList.CoditionSatified("MoveAverageValue-60", "MoveAverageValue-1", j )
                 // && dataList.CoditionSatified("MoveAverageValue-1", "MoveAverageValue-60", j -1))
                 )//simulationVariable.ConditionSatifiedMoveStopLoss("MoveStopLossPercentage"))// || dataList.CoditionSatified("MinValue-1", "MinValue-10", j))
