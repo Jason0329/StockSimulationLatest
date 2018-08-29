@@ -9,7 +9,7 @@ namespace StockSimulationMVC.Models
 {
     public class BasicFinancialReportListModel
     {
-        public List<BasicFinancialDataModel> FinancialDataList = new List<BasicFinancialDataModel>();
+        public List<BasicFinancialContainParentDataModel> FinancialDataList = new List<BasicFinancialContainParentDataModel>();
         public List<MonthRevenueModel> RevenueList = new List<MonthRevenueModel>();
         public int RevenueInt = -1;
         public int BasicFinancialInt = -1;
@@ -17,7 +17,7 @@ namespace StockSimulationMVC.Models
         #region Initial 
         public void Initial(int Company)
         {
-            var FinancialData = from CompanyData in InitialData.InitialData_BasicFinancialData
+            var FinancialData = from CompanyData in InitialData.InitialData_BasicFinancialDataContainParent
                                 where CompanyData.Company == Company
                                 orderby CompanyData.Date ascending
                                 select CompanyData;

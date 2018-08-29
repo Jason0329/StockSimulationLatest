@@ -175,7 +175,7 @@ namespace StockSimulationMVC.Simulation_SimulationStart
                     transaction.Sell(DataList.TechData[DataList.TechData.Count - 1].Company.ToString(), DataList.TechData[DataList.TechData.Count - 1].CompanyName,
                         DataList.TechData[DataList.TechData.Count - 1].HighestPrice, DataList.TechData[DataList.TechData.Count - 1].Date);
                     //期末賣出的不做計算
-                    //Transaction_List._TransactionList.Add(transaction);
+                    Transaction_List._TransactionList.Add(transaction);
 
                     _SimulationVariable.HasBuy = false;
                     _SimulationVariable.Initial();

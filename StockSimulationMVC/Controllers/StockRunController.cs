@@ -37,7 +37,7 @@ namespace StockSimulationMVC.Controllers
             string UrlQuery = Request.Url.Query;
 
 
-            Strategy_Waiting Strategy = new Strategy_Waiting();
+            Strategy_ZhaoFinancialStrategy Strategy = new Strategy_ZhaoFinancialStrategy(GetParameters);
             SimulationStart Start = new SimulationStart(Strategy, UrlQuery);
             TransactionList Data = Start.Run();
             Data._TransactionList.Sort();
@@ -173,7 +173,7 @@ namespace StockSimulationMVC.Controllers
 
             for (int i = 0; i < 3; i++)
             {
-                InitialData.SetYear(2016 - i, 2018 - i);
+                InitialData.SetYear(2016 - i, 2019 - i);
                 InitialData.Initial();
                 SimulationStart Start = new SimulationStart(Strategy);
                 TransactionList Data = Start.Run();

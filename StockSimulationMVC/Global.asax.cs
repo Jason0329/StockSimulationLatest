@@ -27,9 +27,11 @@ namespace StockSimulationMVC
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            DataObjectContext ObjectContext = new DataObjectContext();
+            ObjectContext.Install();
 
-            //InitialData.SetYear(2013, 2020);
-            //InitialData.Initial();
+            InitialData.SetYear(2016, 2020);
+            InitialData.Initial();
             //Strategy_Jason1 Strategy = new Strategy_Jason1();
             //SimulationStart Start = new SimulationStart(Strategy);
             //Start.Run();
@@ -41,22 +43,23 @@ namespace StockSimulationMVC
             //line.AddLineGraphDictionary("MinValue", 3);
             //line.AddLineGraphDictionary("Acculation", 3);
 
-            //Database.SetInitializer<DataObjectContext>(new DropCreateDatabaseIfModelChanges<DataObjectContext>());
+            Database.SetInitializer<DataObjectContext>(new DropCreateDatabaseIfModelChanges<DataObjectContext>());
 
             var builder = new ContainerBuilder();
-            builder.RegisterType<GenericRepository<BasicFinancialDataModel>>().As<IRepository<BasicFinancialDataModel>>()
+            
+            builder.RegisterType<GenericRepository<BasicFinancialContainParentDataModel>>().As<IRepository<BasicFinancialContainParentDataModel>>()
                 .InstancePerLifetimeScope();
 
-            var container = builder.Build();
+            //var container = builder.Build();
+            
+            //BasicFinancialContainParentDataModel tt = new BasicFinancialContainParentDataModel();
+            //tt.ID = 5;
+            //tt.Company = 324;
+            //tt.CompanyName = "51423";
+            ////tt.ProfitAfterTax = 325423;
+            //tt.Date = DateTime.Now;
 
-            BasicFinancialDataModel tt = new BasicFinancialDataModel();
-            tt.ID = 5;
-            tt.Company = 324;
-            tt.CompanyName = "51423";
-            //tt.ProfitAfterTax = 325423;
-            tt.Date = DateTime.Now;
-
-            container.Resolve<IRepository<BasicFinancialDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).Create(tt);
+            //container.Resolve<IRepository<BasicFinancialContainParentDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).Create(tt);
 
 
 

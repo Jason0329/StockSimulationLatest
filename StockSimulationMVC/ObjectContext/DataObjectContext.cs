@@ -27,17 +27,43 @@ namespace StockSimulationMVC.ObjectContext
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //Configure domain classes using Fluent API here
+            
+            modelBuilder.Entity<BasicFinancialContainParentDataModel>().HasKey<double>(s => s.ID);
+            //modelBuilder.Entity<BarginDataModel>().HasKey<int>(s => s.ID);
+            
+
+            //Database.SetInitializer<YourDbContext>(null);
+            //Database.SetInitializer<DataObjectContext>(null);
+            //Database.ExecuteSqlCommand(CreateDatabaseInstallationScript());
+            //SaveChanges();
+            //modelBuilder.Configurations.Add(new FinancialDataContainParentModelMapping());
+
             modelBuilder.Entity<TechnologicalDataModel>().HasKey<string>(s => s.ID);
             modelBuilder.Entity<MonthRevenueModel>().HasKey<double>(s => s.ID);
             modelBuilder.Entity<BasicFinancialDataModel>().HasKey<double>(s => s.ID);
-            //modelBuilder.Entity<BarginDataModel>().HasKey<int>(s => s.ID);
             modelBuilder.Entity<CompanyModel>().HasKey<double>(s => s.ID);
 
-            //Database.SetInitializer<YourDbContext>(null);
-            //modelBuilder.Configurations.Add(new TechnologicalDataModelMapping());
+
+            //base.OnModelCreating(modelBuilder);
+        }
+
+        public void Install()
+        {
+            Database.SetInitializer<DataObjectContext>(null);
+            try
+            {
+                Database.ExecuteSqlCommand(CreateDatabaseInstallationScript());
+                SaveChanges();
+
+                GenericRepository<BasicFinancialContainParentDataModel> BasicFinancialContainParentDataModel = new GenericRepository<BasicFinancialContainParentDataModel>(new DataObjectContext());
+
+            }
+            catch (Exception ee)
+            {
+            }
 
 
-            base.OnModelCreating(modelBuilder);
+
         }
     }
 }

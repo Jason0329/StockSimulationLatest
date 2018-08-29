@@ -13,10 +13,11 @@ namespace StockSimulationMVC.Core
     public static class InitialData
     {
         public static List<BasicFinancialDataModel> InitialData_BasicFinancialData;
+        public static List<BasicFinancialContainParentDataModel> InitialData_BasicFinancialDataContainParent;
         public static List<MonthRevenueModel> InitialData_MonthRevenueData;
         public static List<TechnologicalDataModel> InitialData_TechnologicalData;
         public static List<CompanyModel> InitialData_CompanyData;
-        public static int StartYear=2018;
+        public static int StartYear=2016;
         public static int EndYear = 2020;
 
         public static void Initial()
@@ -30,8 +31,14 @@ namespace StockSimulationMVC.Core
                .InstancePerLifetimeScope();
             builder.RegisterType<GenericRepository<CompanyModel>>().As<IRepository<CompanyModel>>()
                .InstancePerLifetimeScope();
+            builder.RegisterType<GenericRepository<BasicFinancialContainParentDataModel>>().As<IRepository<BasicFinancialContainParentDataModel>>()
+                .InstancePerLifetimeScope();
 
             var container = builder.Build();
+
+            container.Resolve<IRepository<BasicFinancialContainParentDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).SetYearRange(StartYear, EndYear);
+            InitialData_BasicFinancialDataContainParent = container.Resolve<IRepository<BasicFinancialContainParentDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).GetAll().ToList();
+
 
             container.Resolve<IRepository<BasicFinancialDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).SetYearRange(StartYear, EndYear);
             InitialData_BasicFinancialData = container.Resolve<IRepository<BasicFinancialDataModel>>(new TypedParameter(typeof(DbContext), new DataObjectContext())).GetAll().ToList();
