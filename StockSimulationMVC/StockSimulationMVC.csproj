@@ -262,6 +262,7 @@
     <Compile Include="Strategy\Strategy-TechBigVolumeRaisePrice4to5Percentage.cs" />
     <Compile Include="Strategy\Strategy-Testing.cs" />
     <Compile Include="Strategy\Strategy-Waiting.cs" />
+    <Compile Include="Strategy\Strategy-ZhaoFinancialSelectStockStrategy.cs" />
     <Compile Include="Strategy\Strategy-ZhaoFinancialStrategy.cs" />
     <Compile Include="Strategy\TeacherStrategy-Stock-0056.cs" />
   </ItemGroup>

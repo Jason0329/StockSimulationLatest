@@ -37,19 +37,11 @@ namespace StockSimulationMVC.Controllers
             string UrlQuery = Request.Url.Query;
 
 
-            Strategy_ZhaoFinancialStrategy Strategy = new Strategy_ZhaoFinancialStrategy(GetParameters);
+            ZhaoFinancialSelectStockStrategy Strategy = new ZhaoFinancialSelectStockStrategy(GetParameters);
             SimulationStart Start = new SimulationStart(Strategy, UrlQuery);
             TransactionList Data = Start.Run();
             Data._TransactionList.Sort();
             Data.TransactionStatisticResult();
-
-           
-            //InitialData.Initial();
-            //Strategy = new Strategy___TechBigVolume();
-            //Start = new SimulationStart(Strategy);
-            //Data = Start.Run();
-            //Data._TransactionList.Sort();
-            //Data.TransactionStatisticResult();
 
             Session["DataResult"] = Data;
 

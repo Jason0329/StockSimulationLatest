@@ -1,4 +1,5 @@
-﻿using StockSimulationMVC.Interface;
+﻿
+using StockSimulationMVC.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +10,17 @@ using System.Collections;
 
 namespace StockSimulationMVC.Strategy
 {
-    public class Strategy_ZhaoFinancialStrategy : IStrategy
+    public class ZhaoFinancialSelectStockStrategy : IStrategy
     {
         readonly double EPSParameter = 0.08;
-        readonly double ValuationLatestParameter = 1.6;
+        readonly double ValuationLatestParameter = 1;
         readonly double ValuationParameter = 1;
 
         int valuationParameter = 5;
        
         double operationIncomePercentageSet = 2;
         double netIncomePercentageSet = 3;
-        public Strategy_ZhaoFinancialStrategy(Hashtable Setup)
+        public ZhaoFinancialSelectStockStrategy(Hashtable Setup)
         {
             if(Setup["ValuationParameter"] != null)
             {
@@ -72,11 +73,11 @@ namespace StockSimulationMVC.Strategy
 
 
 
-            if (ValuationConditionSatisfied(ref financialdata, valuationParameter)// && OperationCashFlow > 0
-               // && dataList.TechData[j].CashYieldRate >= 4
-               //&&  dataList.CoditionSatified("MoveAverageValue-1", "BollingerBandsDown-20", j)
-               //&& dataList.CoditionSatified("BollingerBandsDown-20", "MoveAverageValue-1", j - 1))
-               ) //&& OperationIncomePercentage > operationIncomePercentageSet && NetIncomePercentage > netIncomePercentageSet)
+            if (ValuationConditionSatisfied(ref financialdata, valuationParameter) && OperationCashFlow > 0
+                //&& dataList.TechData[j].CashYieldRate >= 4
+
+               && FinancialPublished(ref dataList , j)
+               )
             {
                 return true;
             }
@@ -87,15 +88,12 @@ namespace StockSimulationMVC.Strategy
 
         public bool SellCondition(ref SimulationVariable simulationVariable, ref DataList dataList, ref BasicFinancialReportListModel financialdata, int j)
         {
+            return true;
             //if (j < 0 || dataList.TechData.Count - j <= 0 || financialdata.RevenueInt - 1 < 0 || financialdata.RevenueInt >= financialdata.RevenueList.Count)
             //    return false;
 
             if (
-                //dataList.TechData[j].CashYieldRate <= 2.5
-                //|| financialdata.RevenueList[financialdata.RevenueInt].YoYPercentage_MonthlySale < -20
-                //|| (financialdata.RevenueList[financialdata.RevenueInt].YoYPercentage_MonthlySale < -10 && financialdata.RevenueList[financialdata.RevenueInt - 1].YoYPercentage_MonthlySale < -10)
-                simulationVariable.Accumulation > 20 //|| !ValuationConditionSatisfied(ref financialdata, valuationParameter)
-                ||simulationVariable.Accumulation < -20
+                dataList.TechData[j].Date.Month ==6 || dataList.TechData[j].Date.Month==9 || dataList.TechData[j].Date.Month==12 || dataList.TechData[j].Date.Month==4
 
                 )
                 return true;
@@ -103,6 +101,19 @@ namespace StockSimulationMVC.Strategy
             return false;
         }
 
+        public bool FinancialPublished(ref DataList dataList , int j)
+        {
+            if((dataList.TechData[j].Date.Month ==5 && dataList.TechData[j].Date.Day == 15) ||
+                (dataList.TechData[j].Date.Month == 8 && dataList.TechData[j].Date.Day == 15)||
+                (dataList.TechData[j].Date.Month == 11 && dataList.TechData[j].Date.Day == 15)||
+                (dataList.TechData[j].Date.Month == 3 && dataList.TechData[j].Date.Day == 31)
+                )
+            {
+                return true;
+            }
+
+            return false;
+        }
         bool ValuationConditionSatisfied(ref BasicFinancialReportListModel financialdata, int countRefYear)
         {
             bool condiotionsatisfied = true;

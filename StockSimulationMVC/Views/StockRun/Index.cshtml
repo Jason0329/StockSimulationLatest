@@ -5,7 +5,94 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<form class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>股票篩選</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">起始年度</label>
+            <div class="col-md-4">
+                <input id="textinput" name="textinput" type="text" placeholder="輸入選股起始年度" class="form-control input-md" required="">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">結束年度</label>
+            <div class="col-md-4">
+                <input id="textinput" name="textinput" type="text" placeholder="輸入選股結束年度" class="form-control input-md" required="">
+
+            </div>
+        </div>
+
+        <!-- Multiple Radios (inline) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="radios">股票評價</label>
+            <div class="col-md-4">
+                <label class="radio-inline" for="radios-0">
+                    <input type="radio" name="radios" id="radios-0" value="3" checked="checked">
+                    3年
+                </label>
+                <label class="radio-inline" for="radios-1">
+                    <input type="radio" name="radios" id="radios-1" value="4">
+                    4年
+                </label>
+                <label class="radio-inline" for="radios-2">
+                    <input type="radio" name="radios" id="radios-2" value="5">
+                    5年
+                </label>
+            </div>
+        </div>
+
+        <!-- Multiple Checkboxes (inline) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="checkboxes">OCF&gt;0</label>
+            <div class="col-md-4">
+                <label class="checkbox-inline" for="checkboxes-0">
+                    <input type="checkbox" name="checkboxes" id="checkboxes-0" value="加入條件">
+                    加入條件
+                </label>
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">營利率大於等於</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input type="checkbox">
+                    </span>
+                    <input id="prependedcheckbox" name="prependedcheckbox" class="form-control" type="text" placeholder="輸入大於等於數字">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">稅後純益率大於等於</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input type="checkbox">
+                    </span>
+                    <input id="prependedcheckbox" name="prependedcheckbox" class="form-control" type="text" placeholder="輸入大於等於數字">
+                </div>
+
+            </div>
+        </div>
+
+        <button type="submit" class="form-send">送出</button>
+
+    </fieldset>
+</form>
+
+@*<h2>Index</h2>
 <h2>Win : @Model.Win </h2>
 <h2>Loss: @Model.Loss</h2>
 <h2>WinRatio: @Model.WinRatio</h2>
@@ -16,41 +103,81 @@
 <h2>報酬標準差: @Model.StandardDeviationRateOfReturn</h2>
 <h2>總報酬: @Model.TotalReturnRate</h2>
 <h2><a href="http://localhost:13527/StockRun/Optimize?TransactionCount=5&WinRatio=65&AverageHoldDays=200">優化模擬</a></h2>
-<h2><a href="http://localhost:13527/StockRun/AutoOptimizeStrategyAndCompany?TransactionCount=5&WinRatio=65&AverageHoldDays=200">公司優化</a></h2>
+<h2><a href="http://localhost:13527/StockRun/AutoOptimizeStrategyAndCompany?TransactionCount=5&WinRatio=65&AverageHoldDays=200">公司優化</a></h2>*@
 
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>買賣次數</th>
+            <th>計數</th>
             <th>公司</th>
-            <th>買進日期</th>
+            @*<th>買進日期</th>
             <th>買進價格</th>
             <th>賣出日期</th>
             <th>賣出價格</th>
             <th>獲利</th>
             <th>持有天數</th>
             <th>報酬率</th>
-            <th>年化報酬率</th>
+            <th>年化報酬率</th>*@
         </tr>
     </thead>
 
     @{int Count = 1; }
+    @{int Quater = 0;}
 
     <tbody>
 
         @foreach (var transction in Model._TransactionList)
         {
+            if (Quater != transction.BuyDetail.Date.Month)
+            {
+                if (transction.BuyDetail.Date.Month == 3)
+                {
+                <tr>
+                    <td>
+                          @transction.BuyDetail.Date.ToString("yyyy") Q1  
+                         @{Quater = 3;}
+                    </td>
+                </tr>
+                             }
+                             else if (transction.BuyDetail.Date.Month == 5)
+                             {
+                    <tr>
+                        <td>
+                            @transction.BuyDetail.Date.ToString("yyyy") Q2
+                                @{ Quater = 5; }
+                        </td>
+                    </tr>
+                                        }
+                                        else if (transction.BuyDetail.Date.Month == 8)
+                                        {
+                    <tr>
+                        <td>
+                            @transction.BuyDetail.Date.ToString("yyyy") Q3
+                                    @{ Quater = 8; }
+                        </td>
+                    </tr>
+                                        }
+                                        else if (transction.BuyDetail.Date.Month == 11)
+                                        {
+                    <tr>
+                        <td>
+                            @transction.BuyDetail.Date.ToString("yyyy") Q4
+                                    @{ Quater = 11; }
+                        </td>
+                    </tr>
+                                            }
+                                    }
             <tr>
                 <th scope="row">@Count</th>
                 <td> @transction.BuyDetail.Name (@transction.BuyDetail.Nubmer)</td>
-                <td>@transction.BuyDetail.Date.ToString("yyyy/MM/dd") </td>
-                <td>@transction.BuyDetail.Price</td>
+                <td>@transction.BuyDetail.Date.ToString("yyyy") </td>
+                @*<td>@transction.BuyDetail.Price</td>
                 <td>@transction.SellDetail.Date.ToString("yyyy/MM/dd") </td>
                 <td>@transction.SellDetail.Price</td>
                 <td>@transction.Result.Revenue</td>
                 <td>@transction.Result.HoldDays</td>
                 <td>@transction.Result.RateOfReturn %</td>
-                <td>@transction.Result.RateOfReturnYearly %</td>
+                <td>@transction.Result.RateOfReturnYearly %</td>*@
             </tr>
 
             
