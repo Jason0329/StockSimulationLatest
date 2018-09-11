@@ -146,6 +146,8 @@ namespace StockSimulationMVC.Simulation_SimulationStart
                         transaction.Buy(DataList.TechData[j].Company.ToString(), DataList.TechData[j].CompanyName,
                             DataList.TechData[j].OpenPrice, DataList.TechData[j].Date);
 
+                        transaction.DataOutput = InitialData.OutputData;
+
                         _SimulationVariable.HasBuy = true;
                         _SimulationVariable.Buy = DataList.TechData[j];
 

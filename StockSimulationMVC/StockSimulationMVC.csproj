@@ -204,6 +204,7 @@
     <Compile Include="Models\BasicFinancialContainParentDataModel.cs" />
     <Compile Include="Models\BasicFinancialDataModel.cs" />
     <Compile Include="Models\CompanyModel.cs" />
+    <Compile Include="Models\OutputModel.cs" />
     <Compile Include="Models\SimTransactionModel.cs" />
     <Compile Include="ObjectContext\CompanyModelMapping.cs" />
     <Compile Include="ObjectContext\FinancialDataContainParentModelMapping.cs" />

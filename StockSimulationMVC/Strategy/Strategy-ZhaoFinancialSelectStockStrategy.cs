@@ -7,6 +7,8 @@ using System.Web;
 using StockSimulationMVC.Models;
 using StockSimulationMVC.Simulation_SimulationStart;
 using System.Collections;
+using System.Reflection;
+using StockSimulationMVC.Core;
 
 namespace StockSimulationMVC.Strategy
 {
@@ -16,10 +18,16 @@ namespace StockSimulationMVC.Strategy
         readonly double ValuationLatestParameter = 1;
         readonly double ValuationParameter = 1;
 
-        int valuationParameter = 5;
+        int valuationParameter = 3;
        
-        double operationIncomePercentageSet = 2;
-        double netIncomePercentageSet = 3;
+        double operationIncomePercentageCountSet = 0;
+        double netIncomePercentageCountSet = 0;
+        double EPSCountSet = 0;
+        double EPSSet = -200;
+        bool OperationCashFlowSet = false;
+        double EPSQoQSet = -200;
+        double EPSYoYSet = -200;
+        double EPSAccumulationYoYSet = -200;
         public ZhaoFinancialSelectStockStrategy(Hashtable Setup)
         {
             if(Setup["ValuationParameter"] != null)
@@ -27,29 +35,52 @@ namespace StockSimulationMVC.Strategy
                 valuationParameter = int.Parse(Setup["ValuationParameter"].ToString());
             }
 
-            if (Setup["operationIncomePercentageSet"] != null)
+            if (Setup["operationIncomePercentageCountSet"] != null)
             {
-                operationIncomePercentageSet = double.Parse(Setup["operationIncomePercentageSet"].ToString());
+                operationIncomePercentageCountSet = double.Parse(Setup["operationIncomePercentageCountSet"].ToString());
             }
 
-            if (Setup["netIncomePercentageSet"] != null)
+            if (Setup["netIncomePercentageCountSet"] != null)
             {
-                netIncomePercentageSet = double.Parse(Setup["netIncomePercentageSet"].ToString());
+                netIncomePercentageCountSet = double.Parse(Setup["netIncomePercentageCountSet"].ToString());
             }
 
-            try
+            if (Setup["EPSSet"] != null)
             {
-               
+                EPSSet = double.Parse(Setup["EPSSet"].ToString());
             }
-            catch (Exception ee)
+
+            if (Setup["EPSCountSet"] != null)
             {
-               
+                EPSCountSet = double.Parse(Setup["EPSCountSet"].ToString());
             }
+
+            if (Setup["EPSQoQSet"] != null)
+            {
+                EPSQoQSet = double.Parse(Setup["EPSQoQSet"].ToString());
+            }
+
+            if (Setup["EPSYoYSet"] != null)
+            {
+                EPSYoYSet = double.Parse(Setup["EPSYoYSet"].ToString());
+            }
+
+            if (Setup["EPSAccumulationYoYSet"] != null)
+            {
+                EPSAccumulationYoYSet = double.Parse(Setup["EPSAccumulationYoYSet"].ToString());
+            }
+
+            if (Setup["OperationCashFlowSet"] != null)
+            {
+                OperationCashFlowSet = bool.Parse(Setup["OperationCashFlowSet"].ToString());
+            }
+
 
         }
         public bool BuyCondition(ref SimulationVariable simulationVariable, ref DataList dataList, ref BasicFinancialReportListModel financialdata, int j)
         {
-            //return true;
+            InitialData.OutputData = new OutputModel();
+
             if (financialdata.FinancialDataList.Count == 0)
             {
                 return false;
@@ -63,20 +94,34 @@ namespace StockSimulationMVC.Strategy
             }
 
 
-            double? EPS = financialdata.FinancialDataList[financialdata.BasicFinancialInt].EarningPerShare_Consol;
             double? BPS = financialdata.FinancialDataList[financialdata.BasicFinancialInt].BPS_A__Consol;
             double? OperationCashFlow = financialdata.FinancialDataList[financialdata.BasicFinancialInt].CashFlow_Operating_Consol;
-            double? OperationIncomePercentage = financialdata.FinancialDataList[financialdata.BasicFinancialInt].OperatingIncome0_Consol;
-            double? NetIncomePercentage = financialdata.FinancialDataList[financialdata.BasicFinancialInt].NetIncome0_Consol;
 
+            double? NetIncomePercentageCount = CountKeepingRaise(ref financialdata , "NetIncome0_Consol");
+            double? OperationIncomePercentageCount = CountKeepingRaise(ref financialdata, "OperatingIncome0_Consol");
+            double? EPS = financialdata.FinancialDataList[financialdata.BasicFinancialInt].EarningPerShare_Consol;
+            double? EPSCount = CountKeepingRaise(ref financialdata, "EarningPerShare_Consol");
+            double? EPSQoQ = QoQ(ref financialdata, "EarningPerShare_Consol");
+            double? EPSYoY = YoY(ref financialdata, "EarningPerShare_Consol");
+            double? EPSAccumulationYoY = YoY(ref financialdata, "EarningPerShare_Consol");
 
-
-
+            InitialData.OutputData.netIncomePercentageCount = (double)NetIncomePercentageCount;
+            InitialData.OutputData.operationIncomePercentageCount = (double)OperationIncomePercentageCount;
+            InitialData.OutputData.EPSCount = (double)EPSCount;
+            InitialData.OutputData.EPSQoQ = (double)EPSQoQ;
+            InitialData.OutputData.EPSYoY = (double)EPSYoY;
+            InitialData.OutputData.EPSAccumulationYoY = (double)EPSAccumulationYoY;
 
             if (ValuationConditionSatisfied(ref financialdata, valuationParameter) && OperationCashFlow > 0
-                //&& dataList.TechData[j].CashYieldRate >= 4
-
-               && FinancialPublished(ref dataList , j)
+                && NetIncomePercentageCount >= netIncomePercentageCountSet
+                && OperationIncomePercentageCount >= operationIncomePercentageCountSet
+                && EPS >= EPSSet
+                && EPSCount >= EPSCountSet
+                && EPSQoQ >= EPSQoQSet
+                && EPSYoY >= EPSYoYSet
+                && EPSAccumulationYoY >= EPSAccumulationYoYSet
+                && FinancialPublished(ref dataList , j)
+                && ((OperationCashFlowSet && OperationCashFlow > 0) || !OperationCashFlowSet)
                )
             {
                 return true;
@@ -116,6 +161,8 @@ namespace StockSimulationMVC.Strategy
         }
         bool ValuationConditionSatisfied(ref BasicFinancialReportListModel financialdata, int countRefYear)
         {
+            UpdateOutputData(ref financialdata);
+
             bool condiotionsatisfied = true;
             if (LatestYearValuation(ref financialdata) > BeforeYearValuation(ref financialdata , 1) * ValuationLatestParameter)
             {
@@ -153,6 +200,23 @@ namespace StockSimulationMVC.Strategy
             }
 
             return condiotionsatisfied;
+        }
+
+        void UpdateOutputData(ref BasicFinancialReportListModel financialdata)
+        {
+            double latestYearValuation = LatestYearValuation(ref financialdata);
+            double[] BeforeYearValuationArray = new double[4];
+            BeforeYearValuationArray[0] = BeforeYearValuation(ref financialdata, 1);
+            BeforeYearValuationArray[1] = BeforeYearValuation(ref financialdata, 2);
+            BeforeYearValuationArray[2] = BeforeYearValuation(ref financialdata, 3);
+            BeforeYearValuationArray[3] = BeforeYearValuation(ref financialdata, 4);
+
+            InitialData.OutputData.Evaluation_1Year = latestYearValuation;
+            InitialData.OutputData.Evaluation_2Year = BeforeYearValuationArray[0];
+            InitialData.OutputData.Evaluation_3Year = BeforeYearValuationArray[1];
+            InitialData.OutputData.Evaluation_4Year = BeforeYearValuationArray[2];
+            InitialData.OutputData.Evaluation_5Year = BeforeYearValuationArray[3];
+
         }
 
         double LatestYearValuation(ref BasicFinancialReportListModel financialdata)
@@ -206,7 +270,6 @@ namespace StockSimulationMVC.Strategy
             return returnValuation;
         }
 
-
         double Valuation(BasicFinancialContainParentDataModel seasonFinancial)
         {
             if(seasonFinancial.EarningPerShare_Consol ==null || seasonFinancial.BPS_A__Consol == null)
@@ -218,6 +281,100 @@ namespace StockSimulationMVC.Strategy
             double BPS = (double)seasonFinancial.BPS_A__Consol;
 
             return EPS / EPSParameter + BPS;
+        }
+
+        int CountKeepingRaise(ref BasicFinancialReportListModel financialdata , string field )
+        {
+            int count = 1;
+            int counting = financialdata.BasicFinancialInt;
+
+            for (int i = financialdata.BasicFinancialInt; i > 0; i--)
+            {
+                PropertyInfo propertyNext = financialdata.FinancialDataList[i].GetType().GetProperty(field);
+                double? valueNext = (double?)propertyNext.GetValue(financialdata.FinancialDataList[i]);
+
+                PropertyInfo propertyPre = financialdata.FinancialDataList[i - 1].GetType().GetProperty(field);
+                double? valuePre = (double?)propertyNext.GetValue(financialdata.FinancialDataList[i -1]);
+
+                if(valueNext > valuePre)
+                {
+                    count++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+
+            return count;
+        }
+
+        double? QoQ(ref BasicFinancialReportListModel financialdata , string field)
+        {
+            int counting = financialdata.BasicFinancialInt;
+
+            if (counting < 1 )
+            {
+                return -1000;
+            }
+
+            PropertyInfo propertyNext = financialdata.FinancialDataList[counting].GetType().GetProperty(field);
+            double? valueNext = (double?)propertyNext.GetValue(financialdata.FinancialDataList[counting]);
+
+            PropertyInfo propertyPre = financialdata.FinancialDataList[counting - 1].GetType().GetProperty(field);
+            double? valuePre = (double?)propertyNext.GetValue(financialdata.FinancialDataList[counting - 1]);
+
+            double? qoq = ((valueNext / valuePre) - 1) * 100 ;
+
+            return qoq;
+        }
+        double? YoY(ref BasicFinancialReportListModel financialdata, string field)
+        {
+            int counting = financialdata.BasicFinancialInt;
+
+            if (counting < 4)
+            {
+                return -1000;
+            }
+
+            PropertyInfo propertyNext = financialdata.FinancialDataList[counting].GetType().GetProperty(field);
+            double? valueNext = (double?)propertyNext.GetValue(financialdata.FinancialDataList[counting]);
+
+            PropertyInfo propertyPre = financialdata.FinancialDataList[counting - 4].GetType().GetProperty(field);
+            double? valuePre = (double?)propertyNext.GetValue(financialdata.FinancialDataList[counting - 4]);
+
+            double? yoy = ((valueNext / valuePre) - 1) * 100;
+
+            return yoy;
+        }
+        double? AccumulationYoY(ref BasicFinancialReportListModel financialdata, string field)
+        {
+            int counting = financialdata.BasicFinancialInt;
+
+            if (counting < 8)
+            {
+                return -1000;
+            }
+
+            double? valueNext = 0;
+            double? valuePre = 0;
+
+            for(int i = 0; i<4; i++)
+            {
+                PropertyInfo propertyNext = financialdata.FinancialDataList[counting - i].GetType().GetProperty(field);
+                valueNext += (double?)propertyNext.GetValue(financialdata.FinancialDataList[counting - i]);
+            }
+
+            for (int i = 4; i < 8; i++)
+            {
+                PropertyInfo propertyPre = financialdata.FinancialDataList[counting - i].GetType().GetProperty(field);
+                valuePre += (double?)propertyPre.GetValue(financialdata.FinancialDataList[counting - i]);
+            }
+
+            double? yoy = ((valueNext / valuePre) - 1) * 100;
+
+            return yoy;
         }
 
     }

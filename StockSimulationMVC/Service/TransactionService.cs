@@ -10,10 +10,12 @@ namespace StockSimulationMVC.Models
         BuyModel BuyInstrument;
         SellModel SellInstrument;
         TransactionResultModel BuySellResult;
+       
 
         public BuyModel BuyDetail { get { return BuyInstrument; } }
         public SellModel SellDetail { get { return SellInstrument; } }
         public TransactionResultModel Result { get { return BuySellResult; } }
+        public OutputModel DataOutput { get; set; }
 
         public void Buy(string Number , string Name , Decimal Price , DateTime datetime , int share=1)
         {

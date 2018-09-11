@@ -72,7 +72,7 @@ namespace StockSimulationMVC.Strategy
 
 
 
-            if (ValuationConditionSatisfied(ref financialdata, valuationParameter)// && OperationCashFlow > 0
+            if (ValuationConditionSatisfied(ref financialdata, valuationParameter) && dataList.TechData[j].Date.Year == 2018// && OperationCashFlow > 0
                // && dataList.TechData[j].CashYieldRate >= 4
                //&&  dataList.CoditionSatified("MoveAverageValue-1", "BollingerBandsDown-20", j)
                //&& dataList.CoditionSatified("BollingerBandsDown-20", "MoveAverageValue-1", j - 1))
