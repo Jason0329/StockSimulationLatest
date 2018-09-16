@@ -13,9 +13,9 @@
 
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">起始年度</label>
+            <label class="col-md-4 control-label" for="textinput" >起始年度</label>
             <div class="col-md-4">
-                <input id="textinput" name="textinput" type="text" placeholder="輸入選股起始年度" class="form-control input-md" required="">
+                <input id="StartYear" name="StartYear" type="text" placeholder="輸入選股起始年度" class="form-control input-md" value="2016">
 
             </div>
         </div>
@@ -24,26 +24,26 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="textinput">結束年度</label>
             <div class="col-md-4">
-                <input id="textinput" name="textinput" type="text" placeholder="輸入選股結束年度" class="form-control input-md" required="">
+                <input id="EndYear" name="EndYear" type="text" placeholder="輸入選股結束年度" class="form-control input-md" value="2019">
 
             </div>
         </div>
 
         <!-- Multiple Radios (inline) -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="radios">股票評價</label>
+            <label class="col-md-4 control-label" for="radios">股票評價參數</label>
             <div class="col-md-4">
                 <label class="radio-inline" for="radios-0">
-                    <input type="radio" name="radios" id="radios-0" value="3" checked="checked">
-                    3年
+                    <input type="radio" name="ValuationParameter" id="radios-0" value="3" checked="checked">
+                    3
                 </label>
                 <label class="radio-inline" for="radios-1">
-                    <input type="radio" name="radios" id="radios-1" value="4">
-                    4年
+                    <input type="radio" name="ValuationParameter" id="radios-1" value="4">
+                    4
                 </label>
                 <label class="radio-inline" for="radios-2">
-                    <input type="radio" name="radios" id="radios-2" value="5">
-                    5年
+                    <input type="radio" name="ValuationParameter" id="radios-2" value="5">
+                    5
                 </label>
             </div>
         </div>
@@ -53,7 +53,7 @@
             <label class="col-md-4 control-label" for="checkboxes">OCF&gt;0</label>
             <div class="col-md-4">
                 <label class="checkbox-inline" for="checkboxes-0">
-                    <input type="checkbox" name="checkboxes" id="checkboxes-0" value="加入條件">
+                    <input type="checkbox" name="OperationCashFlowSet" id="checkboxes-OCF" value="true">
                     加入條件
                 </label>
             </div>
@@ -61,13 +61,13 @@
 
         <!-- Prepended checkbox -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="prependedcheckbox">營利率大於等於</label>
+            <label class="col-md-4 control-label" for="prependedcheckbox">營利率成長連續期數</label>
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-addon">
-                        <input type="checkbox">
+                        <input id="operationIncomePercentageCountCheckbox" type="checkbox" >
                     </span>
-                    <input id="prependedcheckbox" name="prependedcheckbox" class="form-control" type="text" placeholder="輸入大於等於數字">
+                    <input id="operationIncomePercentageCount" name="operationIncomePercentageCountSet" class="form-control" type="text" placeholder="輸入數字" value="0">
                 </div>
 
             </div>
@@ -75,24 +75,142 @@
 
         <!-- Prepended checkbox -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="prependedcheckbox">稅後純益率大於等於</label>
+            <label class="col-md-4 control-label" for="prependedcheckbox">稅後純益率成長連續期數</label>
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-addon">
-                        <input type="checkbox">
+                        <input id="netIncomePercentageCountCheckbox" type="checkbox">
                     </span>
-                    <input id="prependedcheckbox" name="prependedcheckbox" class="form-control" type="text" placeholder="輸入大於等於數字">
+                    <input id="netIncomePercentageCountSet" name="netIncomePercentageCount" class="form-control" type="text" placeholder="輸入數字" value="0">
                 </div>
 
             </div>
         </div>
 
-        <button type="submit" class="form-send">送出</button>
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPS大於</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPS" name="EPSSet" class="form-control" type="text" placeholder="輸入數字" value="-10000">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPS連續期數</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSCountCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSCount" name="EPSCountSet" class="form-control" type="text" placeholder="輸入數字" value="0">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPSQoQ</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSQoQCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSQoQ" name="EPSQoQSet" class="form-control" type="text" placeholder="輸入數字" value="-1000">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPSYoY</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSYoYCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSYoY" name="EPSYoYSet" class="form-control" type="text" placeholder="輸入數字" value="-1000">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">累積EPS YoY</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSAccumulationYoYCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSAccumulationYoY" name="EPSAccumulationYoYSet" class="form-control" type="text" placeholder="輸入數字" value="-1000">
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        <button  id="form-send">送出</button>
 
     </fieldset>
 </form>
 
-@*<h2>Index</h2>
+@*<script>
+    $(document).ready(
+        function () {
+            $('#form-send').click(
+                function ()
+                {
+                    let urlParameter = "";
+
+                    if ($('#operationIncomePercentageCountCheckbox').prop('checked'))
+                    {
+                        urlParameter += "&" + $('#operationIncomePercentageCount').val();
+                    }
+
+                    if ($('#netIncomePercentageCountCheckbox').prop('checked')) {
+                        urlParameter += "&" + $('#netIncomePercentageCount').val();
+                    }
+
+                    if ($('#EPSCheckbox').prop('checked')) {
+                        urlParameter += "&" + $('#EPS').val();
+                    }
+
+                    if ($('#EPSCountCheckbox').prop('checked')) {
+                        urlParameter += "&" + $('#EPSCount').val();
+                    }
+
+                    if ($('#EPSQoQCheckbox').prop('checked')) {
+                        urlParameter += "&" + $('#EPSQoQ').val();
+                    }
+
+                    if ($('#EPSYoYCheckbox').prop('checked')) {
+                        urlParameter += "&" + $('#EPSYoY').val();
+                    }
+
+                    if ($('#EPSAccumulationYoYCheckbox').prop('checked')) {
+                        urlParameter += "&" + $('#EPSAccumulationYoY').val();
+                    }
+
+                    alert(urlParameter);
+                }
+            );
+        }
+    )
+</script>*@
+
+<h2>Index</h2>
 <h2>Win : @Model.Win </h2>
 <h2>Loss: @Model.Loss</h2>
 <h2>WinRatio: @Model.WinRatio</h2>
@@ -102,7 +220,7 @@
 <h2>最低報酬: @Model.MinRateOfReturn</h2>
 <h2>報酬標準差: @Model.StandardDeviationRateOfReturn</h2>
 <h2>總報酬: @Model.TotalReturnRate</h2>
-<h2><a href="http://localhost:13527/StockRun/Optimize?TransactionCount=5&WinRatio=65&AverageHoldDays=200">優化模擬</a></h2>
+@*<h2><a href="http://localhost:13527/StockRun/Optimize?TransactionCount=5&WinRatio=65&AverageHoldDays=200">優化模擬</a></h2>
 <h2><a href="http://localhost:13527/StockRun/AutoOptimizeStrategyAndCompany?TransactionCount=5&WinRatio=65&AverageHoldDays=200">公司優化</a></h2>*@
 
 <table class="table table-striped">
@@ -110,14 +228,28 @@
         <tr>
             <th>計數</th>
             <th>公司</th>
-            @*<th>買進日期</th>
+            @*<th>年度</th>*@
+            <th>評價 1 期</th>
+            <th>評價 2 期</th>
+            <th>評價 3 期</th>
+            <th>評價 4 期</th>
+            <th>評價 5 期</th>
+            <th>營利率連續成長期數</th>
+            <th>稅後純益率連續成長期數</th>
+            <th>EPS</th>
+            <th>EPS 連續成長期數(季)</th>
+            <th>EPS 值的近一季 YoY</th>
+            <th>EPS 值的近一季 QoQ</th>
+            <th>累計EPS YoY</th>
+
+            <th>買進日期</th>
             <th>買進價格</th>
             <th>賣出日期</th>
             <th>賣出價格</th>
             <th>獲利</th>
             <th>持有天數</th>
             <th>報酬率</th>
-            <th>年化報酬率</th>*@
+            <th>年化報酬率</th>
         </tr>
     </thead>
 
@@ -170,14 +302,29 @@
             <tr>
                 <th scope="row">@Count</th>
                 <td> @transction.BuyDetail.Name (@transction.BuyDetail.Nubmer)</td>
-                <td>@transction.BuyDetail.Date.ToString("yyyy") </td>
-                @*<td>@transction.BuyDetail.Price</td>
+                
+
+                <td>@transction.DataOutput.Evaluation_1Year </td>
+                <td>@transction.DataOutput.Evaluation_2Year </td>
+                <td>@transction.DataOutput.Evaluation_3Year </td>
+                <td>@transction.DataOutput.Evaluation_4Year </td>
+                <td>@transction.DataOutput.Evaluation_5Year </td>               
+                <td>@transction.DataOutput.operationIncomePercentageCount </td>
+                <td>@transction.DataOutput.netIncomePercentageCount </td>
+                <td>@transction.DataOutput.EPS </td>
+                <td>@transction.DataOutput.EPSCount </td>
+                <td>@transction.DataOutput.EPSYoY </td>
+                <td>@transction.DataOutput.EPSQoQ </td>
+                <td>@transction.DataOutput.EPSAccumulationYoY </td>
+
+                <td>@transction.BuyDetail.Date.ToString("yyyy/MM/dd") </td>
+                <td>@transction.BuyDetail.Price</td>
                 <td>@transction.SellDetail.Date.ToString("yyyy/MM/dd") </td>
                 <td>@transction.SellDetail.Price</td>
                 <td>@transction.Result.Revenue</td>
                 <td>@transction.Result.HoldDays</td>
-                <td>@transction.Result.RateOfReturn %</td>
-                <td>@transction.Result.RateOfReturnYearly %</td>*@
+                <td>@transction.Result.RateOfReturn%</td>
+                <td>@transction.Result.RateOfReturnYearly %</td>
             </tr>
 
             

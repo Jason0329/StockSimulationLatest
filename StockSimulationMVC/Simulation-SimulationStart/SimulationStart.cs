@@ -95,6 +95,7 @@ namespace StockSimulationMVC.Simulation_SimulationStart
                 DataList.AddLineGraphDictionary("MoveAverageValue", 20);
                 DataList.AddLineGraphDictionary("MoveAverageValue", 60);
                 DataList.AddLineGraphDictionary("MinValue", 1);
+                DataList.AddLineGraphDictionary("MaxValue", 240);
                 DataList.AddLineGraphDictionary("MinValue", 20, "Volume");
                 DataList.AddLineGraphDictionary("BollingerBandsDown", 20, "ClosePrice",2.1);
                 DataList.AddLineGraphDictionary("BollingerBandsUp", 20, "ClosePrice", 2.1);
@@ -177,7 +178,7 @@ namespace StockSimulationMVC.Simulation_SimulationStart
                     transaction.Sell(DataList.TechData[DataList.TechData.Count - 1].Company.ToString(), DataList.TechData[DataList.TechData.Count - 1].CompanyName,
                         DataList.TechData[DataList.TechData.Count - 1].HighestPrice, DataList.TechData[DataList.TechData.Count - 1].Date);
                     //期末賣出的不做計算
-                    Transaction_List._TransactionList.Add(transaction);
+                    //Transaction_List._TransactionList.Add(transaction);
 
                     _SimulationVariable.HasBuy = false;
                     _SimulationVariable.Initial();

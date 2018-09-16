@@ -105,12 +105,47 @@ namespace StockSimulationMVC.Strategy
             double? EPSYoY = YoY(ref financialdata, "EarningPerShare_Consol");
             double? EPSAccumulationYoY = YoY(ref financialdata, "EarningPerShare_Consol");
 
-            InitialData.OutputData.netIncomePercentageCount = (double)NetIncomePercentageCount;
-            InitialData.OutputData.operationIncomePercentageCount = (double)OperationIncomePercentageCount;
-            InitialData.OutputData.EPSCount = (double)EPSCount;
-            InitialData.OutputData.EPSQoQ = (double)EPSQoQ;
-            InitialData.OutputData.EPSYoY = (double)EPSYoY;
-            InitialData.OutputData.EPSAccumulationYoY = (double)EPSAccumulationYoY;
+            if(NetIncomePercentageCount !=null)
+            {
+                InitialData.OutputData.netIncomePercentageCount = (double)NetIncomePercentageCount;
+            }
+
+            if (OperationIncomePercentageCount != null)
+            {
+                InitialData.OutputData.operationIncomePercentageCount = (double)OperationIncomePercentageCount;
+            }
+
+            if (EPSCount != null)
+            {
+                InitialData.OutputData.EPSCount = (double)EPSCount;
+            }
+
+            if (EPSQoQ != null)
+            {
+                InitialData.OutputData.EPSQoQ = System.Math.Round((double)EPSQoQ, 2);
+            }
+
+            if (EPSYoY != null)
+            {
+                InitialData.OutputData.EPSYoY = System.Math.Round((double)EPSYoY, 2);
+            }
+
+            if (EPSAccumulationYoY != null)
+            {
+                InitialData.OutputData.EPSAccumulationYoY = System.Math.Round((double)EPSAccumulationYoY, 2);
+            }
+
+            if (EPS != null)
+            {
+                InitialData.OutputData.EPS = System.Math.Round((double)EPS, 2);
+            }
+           
+            
+            
+            
+            
+           
+            
 
             if (ValuationConditionSatisfied(ref financialdata, valuationParameter) && OperationCashFlow > 0
                 && NetIncomePercentageCount >= netIncomePercentageCountSet
@@ -120,8 +155,10 @@ namespace StockSimulationMVC.Strategy
                 && EPSQoQ >= EPSQoQSet
                 && EPSYoY >= EPSYoYSet
                 && EPSAccumulationYoY >= EPSAccumulationYoYSet
-                && FinancialPublished(ref dataList , j)
+                //&& FinancialPublished(ref dataList , j)
+                && j > 240
                 && ((OperationCashFlowSet && OperationCashFlow > 0) || !OperationCashFlowSet)
+                && (dataList.ReturnValue("MaxValue-240", j - 1)) < (double)dataList.TechData[j].ClosePrice
                )
             {
                 return true;
@@ -133,13 +170,13 @@ namespace StockSimulationMVC.Strategy
 
         public bool SellCondition(ref SimulationVariable simulationVariable, ref DataList dataList, ref BasicFinancialReportListModel financialdata, int j)
         {
-            return true;
+            //return true;
             //if (j < 0 || dataList.TechData.Count - j <= 0 || financialdata.RevenueInt - 1 < 0 || financialdata.RevenueInt >= financialdata.RevenueList.Count)
             //    return false;
 
             if (
-                dataList.TechData[j].Date.Month ==6 || dataList.TechData[j].Date.Month==9 || dataList.TechData[j].Date.Month==12 || dataList.TechData[j].Date.Month==4
-
+                //dataList.TechData[j].Date.Month ==6 || dataList.TechData[j].Date.Month==9 || dataList.TechData[j].Date.Month==12 || dataList.TechData[j].Date.Month==4
+                simulationVariable.Accumulation > 20 || simulationVariable.Accumulation < -20
                 )
                 return true;
 
@@ -148,10 +185,12 @@ namespace StockSimulationMVC.Strategy
 
         public bool FinancialPublished(ref DataList dataList , int j)
         {
-            if((dataList.TechData[j].Date.Month ==5 && dataList.TechData[j].Date.Day == 15) ||
-                (dataList.TechData[j].Date.Month == 8 && dataList.TechData[j].Date.Day == 15)||
-                (dataList.TechData[j].Date.Month == 11 && dataList.TechData[j].Date.Day == 15)||
-                (dataList.TechData[j].Date.Month == 3 && dataList.TechData[j].Date.Day == 31)
+            if(
+                //(dataList.TechData[j].Date.Month ==5 && dataList.TechData[j].Date.Day == 15) ||
+                //(dataList.TechData[j].Date.Month == 8 && dataList.TechData[j].Date.Day == 15)||
+                //(dataList.TechData[j].Date.Month == 11 && dataList.TechData[j].Date.Day == 15)||
+                //(dataList.TechData[j].Date.Month == 4 && dataList.TechData[j].Date.Day == 1)
+                (dataList.TechData[j].Date.Month == 1 && dataList.TechData[j].Date.Day == 5)
                 )
             {
                 return true;
@@ -211,11 +250,11 @@ namespace StockSimulationMVC.Strategy
             BeforeYearValuationArray[2] = BeforeYearValuation(ref financialdata, 3);
             BeforeYearValuationArray[3] = BeforeYearValuation(ref financialdata, 4);
 
-            InitialData.OutputData.Evaluation_1Year = latestYearValuation;
-            InitialData.OutputData.Evaluation_2Year = BeforeYearValuationArray[0];
-            InitialData.OutputData.Evaluation_3Year = BeforeYearValuationArray[1];
-            InitialData.OutputData.Evaluation_4Year = BeforeYearValuationArray[2];
-            InitialData.OutputData.Evaluation_5Year = BeforeYearValuationArray[3];
+            InitialData.OutputData.Evaluation_1Year = System.Math.Round(latestYearValuation,2);
+            InitialData.OutputData.Evaluation_2Year = System.Math.Round(BeforeYearValuationArray[0],2);
+            InitialData.OutputData.Evaluation_3Year = System.Math.Round(BeforeYearValuationArray[1],2);
+            InitialData.OutputData.Evaluation_4Year = System.Math.Round(BeforeYearValuationArray[2],2);
+            InitialData.OutputData.Evaluation_5Year = System.Math.Round(BeforeYearValuationArray[3],2);
 
         }
 

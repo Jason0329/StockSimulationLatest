@@ -14,6 +14,7 @@ namespace StockSimulationMVC.Models
         public double Evaluation_5Year { get; set; }
         public double operationIncomePercentageCount { get; set; }
         public double netIncomePercentageCount { get; set; }
+        public double EPS { get; set; }
         public double EPSCount { get; set; }
         public double EPSQoQ { get; set; }
         public double EPSYoY { get; set; }
