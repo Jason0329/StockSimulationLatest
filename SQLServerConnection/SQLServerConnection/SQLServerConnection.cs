@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,10 @@ namespace SQLServerConnection.SQLServerConnection
 
         public SQLServerConnectionService()
         {
-            _connectionString = @"server=DESKTOP-3HKLFNN\SQLEXPRESS;database=StockDatabase;Integrated Security=SSPI";
+            StreamReader sr = new StreamReader("connectionStream.txt");
+            string connectionStream = sr.ReadLine();
+            _connectionString = connectionStream;
+            sr.Close();
         }
         public void CreateInstance(string CreateInstanceCommand)
         {
@@ -24,10 +28,12 @@ namespace SQLServerConnection.SQLServerConnection
             using (_sqlConnection = new SqlConnection(_connectionString))
             {
                 _sqlConnection.Open();
+                
                 using (SqlCommand sqlCommand = new SqlCommand(CreateInstanceCommand, _sqlConnection))
                 {
                     try
                     {
+                        sqlCommand.CommandTimeout = 0;
                         sqlCommand.ExecuteNonQuery();
                     }
                     catch(Exception AddDataException)
