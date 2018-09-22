@@ -95,7 +95,7 @@ namespace StockSimulationMVC.Simulation_SimulationStart
                 DataList.AddLineGraphDictionary("MoveAverageValue", 20);
                 DataList.AddLineGraphDictionary("MoveAverageValue", 60);
                 DataList.AddLineGraphDictionary("MinValue", 1);
-                DataList.AddLineGraphDictionary("MaxValue", 240);
+                DataList.AddLineGraphDictionary("MaxValue", 60);
                 DataList.AddLineGraphDictionary("MinValue", 20, "Volume");
                 DataList.AddLineGraphDictionary("BollingerBandsDown", 20, "ClosePrice",2.1);
                 DataList.AddLineGraphDictionary("BollingerBandsUp", 20, "ClosePrice", 2.1);

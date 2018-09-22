@@ -15,7 +15,7 @@ namespace SQLServerConnection
             Console.WriteLine("Start");
             
 
-            TEJImport importTEJData = new TEJImport("技術面.txt");
+            TEJImport importTEJData = new TEJImport("MonthRevenue2017.txt");
             List<string> importedDataList = importTEJData.Import();
 
             int count = 0;
@@ -31,27 +31,29 @@ namespace SQLServerConnection
                 string data = importedData.Replace("\t", ",");
                 string datetime = data.Split(',')[2].Trim();
 
-                //string monthRevenuePublishDatetime = data.Split(',')[2].Trim();
-                //try
-                //{
-                //    monthRevenuePublishDatetime = monthRevenuePublishDatetime.Insert(6, "-");
-                //    monthRevenuePublishDatetime = monthRevenuePublishDatetime.Insert(4, "-");
-                //}
-                //catch(Exception e)
-                //{
+                string monthRevenuePublishDatetime = data.Split(',')[3].Trim();
+                try
+                {
+                    monthRevenuePublishDatetime = monthRevenuePublishDatetime.Insert(6, "-");
+                    monthRevenuePublishDatetime = monthRevenuePublishDatetime.Insert(4, "-");
+                }
+                catch (Exception e)
+                {
 
-                //}
+                }
 
                 datetime = datetime.Insert(6, "-");
-                datetime = datetime.Insert(4, "-");// + "10";
+                datetime = datetime.Insert(4, "-") + "10";
                 string ID = data.Split(',')[0].Trim() + data.Split(',')[2].Trim();
 
-                string insertCommand = "INSERT INTO [StockDatabase].[dbo].[TechnologicalDataModels] VALUES " +
+                string insertCommand = "INSERT INTO [StockDatabase].[dbo].[MonthRevenueModels] VALUES " +
                     "('" + ID + "','" + data.Split(',')[0].Trim().TrimStart(new char[] { 'T', 'W', 'N' }) + "','" + data.Split(',')[1].Trim() +
-                    "','" + datetime +    "',"+//   "'," + "'" + monthRevenuePublishDatetime + "'," +
-                    data.Split(new char[] { ',' }, 4)[3].Replace("\t", "").Replace(" ", "").Replace(",,", ",null,")
+                    "','" + datetime + "',"           + "'" + monthRevenuePublishDatetime + "'," +
+                    data.Split(new char[] { ',' }, 5)[4].Replace("\t", "").Replace(" ", "").Replace(",,", ",null,")
                     .Replace(",-,", ",null,") + ");";
-                insertCommand = insertCommand.Replace(",-,", ",null,").Replace("-)", "null)").Replace(",NTD,", ",'NTD',").Replace(",H,", ",'H',").Replace(",Q,", ",'Q',").Replace(",Y,", ",'Y',").Replace(",N,", ",'N',").Replace("'s", "s").Replace(",,", ",null,");
+                insertCommand = insertCommand.Replace(",-,", ",null,").Replace("-)", "null)").Replace(",NTD,", ",'NTD',")
+                .Replace("H", "0").Replace(",Q,", ",'Q',").Replace(",Y,", ",'Y',").Replace(",L", ",0").Replace(",N,", ",'N',")
+                .Replace("'s", "s").Replace(",,", ",null,");
                 //insertListCommnad += insertCommand;
                 insertCommandList.Add(insertCommand);
 
@@ -62,9 +64,14 @@ namespace SQLServerConnection
                     Console.WriteLine(count);
             });
 
-            int AllData = (int)((insertCommandList.Count / 5000) );
+            int AllData = (int)((insertCommandList.Count / 1000) );
 
-            Parallel.For(0, AllData , i => { InsertDatabase(ref insertCommandList, i * 5000, (i + 1) * 5000); });
+            //Parallel.For(0, AllData , i => { InsertDatabase(ref insertCommandList, i * 5000, (i + 1) * 5000); });
+
+            for (int i = 0; i < insertCommandList.Count - 1; i++)
+            {
+                InsertDatabase(ref insertCommandList, i, i + 1);
+            }
 
         }
 

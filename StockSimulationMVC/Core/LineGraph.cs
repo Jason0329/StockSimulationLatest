@@ -129,7 +129,7 @@ namespace StockSimulationMVC.Core
 
             for (int i = 0; i < MaxDays; i++)
             {
-                MaxData.Add(0);
+                MaxData.Add(10000);
             }
 
             for (int i = MaxDays; i < Data.Count; i++)

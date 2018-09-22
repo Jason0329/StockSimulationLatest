@@ -25,6 +25,7 @@ namespace SQLServerConnection.SQLServerConnection
         public void CreateInstance(string CreateInstanceCommand)
         {
 
+            Console.WriteLine(_connectionString);
             using (_sqlConnection = new SqlConnection(_connectionString))
             {
                 _sqlConnection.Open();
@@ -34,6 +35,9 @@ namespace SQLServerConnection.SQLServerConnection
                     try
                     {
                         sqlCommand.CommandTimeout = 0;
+
+                        Console.WriteLine("SQL Command Start");
+
                         sqlCommand.ExecuteNonQuery();
                     }
                     catch(Exception AddDataException)
@@ -42,6 +46,8 @@ namespace SQLServerConnection.SQLServerConnection
 
                         if (AddDataException.Message.Contains("違反 PRIMARY KEY 條件約束 "))
                             return;
+
+                        Console.WriteLine(CreateInstanceCommand);
                         throw (new Exception(AddDataException.ToString()));
                     }
                 }

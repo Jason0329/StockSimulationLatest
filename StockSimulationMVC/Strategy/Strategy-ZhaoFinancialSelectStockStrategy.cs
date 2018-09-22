@@ -139,15 +139,15 @@ namespace StockSimulationMVC.Strategy
             {
                 InitialData.OutputData.EPS = System.Math.Round((double)EPS, 2);
             }
-           
-            
-            
-            
-            
-           
-            
 
-            if (ValuationConditionSatisfied(ref financialdata, valuationParameter) && OperationCashFlow > 0
+
+
+
+
+
+
+
+            if (ValuationConditionSatisfied(ref financialdata, valuationParameter) 
                 && NetIncomePercentageCount >= netIncomePercentageCountSet
                 && OperationIncomePercentageCount >= operationIncomePercentageCountSet
                 && EPS >= EPSSet
@@ -155,11 +155,12 @@ namespace StockSimulationMVC.Strategy
                 && EPSQoQ >= EPSQoQSet
                 && EPSYoY >= EPSYoYSet
                 && EPSAccumulationYoY >= EPSAccumulationYoYSet
-                //&& FinancialPublished(ref dataList , j)
-                && j > 240
+                //&& FinancialPublished(ref dataList, j)
                 && ((OperationCashFlowSet && OperationCashFlow > 0) || !OperationCashFlowSet)
-                && (dataList.ReturnValue("MaxValue-240", j - 1)) < (double)dataList.TechData[j].ClosePrice
-               )
+
+                && (dataList.ReturnValue("MaxValue-60", j - 1)) < (double)dataList.TechData[j].ClosePrice
+                && j > 60
+            )
             {
                 return true;
             }
@@ -176,6 +177,8 @@ namespace StockSimulationMVC.Strategy
 
             if (
                 //dataList.TechData[j].Date.Month ==6 || dataList.TechData[j].Date.Month==9 || dataList.TechData[j].Date.Month==12 || dataList.TechData[j].Date.Month==4
+               (simulationVariable.HaveStockDayContainHoliday >21 && simulationVariable.Accumulation <10 && simulationVariable.Accumulation > 0) ||
+               simulationVariable.HaveStockDayContainHoliday > 60 ||
                 simulationVariable.Accumulation > 20 || simulationVariable.Accumulation < -20
                 )
                 return true;
@@ -186,11 +189,11 @@ namespace StockSimulationMVC.Strategy
         public bool FinancialPublished(ref DataList dataList , int j)
         {
             if(
-                //(dataList.TechData[j].Date.Month ==5 && dataList.TechData[j].Date.Day == 15) ||
-                //(dataList.TechData[j].Date.Month == 8 && dataList.TechData[j].Date.Day == 15)||
-                //(dataList.TechData[j].Date.Month == 11 && dataList.TechData[j].Date.Day == 15)||
-                //(dataList.TechData[j].Date.Month == 4 && dataList.TechData[j].Date.Day == 1)
-                (dataList.TechData[j].Date.Month == 1 && dataList.TechData[j].Date.Day == 5)
+                (dataList.TechData[j].Date.Month ==5 && dataList.TechData[j].Date.Day == 15) ||
+                (dataList.TechData[j].Date.Month == 8 && dataList.TechData[j].Date.Day == 15)||
+                (dataList.TechData[j].Date.Month == 11 && dataList.TechData[j].Date.Day == 15)||
+                (dataList.TechData[j].Date.Month == 4 && dataList.TechData[j].Date.Day == 1)
+                //(dataList.TechData[j].Date.Month == 1 && dataList.TechData[j].Date.Day == 5)
                 )
             {
                 return true;
