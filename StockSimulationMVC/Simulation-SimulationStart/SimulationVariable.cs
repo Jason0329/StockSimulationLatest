@@ -17,8 +17,8 @@ namespace StockSimulationMVC.Simulation_SimulationStart
         TechnologicalDataModel CurrentlyTechData { get; set; }
         public decimal MoveStopLoss { get; set; }
         public double? MoveStopLossPercentage { get; set; }
-        decimal StopLossCalPrice { get; set; }
-        double? StopLossCalPricePercentage { get; set; }
+        public decimal StopLossCalPrice { get; set; }
+        public double? StopLossCalPricePercentage { get; set; }
         public int HaveStockDayContainHoliday { get; set; }
         public int HaveStockDay { get; set; }
         public double Accumulation { get; set; }

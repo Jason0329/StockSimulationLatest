@@ -19,6 +19,7 @@ namespace StockSimulationMVC.Models
         public double EPSQoQ { get; set; }
         public double EPSYoY { get; set; }
         public double EPSAccumulationYoY { get; set; }
+        public double MarketCap_ { get; set; }
 
     }
 }

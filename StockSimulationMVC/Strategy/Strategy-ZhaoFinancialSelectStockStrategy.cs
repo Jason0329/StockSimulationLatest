@@ -18,19 +18,29 @@ namespace StockSimulationMVC.Strategy
         readonly double ValuationLatestParameter = 1;
         readonly double ValuationParameter = 1;
 
-        int valuationParameter = 3;
+        int valuationParameter = 4;
        
-        double operationIncomePercentageCountSet = 0;
-        double netIncomePercentageCountSet = 0;
-        double EPSCountSet = 0;
+        double operationIncomePercentageCountSet = -10000;
+        double netIncomePercentageCountSet = -10000;
+        double EPSCountSet = -10000;
         double EPSSet = -200;
         bool OperationCashFlowSet = false;
         double EPSQoQSet = -200;
         double EPSYoYSet = -200;
         double EPSAccumulationYoYSet = -200;
+
+        bool PreBuy = false;
+        TechnologicalDataModel PreBuyModel = null;
+
+        double Variable = 15;
         public ZhaoFinancialSelectStockStrategy(Hashtable Setup)
         {
-            if(Setup["ValuationParameter"] != null)
+            if (Setup["Variable"] != null)
+            {
+                Variable = double.Parse(Setup["Variable"].ToString());
+            }
+
+            if (Setup["ValuationParameter"] != null)
             {
                 valuationParameter = int.Parse(Setup["ValuationParameter"].ToString());
             }
@@ -65,7 +75,7 @@ namespace StockSimulationMVC.Strategy
                 EPSYoYSet = double.Parse(Setup["EPSYoYSet"].ToString());
             }
 
-            if (Setup["EPSAccumulationYoYSet"] != null)
+            if (Setup["EPSAccumulationYoYSe t"] != null)
             {
                 EPSAccumulationYoYSet = double.Parse(Setup["EPSAccumulationYoYSet"].ToString());
             }
@@ -104,8 +114,9 @@ namespace StockSimulationMVC.Strategy
             double? EPSQoQ = QoQ(ref financialdata, "EarningPerShare_Consol");
             double? EPSYoY = YoY(ref financialdata, "EarningPerShare_Consol");
             double? EPSAccumulationYoY = YoY(ref financialdata, "EarningPerShare_Consol");
+            double? MarketCap_ = financialdata.FinancialDataList[financialdata.BasicFinancialInt].MarketCap_;
 
-            if(NetIncomePercentageCount !=null)
+            if (NetIncomePercentageCount !=null)
             {
                 InitialData.OutputData.netIncomePercentageCount = (double)NetIncomePercentageCount;
             }
@@ -140,6 +151,10 @@ namespace StockSimulationMVC.Strategy
                 InitialData.OutputData.EPS = System.Math.Round((double)EPS, 2);
             }
 
+            if (MarketCap_ != null)
+            {
+                InitialData.OutputData.MarketCap_ = (double)MarketCap_;
+            }
 
 
 
@@ -147,7 +162,9 @@ namespace StockSimulationMVC.Strategy
 
 
 
-            if (ValuationConditionSatisfied(ref financialdata, valuationParameter) 
+
+            if (
+                ValuationConditionSatisfied(ref financialdata, valuationParameter)
                 && NetIncomePercentageCount >= netIncomePercentageCountSet
                 && OperationIncomePercentageCount >= operationIncomePercentageCountSet
                 && EPS >= EPSSet
@@ -158,12 +175,45 @@ namespace StockSimulationMVC.Strategy
                 //&& FinancialPublished(ref dataList, j)
                 && ((OperationCashFlowSet && OperationCashFlow > 0) || !OperationCashFlowSet)
 
-                && (dataList.ReturnValue("MaxValue-60", j - 1)) < (double)dataList.TechData[j].ClosePrice
-                && j > 60
+                && financialdata.FinancialDataList[financialdata.BasicFinancialInt].MarketCap_ > 1000000
+                && dataList.TechData[j].ClosePrice > 5
+
+            //    && dataList.ReturnValue("MoveAverageValue-30", j - 1) > 500
+            ////&& dataList.TechData[j].Date.Month >= 7
+            //// && dataList.TechData[j].Date.Month <= 9
+            //&& (dataList.ReturnValue("MoveAverageValue-20", j )) * 0.9 > (double)dataList.TechData[j].ClosePrice
+
+            // && (dataList.ReturnValue("MaxValue-60", j-1))<  (double)dataList.TechData[j].ClosePrice
+            //&& (dataList.ReturnValue("MoveAverageValue-5", j)) > (dataList.ReturnValue("MoveAverageValue-5", j - 1))
+            // && (dataList.ReturnValue("MoveAverageValue-10", j)) > (dataList.ReturnValue("MoveAverageValue-10", j - 1))
+            //  && (dataList.ReturnValue("MoveAverageValue-20", j)) > (dataList.ReturnValue("MoveAverageValue-20", j - 1))
+            //   && (dataList.ReturnValue("MoveAverageValue-30", j)) > (dataList.ReturnValue("MoveAverageValue-30", j - 1))
+            //&& (dataList.ReturnValue("MoveAverageValue-60", j)) > (dataList.ReturnValue("MoveAverageValue-60", j - 1))
+            // && (dataList.ReturnValue("MoveAverageValue-120", j)) > (dataList.ReturnValue("MoveAverageValue-120", j - 1))
+            //  && (dataList.ReturnValue("MoveAverageValue-240", j)) < (double)dataList.TechData[j].ClosePrice
+            //   && (dataList.ReturnValue("MoveAverageValue-240", j-1)) > (double)dataList.TechData[j-1].ClosePrice
+            //&& j >240
+            && dataList.TechData[j].ReturnOnInvestment > 5
+            ////&& dataList.TechData[j].ReturnOnInvestment > 0
+            && dataList.TechData[j].CashYieldRate >= 5
+            //&& !PreBuy
             )
             {
+                PreBuy = true;
+                PreBuyModel = dataList.TechData[j];
                 return true;
             }
+
+            //if (PreBuy == true)
+            //{
+            //    decimal Ratio = (dataList.TechData[j].ClosePrice - PreBuyModel.ClosePrice) / dataList.TechData[j].ClosePrice * 100;
+
+            //    if (Ratio >= 20)
+            //    {
+            //        return true;
+            //    }
+            //}
+
 
 
             return false;
@@ -177,9 +227,17 @@ namespace StockSimulationMVC.Strategy
 
             if (
                 //dataList.TechData[j].Date.Month ==6 || dataList.TechData[j].Date.Month==9 || dataList.TechData[j].Date.Month==12 || dataList.TechData[j].Date.Month==4
-               (simulationVariable.HaveStockDayContainHoliday >21 && simulationVariable.Accumulation <10 && simulationVariable.Accumulation > 0) ||
-               simulationVariable.HaveStockDayContainHoliday > 60 ||
-                simulationVariable.Accumulation > 20 || simulationVariable.Accumulation < -20
+                //(simulationVariable.HaveStockDayContainHoliday >21 && simulationVariable.Accumulation < 10 && simulationVariable.Accumulation > 0) ||
+                // simulationVariable.HaveStockDayContainHoliday > 60 ||
+                //  (simulationVariable.HaveStockDayContainHoliday >30 && simulationVariable.Accumulation < 10) ||
+                simulationVariable.Accumulation > 50
+                //||dataList.TechData[j].CashYieldRate <= Variable
+                //|| !ValuationConditionSatisfied(ref financialdata, valuationParameter)
+                //|| simulationVariable.MoveStopLoss >
+                || simulationVariable.Accumulation < -15
+               // || dataList.TechData[j].CashYieldRate <= 3.5
+                //|| simulationVariable.Accumulation < simulationVariable.StopLossCalPricePercentage - 20
+                //|| ((dataList.ReturnValue("MoveAverageValue-20", j)) * 1.1 < (double)dataList.TechData[j].ClosePrice)
                 )
                 return true;
 
@@ -228,6 +286,10 @@ namespace StockSimulationMVC.Strategy
                 for (int i = 1; i <= countRefYear -1 ; i++)
                 {
                     // if it is not satfified condition . test every year
+
+                    double YearValuationPre = BeforeYearValuation(ref financialdata, i);
+                    double YearValuationNext = BeforeYearValuation(ref financialdata, i + 1);
+                    int Company = financialdata.FinancialDataList[i].Company;
                     if (BeforeYearValuation(ref financialdata, i) < BeforeYearValuation(ref financialdata, i+1) * ValuationParameter)
                     {
                         condiotionsatisfied = false;

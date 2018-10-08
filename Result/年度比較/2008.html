@@ -1,0 +1,5033 @@
+<!DOCTYPE html>
+<html style="" class=" js flexbox flexboxlegacy canvas canvastext webgl touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Index</title>
+    <link href="2008_files/bootstrap.css" rel="stylesheet">
+<link href="2008_files/site.css" rel="stylesheet">
+
+    <script src="2008_files/modernizr-2.js"></script>
+
+
+    
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://localhost:13527/Home">Application name</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="http://localhost:13527/Home">Home</a></li>
+                    <li><a href="http://localhost:13527/Help">API</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        
+
+
+
+<form class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>股票篩選</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">起始年度</label>
+            <div class="col-md-4">
+                <input id="StartYear" name="StartYear" placeholder="輸入選股起始年度" class="form-control input-md" value="2016" type="text">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">結束年度</label>
+            <div class="col-md-4">
+                <input id="EndYear" name="EndYear" placeholder="輸入選股結束年度" class="form-control input-md" value="2019" type="text">
+
+            </div>
+        </div>
+
+        <!-- Multiple Radios (inline) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="radios">股票評價參數</label>
+            <div class="col-md-4">
+                <label class="radio-inline" for="radios-0">
+                    <input name="ValuationParameter" id="radios-0" value="3" checked="checked" type="radio">
+                    3
+                </label>
+                <label class="radio-inline" for="radios-1">
+                    <input name="ValuationParameter" id="radios-1" value="4" type="radio">
+                    4
+                </label>
+                <label class="radio-inline" for="radios-2">
+                    <input name="ValuationParameter" id="radios-2" value="5" type="radio">
+                    5
+                </label>
+            </div>
+        </div>
+
+        <!-- Multiple Checkboxes (inline) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="checkboxes">OCF&gt;0</label>
+            <div class="col-md-4">
+                <label class="checkbox-inline" for="checkboxes-0">
+                    <input name="OperationCashFlowSet" id="checkboxes-OCF" value="true" type="checkbox">
+                    加入條件
+                </label>
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">營利率成長連續期數</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="operationIncomePercentageCountCheckbox" type="checkbox">
+                    </span>
+                    <input id="operationIncomePercentageCount" name="operationIncomePercentageCountSet" class="form-control" placeholder="輸入數字" value="0" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">稅後純益率成長連續期數</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="netIncomePercentageCountCheckbox" type="checkbox">
+                    </span>
+                    <input id="netIncomePercentageCountSet" name="netIncomePercentageCount" class="form-control" placeholder="輸入數字" value="0" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPS大於</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPS" name="EPSSet" class="form-control" placeholder="輸入數字" value="-10000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPS連續期數</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSCountCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSCount" name="EPSCountSet" class="form-control" placeholder="輸入數字" value="0" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPSQoQ</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSQoQCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSQoQ" name="EPSQoQSet" class="form-control" placeholder="輸入數字" value="-1000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPSYoY</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSYoYCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSYoY" name="EPSYoYSet" class="form-control" placeholder="輸入數字" value="-1000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">累積EPS YoY</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSAccumulationYoYCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSAccumulationYoY" name="EPSAccumulationYoYSet" class="form-control" placeholder="輸入數字" value="-1000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        <button id="form-send">送出</button>
+
+    </fieldset>
+</form>
+
+
+
+<h2>Index</h2>
+<h2>Win : 23 </h2>
+<h2>Loss: 146</h2>
+<h2>WinRatio: 13.61</h2>
+<h2>平均持有時間: 85.14</h2>
+<h2>平均報酬: -7.51</h2>
+<h2>最大報酬: 60.22</h2>
+<h2>最低報酬: -20.94</h2>
+<h2>報酬標準差: 24.5303872778234</h2>
+<h2>總報酬: -1269.19</h2>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>計數</th>
+            <th>公司</th>
+            
+            <th>評價 1 期</th>
+            <th>評價 2 期</th>
+            <th>評價 3 期</th>
+            <th>評價 4 期</th>
+            <th>評價 5 期</th>
+            <th>營利率連續成長期數</th>
+            <th>稅後純益率連續成長期數</th>
+            <th>EPS</th>
+            <th>EPS 連續成長期數(季)</th>
+            <th>EPS 值的近一季 YoY</th>
+            <th>EPS 值的近一季 QoQ</th>
+            <th>累計EPS YoY</th>
+            <th>市值</th>
+
+            <th>買進日期</th>
+            <th>買進價格</th>
+            <th>賣出日期</th>
+            <th>賣出價格</th>
+            <th>獲利</th>
+            <th>持有天數</th>
+            <th>報酬率</th>
+            <th>年化報酬率</th>
+        </tr>
+    </thead>
+
+
+
+
+    <tbody>
+
+            <tr>
+                <th scope="row">1</th>
+                <td> 統一超 (2912)</td>
+                
+
+                <td>84.52 </td>
+                <td>81.01 </td>
+                <td>51.74 </td>
+                <td>63.96 </td>
+                <td>53.7 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>2.4 </td>
+                <td>2 </td>
+                <td>189.16 </td>
+                <td>35.59 </td>
+                <td>189.16 </td>
+                <td>72023092 </td>
+
+                <td>2007/12/17 </td>
+                <td>55.81</td>
+                <td>2008/10/28 </td>
+                <td>45.39</td>
+                <td>-10.42</td>
+                <td>316</td>
+                <td>-18.67%</td>
+                <td>-21.57 %</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td> 廣宇 (2328)</td>
+                
+
+                <td>64.3 </td>
+                <td>58.08 </td>
+                <td>44.85 </td>
+                <td>37.83 </td>
+                <td>31.97 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>1.24 </td>
+                <td>2 </td>
+                <td>153.06 </td>
+                <td>217.95 </td>
+                <td>153.06 </td>
+                <td>42300000 </td>
+
+                <td>2007/12/17 </td>
+                <td>48.04</td>
+                <td>2008/01/23 </td>
+                <td>38.48</td>
+                <td>-9.56</td>
+                <td>37</td>
+                <td>-19.90%</td>
+                <td>-196.31 %</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td> 皇翔 (2545)</td>
+                
+
+                <td>178.67 </td>
+                <td>96.16 </td>
+                <td>62.86 </td>
+                <td>38.62 </td>
+                <td>31.2 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>9.91 </td>
+                <td>2 </td>
+                <td>1524.59 </td>
+                <td>692.8 </td>
+                <td>1524.59 </td>
+                <td>15959216 </td>
+
+                <td>2007/12/17 </td>
+                <td>15.90</td>
+                <td>2008/01/15 </td>
+                <td>24.15</td>
+                <td>8.25</td>
+                <td>29</td>
+                <td>51.89%</td>
+                <td>653.06 %</td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td> 皇昌 (2543)</td>
+                
+
+                <td>41.29 </td>
+                <td>33.2 </td>
+                <td>35.8 </td>
+                <td>30.22 </td>
+                <td>25.58 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.82 </td>
+                <td>4 </td>
+                <td>6.49 </td>
+                <td>36.67 </td>
+                <td>6.49 </td>
+                <td>2149994 </td>
+
+                <td>2007/12/17 </td>
+                <td>7.19</td>
+                <td>2008/03/28 </td>
+                <td>10.87</td>
+                <td>3.68</td>
+                <td>102</td>
+                <td>51.18%</td>
+                <td>183.15 %</td>
+            </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td> 宏普 (2536)</td>
+                
+
+                <td>74.17 </td>
+                <td>56.3 </td>
+                <td>60.24 </td>
+                <td>38 </td>
+                <td>34.87 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>1.48 </td>
+                <td>3 </td>
+                <td>64.44 </td>
+                <td>82.72 </td>
+                <td>64.44 </td>
+                <td>10885490 </td>
+
+                <td>2007/12/17 </td>
+                <td>10.95</td>
+                <td>2008/01/15 </td>
+                <td>16.72</td>
+                <td>5.77</td>
+                <td>29</td>
+                <td>52.69%</td>
+                <td>663.22 %</td>
+            </tr>
+            <tr>
+                <th scope="row">6</th>
+                <td> 茂矽 (2342)</td>
+                
+
+                <td>84.78 </td>
+                <td>38.35 </td>
+                <td>31.92 </td>
+                <td>-6.62 </td>
+                <td>-38.65 </td>               
+                <td>2 </td>
+                <td>4 </td>
+                <td>2.29 </td>
+                <td>3 </td>
+                <td>269.35 </td>
+                <td>20.53 </td>
+                <td>269.35 </td>
+                <td>36036889 </td>
+
+                <td>2007/12/17 </td>
+                <td>82.88</td>
+                <td>2008/01/23 </td>
+                <td>67.39</td>
+                <td>-15.49</td>
+                <td>37</td>
+                <td>-18.69%</td>
+                <td>-184.37 %</td>
+            </tr>
+            <tr>
+                <th scope="row">7</th>
+                <td> 華邦電 (2344)</td>
+                
+
+                <td>37.25 </td>
+                <td>23.96 </td>
+                <td>34.69 </td>
+                <td>25.92 </td>
+                <td>17.12 </td>               
+                <td>4 </td>
+                <td>4 </td>
+                <td>0.62 </td>
+                <td>4 </td>
+                <td>3000 </td>
+                <td>∞ </td>
+                <td>3000 </td>
+                <td>53050282 </td>
+
+                <td>2007/12/17 </td>
+                <td>7.75</td>
+                <td>2008/06/24 </td>
+                <td>6.46</td>
+                <td>-1.29</td>
+                <td>190</td>
+                <td>-16.65%</td>
+                <td>-31.98 %</td>
+            </tr>
+            <tr>
+                <th scope="row">8</th>
+                <td> 鴻準 (2354)</td>
+                
+
+                <td>188.68 </td>
+                <td>123.25 </td>
+                <td>65.47 </td>
+                <td>48.68 </td>
+                <td>41.85 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>5.66 </td>
+                <td>8 </td>
+                <td>287.67 </td>
+                <td>39.75 </td>
+                <td>287.67 </td>
+                <td>255303824 </td>
+
+                <td>2007/12/17 </td>
+                <td>101.77</td>
+                <td>2008/01/23 </td>
+                <td>81.83</td>
+                <td>-19.94</td>
+                <td>37</td>
+                <td>-19.59%</td>
+                <td>-193.28 %</td>
+            </tr>
+            <tr>
+                <th scope="row">9</th>
+                <td> 敬鵬 (2355)</td>
+                
+
+                <td>73.68 </td>
+                <td>57.99 </td>
+                <td>53.99 </td>
+                <td>54.14 </td>
+                <td>49.44 </td>               
+                <td>2 </td>
+                <td>1 </td>
+                <td>1.35 </td>
+                <td>5 </td>
+                <td>650 </td>
+                <td>12.5 </td>
+                <td>650 </td>
+                <td>7870360 </td>
+
+                <td>2007/12/17 </td>
+                <td>14.27</td>
+                <td>2008/07/18 </td>
+                <td>12.06</td>
+                <td>-2.21</td>
+                <td>214</td>
+                <td>-15.49%</td>
+                <td>-26.41 %</td>
+            </tr>
+            <tr>
+                <th scope="row">10</th>
+                <td> 英業達 (2356)</td>
+                
+
+                <td>59.5 </td>
+                <td>44.82 </td>
+                <td>33.42 </td>
+                <td>41.18 </td>
+                <td>39.91 </td>               
+                <td>4 </td>
+                <td>2 </td>
+                <td>1.43 </td>
+                <td>2 </td>
+                <td>550 </td>
+                <td>34.91 </td>
+                <td>550 </td>
+                <td>65923650 </td>
+
+                <td>2007/12/17 </td>
+                <td>7.72</td>
+                <td>2008/10/22 </td>
+                <td>6.36</td>
+                <td>-1.36</td>
+                <td>310</td>
+                <td>-17.62%</td>
+                <td>-20.74 %</td>
+            </tr>
+            <tr>
+                <th scope="row">11</th>
+                <td> 華碩 (2357)</td>
+                
+
+                <td>147.04 </td>
+                <td>138.11 </td>
+                <td>97.1 </td>
+                <td>92.32 </td>
+                <td>90.43 </td>               
+                <td>2 </td>
+                <td>1 </td>
+                <td>3.56 </td>
+                <td>3 </td>
+                <td>152.48 </td>
+                <td>51.49 </td>
+                <td>152.48 </td>
+                <td>303910644 </td>
+
+                <td>2007/12/17 </td>
+                <td>183.09</td>
+                <td>2008/01/22 </td>
+                <td>152.51</td>
+                <td>-30.58</td>
+                <td>36</td>
+                <td>-16.70%</td>
+                <td>-169.34 %</td>
+            </tr>
+            <tr>
+                <th scope="row">12</th>
+                <td> 昆盈 (2365)</td>
+                
+
+                <td>80.68 </td>
+                <td>73.48 </td>
+                <td>47.84 </td>
+                <td>61.08 </td>
+                <td>50.74 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>2.15 </td>
+                <td>2 </td>
+                <td>190.54 </td>
+                <td>53.57 </td>
+                <td>190.54 </td>
+                <td>9098116 </td>
+
+                <td>2007/12/17 </td>
+                <td>26.35</td>
+                <td>2008/01/08 </td>
+                <td>21.83</td>
+                <td>-4.52</td>
+                <td>22</td>
+                <td>-17.15%</td>
+                <td>-284.60 %</td>
+            </tr>
+            <tr>
+                <th scope="row">13</th>
+                <td> 燿華 (2367)</td>
+                
+
+                <td>65.9 </td>
+                <td>33.08 </td>
+                <td>30.82 </td>
+                <td>38.01 </td>
+                <td>22.34 </td>               
+                <td>4 </td>
+                <td>2 </td>
+                <td>2.06 </td>
+                <td>2 </td>
+                <td>2842.86 </td>
+                <td>281.48 </td>
+                <td>2842.86 </td>
+                <td>6853005 </td>
+
+                <td>2007/12/17 </td>
+                <td>17.96</td>
+                <td>2008/01/23 </td>
+                <td>15.09</td>
+                <td>-2.87</td>
+                <td>37</td>
+                <td>-15.98%</td>
+                <td>-157.64 %</td>
+            </tr>
+            <tr>
+                <th scope="row">14</th>
+                <td> 太子 (2511)</td>
+                
+
+                <td>44.4 </td>
+                <td>38.54 </td>
+                <td>34.1 </td>
+                <td>26.98 </td>
+                <td>9.48 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>1.44 </td>
+                <td>2 </td>
+                <td>73.49 </td>
+                <td>1007.69 </td>
+                <td>73.49 </td>
+                <td>19076028 </td>
+
+                <td>2007/12/17 </td>
+                <td>7.87</td>
+                <td>2008/03/31 </td>
+                <td>11.94</td>
+                <td>4.07</td>
+                <td>105</td>
+                <td>51.72%</td>
+                <td>179.77 %</td>
+            </tr>
+            <tr>
+                <th scope="row">15</th>
+                <td> 廣達 (2382)</td>
+                
+
+                <td>90.4 </td>
+                <td>82.44 </td>
+                <td>65.18 </td>
+                <td>71.93 </td>
+                <td>61.3 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>2.41 </td>
+                <td>2 </td>
+                <td>156.38 </td>
+                <td>60.67 </td>
+                <td>156.38 </td>
+                <td>198753773 </td>
+
+                <td>2007/12/17 </td>
+                <td>23.94</td>
+                <td>2008/01/23 </td>
+                <td>19.80</td>
+                <td>-4.14</td>
+                <td>37</td>
+                <td>-17.29%</td>
+                <td>-170.60 %</td>
+            </tr>
+            <tr>
+                <th scope="row">16</th>
+                <td> 台光電 (2383)</td>
+                
+
+                <td>46.18 </td>
+                <td>28.26 </td>
+                <td>26.84 </td>
+                <td>15.87 </td>
+                <td>14.82 </td>               
+                <td>2 </td>
+                <td>4 </td>
+                <td>1.18 </td>
+                <td>5 </td>
+                <td>972.73 </td>
+                <td>84.37 </td>
+                <td>972.73 </td>
+                <td>3795421 </td>
+
+                <td>2007/12/17 </td>
+                <td>5.96</td>
+                <td>2008/10/20 </td>
+                <td>4.98</td>
+                <td>-0.98</td>
+                <td>308</td>
+                <td>-16.44%</td>
+                <td>-19.49 %</td>
+            </tr>
+            <tr>
+                <th scope="row">17</th>
+                <td> 群光 (2385)</td>
+                
+
+                <td>75.55 </td>
+                <td>43.54 </td>
+                <td>37.39 </td>
+                <td>65.02 </td>
+                <td>51.49 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>2.39 </td>
+                <td>2 </td>
+                <td>482.93 </td>
+                <td>67.13 </td>
+                <td>482.93 </td>
+                <td>21684950 </td>
+
+                <td>2007/12/17 </td>
+                <td>21.58</td>
+                <td>2008/01/23 </td>
+                <td>18.02</td>
+                <td>-3.56</td>
+                <td>37</td>
+                <td>-16.50%</td>
+                <td>-162.74 %</td>
+            </tr>
+            <tr>
+                <th scope="row">18</th>
+                <td> 億光 (2393)</td>
+                
+
+                <td>122.48 </td>
+                <td>106.12 </td>
+                <td>68.24 </td>
+                <td>67.41 </td>
+                <td>60.44 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>3.2 </td>
+                <td>2 </td>
+                <td>332.43 </td>
+                <td>18.08 </td>
+                <td>332.43 </td>
+                <td>29671694 </td>
+
+                <td>2007/12/17 </td>
+                <td>59.28</td>
+                <td>2008/02/13 </td>
+                <td>49.36</td>
+                <td>-9.92</td>
+                <td>58</td>
+                <td>-16.73%</td>
+                <td>-105.31 %</td>
+            </tr>
+            <tr>
+                <th scope="row">19</th>
+                <td> 宏達電 (2498)</td>
+                
+
+                <td>886.48 </td>
+                <td>523.95 </td>
+                <td>183.95 </td>
+                <td>128.38 </td>
+                <td>119.38 </td>               
+                <td>5 </td>
+                <td>5 </td>
+                <td>32.35 </td>
+                <td>6 </td>
+                <td>519.73 </td>
+                <td>26.86 </td>
+                <td>519.73 </td>
+                <td>281490255 </td>
+
+                <td>2007/12/17 </td>
+                <td>254.36</td>
+                <td>2008/05/05 </td>
+                <td>386.74</td>
+                <td>132.38</td>
+                <td>140</td>
+                <td>52.04%</td>
+                <td>135.69 %</td>
+            </tr>
+            <tr>
+                <th scope="row">20</th>
+                <td> 兆赫 (2485)</td>
+                
+
+                <td>72.03 </td>
+                <td>48.04 </td>
+                <td>34.64 </td>
+                <td>45.22 </td>
+                <td>34.47 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>1.76 </td>
+                <td>6 </td>
+                <td>604 </td>
+                <td>18.92 </td>
+                <td>604 </td>
+                <td>9982908 </td>
+
+                <td>2007/12/17 </td>
+                <td>45.00</td>
+                <td>2008/02/13 </td>
+                <td>36.79</td>
+                <td>-8.21</td>
+                <td>58</td>
+                <td>-18.24%</td>
+                <td>-114.81 %</td>
+            </tr>
+            <tr>
+                <th scope="row">21</th>
+                <td> 固緯 (2423)</td>
+                
+
+                <td>58.82 </td>
+                <td>47.16 </td>
+                <td>39.18 </td>
+                <td>39.82 </td>
+                <td>35.8 </td>               
+                <td>5 </td>
+                <td>2 </td>
+                <td>1.39 </td>
+                <td>2 </td>
+                <td>504.35 </td>
+                <td>33.65 </td>
+                <td>504.35 </td>
+                <td>1795527 </td>
+
+                <td>2007/12/17 </td>
+                <td>9.74</td>
+                <td>2008/09/16 </td>
+                <td>8.04</td>
+                <td>-1.70</td>
+                <td>274</td>
+                <td>-17.45%</td>
+                <td>-23.25 %</td>
+            </tr>
+            <tr>
+                <th scope="row">22</th>
+                <td> 興勤 (2428)</td>
+                
+
+                <td>63.1 </td>
+                <td>38.29 </td>
+                <td>45.4 </td>
+                <td>44.36 </td>
+                <td>39.68 </td>               
+                <td>1 </td>
+                <td>3 </td>
+                <td>1.43 </td>
+                <td>3 </td>
+                <td>150.88 </td>
+                <td>32.41 </td>
+                <td>150.88 </td>
+                <td>2791696 </td>
+
+                <td>2007/12/17 </td>
+                <td>16.11</td>
+                <td>2008/01/24 </td>
+                <td>13.45</td>
+                <td>-2.66</td>
+                <td>38</td>
+                <td>-16.51%</td>
+                <td>-158.60 %</td>
+            </tr>
+            <tr>
+                <th scope="row">23</th>
+                <td> 希華 (2484)</td>
+                
+
+                <td>61.44 </td>
+                <td>52.96 </td>
+                <td>44.56 </td>
+                <td>51.2 </td>
+                <td>37.97 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>0.89 </td>
+                <td>2 </td>
+                <td>4350 </td>
+                <td>1.14 </td>
+                <td>4350 </td>
+                <td>2334654 </td>
+
+                <td>2007/12/17 </td>
+                <td>12.92</td>
+                <td>2008/01/24 </td>
+                <td>10.84</td>
+                <td>-2.08</td>
+                <td>38</td>
+                <td>-16.10%</td>
+                <td>-154.64 %</td>
+            </tr>
+            <tr>
+                <th scope="row">24</th>
+                <td> 超豐 (2441)</td>
+                
+
+                <td>69.89 </td>
+                <td>68.86 </td>
+                <td>60.14 </td>
+                <td>55.79 </td>
+                <td>51.75 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>1.35 </td>
+                <td>2 </td>
+                <td>64.63 </td>
+                <td>8 </td>
+                <td>64.63 </td>
+                <td>18342979 </td>
+
+                <td>2007/12/17 </td>
+                <td>16.14</td>
+                <td>2008/09/18 </td>
+                <td>13.22</td>
+                <td>-2.92</td>
+                <td>276</td>
+                <td>-18.09%</td>
+                <td>-23.93 %</td>
+            </tr>
+            <tr>
+                <th scope="row">25</th>
+                <td> 百容 (2483)</td>
+                
+
+                <td>60.67 </td>
+                <td>55.91 </td>
+                <td>45.07 </td>
+                <td>45.89 </td>
+                <td>44.16 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>1.08 </td>
+                <td>2 </td>
+                <td>237.5 </td>
+                <td>63.64 </td>
+                <td>237.5 </td>
+                <td>2952318 </td>
+
+                <td>2007/12/17 </td>
+                <td>9.80</td>
+                <td>2008/06/12 </td>
+                <td>8.22</td>
+                <td>-1.58</td>
+                <td>178</td>
+                <td>-16.12%</td>
+                <td>-33.06 %</td>
+            </tr>
+            <tr>
+                <th scope="row">26</th>
+                <td> 創見 (2451)</td>
+                
+
+                <td>136.68 </td>
+                <td>98.76 </td>
+                <td>78.05 </td>
+                <td>76.4 </td>
+                <td>66 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>4.42 </td>
+                <td>6 </td>
+                <td>155.49 </td>
+                <td>48.82 </td>
+                <td>155.49 </td>
+                <td>29026720 </td>
+
+                <td>2007/12/17 </td>
+                <td>46.65</td>
+                <td>2008/01/31 </td>
+                <td>39.00</td>
+                <td>-7.65</td>
+                <td>45</td>
+                <td>-16.40%</td>
+                <td>-133.01 %</td>
+            </tr>
+            <tr>
+                <th scope="row">27</th>
+                <td> 奇力新 (2456)</td>
+                
+
+                <td>51.15 </td>
+                <td>46.56 </td>
+                <td>34.74 </td>
+                <td>32.1 </td>
+                <td>29.52 </td>               
+                <td>4 </td>
+                <td>3 </td>
+                <td>1.14 </td>
+                <td>2 </td>
+                <td>192.31 </td>
+                <td>32.56 </td>
+                <td>192.31 </td>
+                <td>2786810 </td>
+
+                <td>2007/12/17 </td>
+                <td>12.13</td>
+                <td>2008/01/24 </td>
+                <td>9.99</td>
+                <td>-2.14</td>
+                <td>38</td>
+                <td>-17.64%</td>
+                <td>-169.46 %</td>
+            </tr>
+            <tr>
+                <th scope="row">28</th>
+                <td> 鉅祥 (2476)</td>
+                
+
+                <td>75.18 </td>
+                <td>61.9 </td>
+                <td>43.46 </td>
+                <td>38.78 </td>
+                <td>34.4 </td>               
+                <td>5 </td>
+                <td>4 </td>
+                <td>1.89 </td>
+                <td>10 </td>
+                <td>231.58 </td>
+                <td>27.7 </td>
+                <td>231.58 </td>
+                <td>8906627 </td>
+
+                <td>2007/12/17 </td>
+                <td>20.60</td>
+                <td>2008/01/22 </td>
+                <td>16.61</td>
+                <td>-3.99</td>
+                <td>36</td>
+                <td>-19.37%</td>
+                <td>-196.38 %</td>
+            </tr>
+            <tr>
+                <th scope="row">29</th>
+                <td> 國巨 (2327)</td>
+                
+
+                <td>33.12 </td>
+                <td>11.53 </td>
+                <td>-49.93 </td>
+                <td>16.3 </td>
+                <td>12.15 </td>               
+                <td>3 </td>
+                <td>7 </td>
+                <td>0.45 </td>
+                <td>3 </td>
+                <td>∞ </td>
+                <td>21.62 </td>
+                <td>∞ </td>
+                <td>36850986 </td>
+
+                <td>2007/12/17 </td>
+                <td>31.68</td>
+                <td>2008/02/12 </td>
+                <td>26.48</td>
+                <td>-5.20</td>
+                <td>57</td>
+                <td>-16.41%</td>
+                <td>-105.11 %</td>
+            </tr>
+            <tr>
+                <th scope="row">30</th>
+                <td> 仁寶 (2324)</td>
+                
+
+                <td>65.68 </td>
+                <td>65.49 </td>
+                <td>47 </td>
+                <td>63.41 </td>
+                <td>59.98 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>1.3 </td>
+                <td>2 </td>
+                <td>160 </td>
+                <td>23.81 </td>
+                <td>160 </td>
+                <td>110722855 </td>
+
+                <td>2007/12/17 </td>
+                <td>17.03</td>
+                <td>2008/01/24 </td>
+                <td>14.06</td>
+                <td>-2.97</td>
+                <td>38</td>
+                <td>-17.44%</td>
+                <td>-167.51 %</td>
+            </tr>
+            <tr>
+                <th scope="row">31</th>
+                <td> 順德 (2351)</td>
+                
+
+                <td>69.35 </td>
+                <td>45.58 </td>
+                <td>37.89 </td>
+                <td>30.74 </td>
+                <td>22.26 </td>               
+                <td>1 </td>
+                <td>5 </td>
+                <td>1.86 </td>
+                <td>5 </td>
+                <td>830 </td>
+                <td>55 </td>
+                <td>830 </td>
+                <td>7081166 </td>
+
+                <td>2007/12/17 </td>
+                <td>15.95</td>
+                <td>2008/07/10 </td>
+                <td>13.13</td>
+                <td>-2.82</td>
+                <td>206</td>
+                <td>-17.68%</td>
+                <td>-31.33 %</td>
+            </tr>
+            <tr>
+                <th scope="row">32</th>
+                <td> 盛餘 (2029)</td>
+                
+
+                <td>99.58 </td>
+                <td>79.22 </td>
+                <td>76.7 </td>
+                <td>64.05 </td>
+                <td>58.65 </td>               
+                <td>3 </td>
+                <td>1 </td>
+                <td>2.13 </td>
+                <td>3 </td>
+                <td>9.23 </td>
+                <td>8.12 </td>
+                <td>9.23 </td>
+                <td>10213524 </td>
+
+                <td>2007/12/17 </td>
+                <td>17.24</td>
+                <td>2008/08/22 </td>
+                <td>14.49</td>
+                <td>-2.75</td>
+                <td>249</td>
+                <td>-15.95%</td>
+                <td>-23.38 %</td>
+            </tr>
+            <tr>
+                <th scope="row">33</th>
+                <td> 中航 (2612)</td>
+                
+
+                <td>107.59 </td>
+                <td>58.4 </td>
+                <td>28.99 </td>
+                <td>34.14 </td>
+                <td>27.6 </td>               
+                <td>6 </td>
+                <td>4 </td>
+                <td>4.21 </td>
+                <td>2 </td>
+                <td>1102.86 </td>
+                <td>132.6 </td>
+                <td>1102.86 </td>
+                <td>9676016 </td>
+
+                <td>2007/12/17 </td>
+                <td>54.73</td>
+                <td>2008/01/28 </td>
+                <td>46.28</td>
+                <td>-8.45</td>
+                <td>42</td>
+                <td>-15.44%</td>
+                <td>-134.18 %</td>
+            </tr>
+            <tr>
+                <th scope="row">34</th>
+                <td> 允強 (2034)</td>
+                
+
+                <td>143.63 </td>
+                <td>57.07 </td>
+                <td>63.49 </td>
+                <td>35.32 </td>
+                <td>31.34 </td>               
+                <td>3 </td>
+                <td>3 </td>
+                <td>5.71 </td>
+                <td>3 </td>
+                <td>513.98 </td>
+                <td>123.92 </td>
+                <td>513.98 </td>
+                <td>9392619 </td>
+
+                <td>2007/12/17 </td>
+                <td>13.78</td>
+                <td>2008/06/25 </td>
+                <td>11.66</td>
+                <td>-2.12</td>
+                <td>191</td>
+                <td>-15.38%</td>
+                <td>-29.40 %</td>
+            </tr>
+            <tr>
+                <th scope="row">35</th>
+                <td> 高雄銀 (2836)</td>
+                
+
+                <td>53.89 </td>
+                <td>50.46 </td>
+                <td>44.92 </td>
+                <td>50.95 </td>
+                <td>41.78 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>0.51 </td>
+                <td>2 </td>
+                <td>292.31 </td>
+                <td>8.51 </td>
+                <td>292.31 </td>
+                <td>9539866 </td>
+
+                <td>2007/12/17 </td>
+                <td>11.15</td>
+                <td>2008/07/02 </td>
+                <td>9.45</td>
+                <td>-1.70</td>
+                <td>198</td>
+                <td>-15.25%</td>
+                <td>-28.11 %</td>
+            </tr>
+            <tr>
+                <th scope="row">36</th>
+                <td> 台橡 (2103)</td>
+                
+
+                <td>69.35 </td>
+                <td>66.26 </td>
+                <td>40 </td>
+                <td>32.76 </td>
+                <td>23.62 </td>               
+                <td>1 </td>
+                <td>4 </td>
+                <td>1.62 </td>
+                <td>2 </td>
+                <td>121.92 </td>
+                <td>6.58 </td>
+                <td>121.92 </td>
+                <td>15402843 </td>
+
+                <td>2007/12/17 </td>
+                <td>18.78</td>
+                <td>2008/01/23 </td>
+                <td>15.47</td>
+                <td>-3.31</td>
+                <td>37</td>
+                <td>-17.63%</td>
+                <td>-173.87 %</td>
+            </tr>
+            <tr>
+                <th scope="row">37</th>
+                <td> 山隆 (2616)</td>
+                
+
+                <td>59.96 </td>
+                <td>55.96 </td>
+                <td>50.88 </td>
+                <td>49.96 </td>
+                <td>44.08 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>1.02 </td>
+                <td>2 </td>
+                <td>59.38 </td>
+                <td>22.89 </td>
+                <td>59.38 </td>
+                <td>1477151 </td>
+
+                <td>2007/12/17 </td>
+                <td>8.43</td>
+                <td>2008/05/21 </td>
+                <td>12.76</td>
+                <td>4.33</td>
+                <td>156</td>
+                <td>51.36%</td>
+                <td>120.18 %</td>
+            </tr>
+            <tr>
+                <th scope="row">38</th>
+                <td> 大成鋼 (2027)</td>
+                
+
+                <td>127.74 </td>
+                <td>68.21 </td>
+                <td>49.76 </td>
+                <td>35.84 </td>
+                <td>32.9 </td>               
+                <td>3 </td>
+                <td>3 </td>
+                <td>5.17 </td>
+                <td>3 </td>
+                <td>1623.33 </td>
+                <td>172.11 </td>
+                <td>1623.33 </td>
+                <td>13455192 </td>
+
+                <td>2007/12/17 </td>
+                <td>17.20</td>
+                <td>2008/07/01 </td>
+                <td>14.52</td>
+                <td>-2.68</td>
+                <td>197</td>
+                <td>-15.58%</td>
+                <td>-28.87 %</td>
+            </tr>
+            <tr>
+                <th scope="row">39</th>
+                <td> 統一證 (2855)</td>
+                
+
+                <td>54.86 </td>
+                <td>40.32 </td>
+                <td>35.75 </td>
+                <td>38.2 </td>
+                <td>25.76 </td>               
+                <td>4 </td>
+                <td>2 </td>
+                <td>1.21 </td>
+                <td>4 </td>
+                <td>332.14 </td>
+                <td>72.86 </td>
+                <td>332.14 </td>
+                <td>19955596 </td>
+
+                <td>2007/12/17 </td>
+                <td>10.77</td>
+                <td>2008/04/11 </td>
+                <td>16.34</td>
+                <td>5.57</td>
+                <td>116</td>
+                <td>51.72%</td>
+                <td>162.73 %</td>
+            </tr>
+            <tr>
+                <th scope="row">40</th>
+                <td> 彰源 (2030)</td>
+                
+
+                <td>93.86 </td>
+                <td>59.33 </td>
+                <td>54.58 </td>
+                <td>40.08 </td>
+                <td>36.77 </td>               
+                <td>2 </td>
+                <td>3 </td>
+                <td>3.58 </td>
+                <td>3 </td>
+                <td>321.18 </td>
+                <td>219.64 </td>
+                <td>321.18 </td>
+                <td>4850157 </td>
+
+                <td>2007/12/17 </td>
+                <td>18.56</td>
+                <td>2008/06/23 </td>
+                <td>15.76</td>
+                <td>-2.80</td>
+                <td>189</td>
+                <td>-15.09%</td>
+                <td>-29.13 %</td>
+            </tr>
+            <tr>
+                <th scope="row">41</th>
+                <td> 美亞 (2020)</td>
+                
+
+                <td>75.28 </td>
+                <td>31.96 </td>
+                <td>66.92 </td>
+                <td>45.56 </td>
+                <td>41.6 </td>               
+                <td>3 </td>
+                <td>3 </td>
+                <td>2.58 </td>
+                <td>3 </td>
+                <td>486.36 </td>
+                <td>196.55 </td>
+                <td>486.36 </td>
+                <td>4546724 </td>
+
+                <td>2007/12/17 </td>
+                <td>14.43</td>
+                <td>2008/09/30 </td>
+                <td>11.50</td>
+                <td>-2.93</td>
+                <td>288</td>
+                <td>-20.30%</td>
+                <td>-25.73 %</td>
+            </tr>
+                <tr>
+                    <td>
+                          2008 Q1  
+
+                    </td>
+                </tr>
+            <tr>
+                <th scope="row">42</th>
+                <td> 光群雷 (2461)</td>
+                
+
+                <td>58.32 </td>
+                <td>53.57 </td>
+                <td>38.98 </td>
+                <td>18.66 </td>
+                <td>16.56 </td>               
+                <td>1 </td>
+                <td>4 </td>
+                <td>1.25 </td>
+                <td>4 </td>
+                <td>89.39 </td>
+                <td>16.82 </td>
+                <td>89.39 </td>
+                <td>5747800 </td>
+
+                <td>2008/01/02 </td>
+                <td>20.66</td>
+                <td>2008/01/24 </td>
+                <td>17.19</td>
+                <td>-3.47</td>
+                <td>22</td>
+                <td>-16.80%</td>
+                <td>-278.66 %</td>
+            </tr>
+            <tr>
+                <th scope="row">43</th>
+                <td> 華園 (2702)</td>
+                
+
+                <td>34.28 </td>
+                <td>29.9 </td>
+                <td>27.03 </td>
+                <td>20.46 </td>
+                <td>20.34 </td>               
+                <td>7 </td>
+                <td>3 </td>
+                <td>0.48 </td>
+                <td>3 </td>
+                <td>300 </td>
+                <td>54.84 </td>
+                <td>300 </td>
+                <td>2374139 </td>
+
+                <td>2008/01/02 </td>
+                <td>17.51</td>
+                <td>2008/07/16 </td>
+                <td>14.00</td>
+                <td>-3.51</td>
+                <td>196</td>
+                <td>-20.05%</td>
+                <td>-37.33 %</td>
+            </tr>
+            <tr>
+                <th scope="row">44</th>
+                <td> 第一金 (2892)</td>
+                
+
+                <td>47.78 </td>
+                <td>47.15 </td>
+                <td>51.22 </td>
+                <td>37.26 </td>
+                <td>-19.99 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.73 </td>
+                <td>2 </td>
+                <td>35.19 </td>
+                <td>73.81 </td>
+                <td>35.19 </td>
+                <td>143153423 </td>
+
+                <td>2008/01/02 </td>
+                <td>10.29</td>
+                <td>2008/04/11 </td>
+                <td>15.86</td>
+                <td>5.57</td>
+                <td>100</td>
+                <td>54.13%</td>
+                <td>197.58 %</td>
+            </tr>
+            <tr>
+                <th scope="row">45</th>
+                <td> 晶華 (2707)</td>
+                
+
+                <td>197.91 </td>
+                <td>110.94 </td>
+                <td>88.63 </td>
+                <td>52.24 </td>
+                <td>45.24 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>7.25 </td>
+                <td>2 </td>
+                <td>231.05 </td>
+                <td>294.02 </td>
+                <td>231.05 </td>
+                <td>21240000 </td>
+
+                <td>2008/01/02 </td>
+                <td>101.00</td>
+                <td>2008/02/27 </td>
+                <td>161.82</td>
+                <td>60.82</td>
+                <td>56</td>
+                <td>60.22%</td>
+                <td>392.49 %</td>
+            </tr>
+            <tr>
+                <th scope="row">46</th>
+                <td> 國產 (2504)</td>
+                
+
+                <td>41.83 </td>
+                <td>38.82 </td>
+                <td>37.56 </td>
+                <td>28.08 </td>
+                <td>22.79 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>0.58 </td>
+                <td>3 </td>
+                <td>31.82 </td>
+                <td>18.37 </td>
+                <td>31.82 </td>
+                <td>22438373 </td>
+
+                <td>2008/01/02 </td>
+                <td>11.16</td>
+                <td>2008/03/24 </td>
+                <td>17.72</td>
+                <td>6.56</td>
+                <td>82</td>
+                <td>58.78%</td>
+                <td>261.65 %</td>
+            </tr>
+            <tr>
+                <th scope="row">47</th>
+                <td> 台產 (2832)</td>
+                
+
+                <td>67.16 </td>
+                <td>61.82 </td>
+                <td>43.14 </td>
+                <td>37.65 </td>
+                <td>37.44 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>1.91 </td>
+                <td>2 </td>
+                <td>213.11 </td>
+                <td>172.86 </td>
+                <td>213.11 </td>
+                <td>8396711 </td>
+
+                <td>2008/01/02 </td>
+                <td>13.43</td>
+                <td>2008/09/05 </td>
+                <td>11.27</td>
+                <td>-2.16</td>
+                <td>247</td>
+                <td>-16.08%</td>
+                <td>-23.77 %</td>
+            </tr>
+            <tr>
+                <th scope="row">48</th>
+                <td> 友達 (2409)</td>
+                
+
+                <td>108.37 </td>
+                <td>61.41 </td>
+                <td>89.78 </td>
+                <td>58.36 </td>
+                <td>43.35 </td>               
+                <td>3 </td>
+                <td>3 </td>
+                <td>2.89 </td>
+                <td>3 </td>
+                <td>2790 </td>
+                <td>265.82 </td>
+                <td>2790 </td>
+                <td>451863349 </td>
+
+                <td>2008/01/02 </td>
+                <td>44.21</td>
+                <td>2008/02/12 </td>
+                <td>37.16</td>
+                <td>-7.05</td>
+                <td>41</td>
+                <td>-15.95%</td>
+                <td>-141.96 %</td>
+            </tr>
+            <tr>
+                <th scope="row">49</th>
+                <td> 新產 (2850)</td>
+                
+
+                <td>45.36 </td>
+                <td>42.1 </td>
+                <td>35.72 </td>
+                <td>34.08 </td>
+                <td>33.44 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.79 </td>
+                <td>2 </td>
+                <td>79.55 </td>
+                <td>338.89 </td>
+                <td>79.55 </td>
+                <td>6099660 </td>
+
+                <td>2008/01/02 </td>
+                <td>9.47</td>
+                <td>2008/09/16 </td>
+                <td>7.73</td>
+                <td>-1.74</td>
+                <td>258</td>
+                <td>-18.37%</td>
+                <td>-25.99 %</td>
+            </tr>
+            <tr>
+                <th scope="row">50</th>
+                <td> 連宇 (2482)</td>
+                
+
+                <td>54.01 </td>
+                <td>47.32 </td>
+                <td>50.88 </td>
+                <td>36.28 </td>
+                <td>34.04 </td>               
+                <td>3 </td>
+                <td>2 </td>
+                <td>1.25 </td>
+                <td>2 </td>
+                <td>54.32 </td>
+                <td>58.23 </td>
+                <td>54.32 </td>
+                <td>3803072 </td>
+
+                <td>2008/01/02 </td>
+                <td>28.43</td>
+                <td>2008/01/23 </td>
+                <td>24.04</td>
+                <td>-4.39</td>
+                <td>21</td>
+                <td>-15.44%</td>
+                <td>-268.39 %</td>
+            </tr>
+            <tr>
+                <th scope="row">51</th>
+                <td> 全坤建 (2509)</td>
+                
+
+                <td>89.28 </td>
+                <td>57.76 </td>
+                <td>45.6 </td>
+                <td>24 </td>
+                <td>-11.02 </td>               
+                <td>4 </td>
+                <td>3 </td>
+                <td>2.6 </td>
+                <td>3 </td>
+                <td>282.35 </td>
+                <td>40.54 </td>
+                <td>282.35 </td>
+                <td>3825508 </td>
+
+                <td>2008/01/02 </td>
+                <td>15.11</td>
+                <td>2008/04/14 </td>
+                <td>23.11</td>
+                <td>8.00</td>
+                <td>103</td>
+                <td>52.95%</td>
+                <td>187.62 %</td>
+            </tr>
+            <tr>
+                <th scope="row">52</th>
+                <td> 富邦金 (2881)</td>
+                
+
+                <td>62.41 </td>
+                <td>49.16 </td>
+                <td>46.44 </td>
+                <td>51.42 </td>
+                <td>47.2 </td>               
+                <td>6 </td>
+                <td>3 </td>
+                <td>0.81 </td>
+                <td>6 </td>
+                <td>252.17 </td>
+                <td>19.12 </td>
+                <td>252.17 </td>
+                <td>217678423 </td>
+
+                <td>2008/01/02 </td>
+                <td>17.06</td>
+                <td>2008/09/18 </td>
+                <td>13.88</td>
+                <td>-3.18</td>
+                <td>260</td>
+                <td>-18.64%</td>
+                <td>-26.17 %</td>
+            </tr>
+            <tr>
+                <th scope="row">53</th>
+                <td> 國泰金 (2882)</td>
+                
+
+                <td>82.21 </td>
+                <td>48.37 </td>
+                <td>61.2 </td>
+                <td>58.78 </td>
+                <td>46.52 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>1.34 </td>
+                <td>4 </td>
+                <td>191.3 </td>
+                <td>15.52 </td>
+                <td>191.3 </td>
+                <td>732884501 </td>
+
+                <td>2008/01/02 </td>
+                <td>38.31</td>
+                <td>2008/09/16 </td>
+                <td>32.29</td>
+                <td>-6.02</td>
+                <td>258</td>
+                <td>-15.71%</td>
+                <td>-22.23 %</td>
+            </tr>
+            <tr>
+                <th scope="row">54</th>
+                <td> 美律 (2439)</td>
+                
+
+                <td>124.66 </td>
+                <td>118.31 </td>
+                <td>103.53 </td>
+                <td>105.99 </td>
+                <td>58.59 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>3.17 </td>
+                <td>2 </td>
+                <td>52.4 </td>
+                <td>26.8 </td>
+                <td>52.4 </td>
+                <td>17273280 </td>
+
+                <td>2008/01/02 </td>
+                <td>48.10</td>
+                <td>2008/01/10 </td>
+                <td>40.02</td>
+                <td>-8.08</td>
+                <td>8</td>
+                <td>-16.80%</td>
+                <td>-766.42 %</td>
+            </tr>
+            <tr>
+                <th scope="row">55</th>
+                <td> 欣欣 (2901)</td>
+                
+
+                <td>24.48 </td>
+                <td>21.16 </td>
+                <td>24.15 </td>
+                <td>22.4 </td>
+                <td>21.76 </td>               
+                <td>2 </td>
+                <td>3 </td>
+                <td>0.11 </td>
+                <td>3 </td>
+                <td>57.14 </td>
+                <td>57.14 </td>
+                <td>57.14 </td>
+                <td>2067117 </td>
+
+                <td>2008/01/02 </td>
+                <td>19.27</td>
+                <td>2008/04/15 </td>
+                <td>30.39</td>
+                <td>11.12</td>
+                <td>104</td>
+                <td>57.71%</td>
+                <td>202.53 %</td>
+            </tr>
+            <tr>
+                <th scope="row">56</th>
+                <td> 中鋼構 (2013)</td>
+                
+
+                <td>57.16 </td>
+                <td>56.53 </td>
+                <td>46.86 </td>
+                <td>39.09 </td>
+                <td>38.76 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>0.74 </td>
+                <td>2 </td>
+                <td>60.87 </td>
+                <td>1.37 </td>
+                <td>60.87 </td>
+                <td>2928435 </td>
+
+                <td>2008/01/02 </td>
+                <td>11.83</td>
+                <td>2008/05/15 </td>
+                <td>18.41</td>
+                <td>6.58</td>
+                <td>134</td>
+                <td>55.62%</td>
+                <td>151.51 %</td>
+            </tr>
+            <tr>
+                <th scope="row">57</th>
+                <td> 冠西電 (2466)</td>
+                
+
+                <td>37.33 </td>
+                <td>31.52 </td>
+                <td>27.92 </td>
+                <td>26.28 </td>
+                <td>20.12 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.73 </td>
+                <td>2 </td>
+                <td>3550 </td>
+                <td>204.17 </td>
+                <td>3550 </td>
+                <td>5036086 </td>
+
+                <td>2008/01/02 </td>
+                <td>34.49</td>
+                <td>2008/10/24 </td>
+                <td>28.86</td>
+                <td>-5.63</td>
+                <td>296</td>
+                <td>-16.32%</td>
+                <td>-20.13 %</td>
+            </tr>
+            <tr>
+                <th scope="row">58</th>
+                <td> 宏盛 (2534)</td>
+                
+
+                <td>69.54 </td>
+                <td>59.67 </td>
+                <td>42.26 </td>
+                <td>28.97 </td>
+                <td>26.68 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>1.85 </td>
+                <td>2 </td>
+                <td>2212.5 </td>
+                <td>156.94 </td>
+                <td>2212.5 </td>
+                <td>14543558 </td>
+
+                <td>2008/01/02 </td>
+                <td>11.67</td>
+                <td>2008/04/18 </td>
+                <td>17.65</td>
+                <td>5.98</td>
+                <td>107</td>
+                <td>51.24%</td>
+                <td>174.80 %</td>
+            </tr>
+            <tr>
+                <th scope="row">59</th>
+                <td> 中櫃 (2613)</td>
+                
+
+                <td>56.74 </td>
+                <td>54.2 </td>
+                <td>60.64 </td>
+                <td>49.64 </td>
+                <td>27.24 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.72 </td>
+                <td>2 </td>
+                <td>26.32 </td>
+                <td>20 </td>
+                <td>26.32 </td>
+                <td>1254914 </td>
+
+                <td>2008/01/02 </td>
+                <td>11.24</td>
+                <td>2008/04/09 </td>
+                <td>17.24</td>
+                <td>6.00</td>
+                <td>98</td>
+                <td>53.38%</td>
+                <td>198.82 %</td>
+            </tr>
+            <tr>
+                <th scope="row">60</th>
+                <td> 新興 (2605)</td>
+                
+
+                <td>146.94 </td>
+                <td>116.21 </td>
+                <td>132 </td>
+                <td>110.42 </td>
+                <td>63.5 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>4.62 </td>
+                <td>3 </td>
+                <td>60.42 </td>
+                <td>26.58 </td>
+                <td>60.42 </td>
+                <td>26359634 </td>
+
+                <td>2008/01/02 </td>
+                <td>25.79</td>
+                <td>2008/09/04 </td>
+                <td>21.70</td>
+                <td>-4.09</td>
+                <td>246</td>
+                <td>-15.86%</td>
+                <td>-23.53 %</td>
+            </tr>
+            <tr>
+                <th scope="row">61</th>
+                <td> 南港 (2101)</td>
+                
+
+                <td>107.58 </td>
+                <td>90.14 </td>
+                <td>114.77 </td>
+                <td>64.07 </td>
+                <td>40.67 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>3.58 </td>
+                <td>2 </td>
+                <td>25.17 </td>
+                <td>92.47 </td>
+                <td>25.17 </td>
+                <td>22092522 </td>
+
+                <td>2008/01/02 </td>
+                <td>20.13</td>
+                <td>2008/03/05 </td>
+                <td>30.46</td>
+                <td>10.33</td>
+                <td>63</td>
+                <td>51.32%</td>
+                <td>297.31 %</td>
+            </tr>
+            <tr>
+                <th scope="row">62</th>
+                <td> 台達電 (2308)</td>
+                
+
+                <td>99.88 </td>
+                <td>86.64 </td>
+                <td>80.06 </td>
+                <td>68.44 </td>
+                <td>61.45 </td>               
+                <td>4 </td>
+                <td>4 </td>
+                <td>2.22 </td>
+                <td>4 </td>
+                <td>27.59 </td>
+                <td>28.32 </td>
+                <td>27.59 </td>
+                <td>265408542 </td>
+
+                <td>2008/01/02 </td>
+                <td>66.80</td>
+                <td>2008/01/10 </td>
+                <td>56.45</td>
+                <td>-10.35</td>
+                <td>8</td>
+                <td>-15.49%</td>
+                <td>-706.91 %</td>
+            </tr>
+            <tr>
+                <th scope="row">63</th>
+                <td> 新光鋼 (2031)</td>
+                
+
+                <td>82.62 </td>
+                <td>68.92 </td>
+                <td>38.67 </td>
+                <td>82.36 </td>
+                <td>56.94 </td>               
+                <td>4 </td>
+                <td>4 </td>
+                <td>2.07 </td>
+                <td>4 </td>
+                <td>39.86 </td>
+                <td>33.55 </td>
+                <td>39.86 </td>
+                <td>5924242 </td>
+
+                <td>2008/01/02 </td>
+                <td>20.70</td>
+                <td>2008/01/23 </td>
+                <td>17.50</td>
+                <td>-3.20</td>
+                <td>21</td>
+                <td>-15.46%</td>
+                <td>-268.69 %</td>
+            </tr>
+            <tr>
+                <th scope="row">64</th>
+                <td> 宏碁 (2353)</td>
+                
+
+                <td>119.48 </td>
+                <td>117.96 </td>
+                <td>104.62 </td>
+                <td>82.48 </td>
+                <td>80.26 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>3.23 </td>
+                <td>2 </td>
+                <td>62.31 </td>
+                <td>137.5 </td>
+                <td>62.31 </td>
+                <td>156583221 </td>
+
+                <td>2008/01/02 </td>
+                <td>44.63</td>
+                <td>2008/01/16 </td>
+                <td>36.79</td>
+                <td>-7.84</td>
+                <td>14</td>
+                <td>-17.57%</td>
+                <td>-457.99 %</td>
+            </tr>
+            <tr>
+                <th scope="row">65</th>
+                <td> 台達電 (2308)</td>
+                
+
+                <td>99.88 </td>
+                <td>86.64 </td>
+                <td>80.06 </td>
+                <td>68.44 </td>
+                <td>61.45 </td>               
+                <td>4 </td>
+                <td>4 </td>
+                <td>2.22 </td>
+                <td>4 </td>
+                <td>27.59 </td>
+                <td>28.32 </td>
+                <td>27.59 </td>
+                <td>265408542 </td>
+
+                <td>2008/01/11 </td>
+                <td>55.89</td>
+                <td>2008/01/22 </td>
+                <td>46.86</td>
+                <td>-9.03</td>
+                <td>11</td>
+                <td>-16.16%</td>
+                <td>-536.11 %</td>
+            </tr>
+            <tr>
+                <th scope="row">66</th>
+                <td> 美律 (2439)</td>
+                
+
+                <td>124.66 </td>
+                <td>118.31 </td>
+                <td>103.53 </td>
+                <td>105.99 </td>
+                <td>58.59 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>3.17 </td>
+                <td>2 </td>
+                <td>52.4 </td>
+                <td>26.8 </td>
+                <td>52.4 </td>
+                <td>17273280 </td>
+
+                <td>2008/01/11 </td>
+                <td>40.36</td>
+                <td>2008/01/24 </td>
+                <td>32.66</td>
+                <td>-7.70</td>
+                <td>13</td>
+                <td>-19.08%</td>
+                <td>-535.66 %</td>
+            </tr>
+            <tr>
+                <th scope="row">67</th>
+                <td> 宏碁 (2353)</td>
+                
+
+                <td>119.48 </td>
+                <td>117.96 </td>
+                <td>104.62 </td>
+                <td>82.48 </td>
+                <td>80.26 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>3.23 </td>
+                <td>2 </td>
+                <td>62.31 </td>
+                <td>137.5 </td>
+                <td>62.31 </td>
+                <td>156583221 </td>
+
+                <td>2008/01/17 </td>
+                <td>37.08</td>
+                <td>2008/11/20 </td>
+                <td>31.49</td>
+                <td>-5.59</td>
+                <td>308</td>
+                <td>-15.08%</td>
+                <td>-17.87 %</td>
+            </tr>
+            <tr>
+                <th scope="row">68</th>
+                <td> 台達電 (2308)</td>
+                
+
+                <td>99.88 </td>
+                <td>86.64 </td>
+                <td>80.06 </td>
+                <td>68.44 </td>
+                <td>61.45 </td>               
+                <td>4 </td>
+                <td>4 </td>
+                <td>2.22 </td>
+                <td>4 </td>
+                <td>27.59 </td>
+                <td>28.32 </td>
+                <td>27.59 </td>
+                <td>265408542 </td>
+
+                <td>2008/01/23 </td>
+                <td>49.55</td>
+                <td>2008/11/19 </td>
+                <td>41.93</td>
+                <td>-7.62</td>
+                <td>301</td>
+                <td>-15.38%</td>
+                <td>-18.65 %</td>
+            </tr>
+            <tr>
+                <th scope="row">69</th>
+                <td> 華碩 (2357)</td>
+                
+
+                <td>171.74 </td>
+                <td>147.04 </td>
+                <td>138.11 </td>
+                <td>97.1 </td>
+                <td>92.32 </td>               
+                <td>3 </td>
+                <td>2 </td>
+                <td>3.98 </td>
+                <td>4 </td>
+                <td>19.52 </td>
+                <td>11.8 </td>
+                <td>19.52 </td>
+                <td>308492622 </td>
+
+                <td>2008/01/23 </td>
+                <td>149.94</td>
+                <td>2008/10/08 </td>
+                <td>121.70</td>
+                <td>-28.24</td>
+                <td>259</td>
+                <td>-18.83%</td>
+                <td>-26.54 %</td>
+            </tr>
+            <tr>
+                <th scope="row">70</th>
+                <td> 連宇 (2482)</td>
+                
+
+                <td>54.01 </td>
+                <td>47.32 </td>
+                <td>50.88 </td>
+                <td>36.28 </td>
+                <td>34.04 </td>               
+                <td>3 </td>
+                <td>2 </td>
+                <td>1.25 </td>
+                <td>2 </td>
+                <td>54.32 </td>
+                <td>58.23 </td>
+                <td>54.32 </td>
+                <td>3803072 </td>
+
+                <td>2008/01/24 </td>
+                <td>22.54</td>
+                <td>2008/07/01 </td>
+                <td>19.04</td>
+                <td>-3.50</td>
+                <td>159</td>
+                <td>-15.53%</td>
+                <td>-35.65 %</td>
+            </tr>
+            <tr>
+                <th scope="row">71</th>
+                <td> 台橡 (2103)</td>
+                
+
+                <td>82.98 </td>
+                <td>69.35 </td>
+                <td>66.26 </td>
+                <td>40 </td>
+                <td>32.76 </td>               
+                <td>2 </td>
+                <td>5 </td>
+                <td>2.48 </td>
+                <td>3 </td>
+                <td>89.31 </td>
+                <td>53.09 </td>
+                <td>89.31 </td>
+                <td>24664047 </td>
+
+                <td>2008/01/24 </td>
+                <td>16.09</td>
+                <td>2008/05/16 </td>
+                <td>24.20</td>
+                <td>8.11</td>
+                <td>113</td>
+                <td>50.40%</td>
+                <td>162.81 %</td>
+            </tr>
+            <tr>
+                <th scope="row">72</th>
+                <td> 新光鋼 (2031)</td>
+                
+
+                <td>82.62 </td>
+                <td>68.92 </td>
+                <td>38.67 </td>
+                <td>82.36 </td>
+                <td>56.94 </td>               
+                <td>4 </td>
+                <td>4 </td>
+                <td>2.07 </td>
+                <td>4 </td>
+                <td>39.86 </td>
+                <td>33.55 </td>
+                <td>39.86 </td>
+                <td>5924242 </td>
+
+                <td>2008/01/24 </td>
+                <td>17.84</td>
+                <td>2008/03/26 </td>
+                <td>27.88</td>
+                <td>10.04</td>
+                <td>62</td>
+                <td>56.28%</td>
+                <td>331.31 %</td>
+            </tr>
+            <tr>
+                <th scope="row">73</th>
+                <td> 興勤 (2428)</td>
+                
+
+                <td>82.78 </td>
+                <td>63.1 </td>
+                <td>38.29 </td>
+                <td>45.4 </td>
+                <td>44.36 </td>               
+                <td>1 </td>
+                <td>4 </td>
+                <td>2.51 </td>
+                <td>4 </td>
+                <td>225.97 </td>
+                <td>75.52 </td>
+                <td>225.97 </td>
+                <td>4372886 </td>
+
+                <td>2008/01/25 </td>
+                <td>14.19</td>
+                <td>2008/07/15 </td>
+                <td>11.65</td>
+                <td>-2.54</td>
+                <td>172</td>
+                <td>-17.90%</td>
+                <td>-37.99 %</td>
+            </tr>
+            <tr>
+                <th scope="row">74</th>
+                <td> 光群雷 (2461)</td>
+                
+
+                <td>58.32 </td>
+                <td>53.57 </td>
+                <td>38.98 </td>
+                <td>18.66 </td>
+                <td>16.56 </td>               
+                <td>1 </td>
+                <td>4 </td>
+                <td>1.25 </td>
+                <td>4 </td>
+                <td>89.39 </td>
+                <td>16.82 </td>
+                <td>89.39 </td>
+                <td>5747800 </td>
+
+                <td>2008/01/25 </td>
+                <td>17.75</td>
+                <td>2008/06/12 </td>
+                <td>14.38</td>
+                <td>-3.37</td>
+                <td>139</td>
+                <td>-18.99%</td>
+                <td>-49.86 %</td>
+            </tr>
+            <tr>
+                <th scope="row">75</th>
+                <td> 美律 (2439)</td>
+                
+
+                <td>124.66 </td>
+                <td>118.31 </td>
+                <td>103.53 </td>
+                <td>105.99 </td>
+                <td>58.59 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>3.17 </td>
+                <td>2 </td>
+                <td>52.4 </td>
+                <td>26.8 </td>
+                <td>52.4 </td>
+                <td>17273280 </td>
+
+                <td>2008/01/25 </td>
+                <td>34.92</td>
+                <td>2008/06/11 </td>
+                <td>29.30</td>
+                <td>-5.62</td>
+                <td>138</td>
+                <td>-16.09%</td>
+                <td>-42.57 %</td>
+            </tr>
+            <tr>
+                <th scope="row">76</th>
+                <td> 創見 (2451)</td>
+                
+
+                <td>160.81 </td>
+                <td>136.68 </td>
+                <td>98.76 </td>
+                <td>78.05 </td>
+                <td>76.4 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>4.46 </td>
+                <td>7 </td>
+                <td>123 </td>
+                <td>0.9 </td>
+                <td>123 </td>
+                <td>45123401 </td>
+
+                <td>2008/02/01 </td>
+                <td>39.10</td>
+                <td>2008/05/07 </td>
+                <td>61.96</td>
+                <td>22.86</td>
+                <td>96</td>
+                <td>58.47%</td>
+                <td>222.29 %</td>
+            </tr>
+            <tr>
+                <th scope="row">77</th>
+                <td> 友達 (2409)</td>
+                
+
+                <td>108.37 </td>
+                <td>61.41 </td>
+                <td>89.78 </td>
+                <td>58.36 </td>
+                <td>43.35 </td>               
+                <td>3 </td>
+                <td>3 </td>
+                <td>2.89 </td>
+                <td>3 </td>
+                <td>2790 </td>
+                <td>265.82 </td>
+                <td>2790 </td>
+                <td>451863349 </td>
+
+                <td>2008/02/13 </td>
+                <td>38.32</td>
+                <td>2008/07/09 </td>
+                <td>30.40</td>
+                <td>-7.92</td>
+                <td>147</td>
+                <td>-20.67%</td>
+                <td>-51.32 %</td>
+            </tr>
+            <tr>
+                <th scope="row">78</th>
+                <td> 晶華 (2707)</td>
+                
+
+                <td>197.91 </td>
+                <td>110.94 </td>
+                <td>88.63 </td>
+                <td>52.24 </td>
+                <td>45.24 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>7.25 </td>
+                <td>2 </td>
+                <td>231.05 </td>
+                <td>294.02 </td>
+                <td>231.05 </td>
+                <td>21240000 </td>
+
+                <td>2008/02/29 </td>
+                <td>160.77</td>
+                <td>2008/06/06 </td>
+                <td>254.43</td>
+                <td>93.66</td>
+                <td>98</td>
+                <td>58.26%</td>
+                <td>216.98 %</td>
+            </tr>
+            <tr>
+                <th scope="row">79</th>
+                <td> 南港 (2101)</td>
+                
+
+                <td>107.58 </td>
+                <td>90.14 </td>
+                <td>114.77 </td>
+                <td>64.07 </td>
+                <td>40.67 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>3.58 </td>
+                <td>2 </td>
+                <td>25.17 </td>
+                <td>92.47 </td>
+                <td>25.17 </td>
+                <td>22092522 </td>
+
+                <td>2008/03/06 </td>
+                <td>29.99</td>
+                <td>2008/06/10 </td>
+                <td>25.43</td>
+                <td>-4.56</td>
+                <td>96</td>
+                <td>-15.21%</td>
+                <td>-57.81 %</td>
+            </tr>
+            <tr>
+                <th scope="row">80</th>
+                <td> 國產 (2504)</td>
+                
+
+                <td>41.83 </td>
+                <td>38.82 </td>
+                <td>37.56 </td>
+                <td>28.08 </td>
+                <td>22.79 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>0.58 </td>
+                <td>3 </td>
+                <td>31.82 </td>
+                <td>18.37 </td>
+                <td>31.82 </td>
+                <td>22438373 </td>
+
+                <td>2008/03/25 </td>
+                <td>17.45</td>
+                <td>2008/05/30 </td>
+                <td>14.75</td>
+                <td>-2.70</td>
+                <td>66</td>
+                <td>-15.47%</td>
+                <td>-85.57 %</td>
+            </tr>
+            <tr>
+                <th scope="row">81</th>
+                <td> 新光鋼 (2031)</td>
+                
+
+                <td>82.62 </td>
+                <td>68.92 </td>
+                <td>38.67 </td>
+                <td>82.36 </td>
+                <td>56.94 </td>               
+                <td>4 </td>
+                <td>4 </td>
+                <td>2.07 </td>
+                <td>4 </td>
+                <td>39.86 </td>
+                <td>33.55 </td>
+                <td>39.86 </td>
+                <td>5924242 </td>
+
+                <td>2008/03/27 </td>
+                <td>28.41</td>
+                <td>2008/06/23 </td>
+                <td>23.00</td>
+                <td>-5.41</td>
+                <td>88</td>
+                <td>-19.04%</td>
+                <td>-78.98 %</td>
+            </tr>
+                    <tr>
+                        <td>
+                            2008 Q2
+
+                        </td>
+                    </tr>
+            <tr>
+                <th scope="row">82</th>
+                <td> 裕民 (2606)</td>
+                
+
+                <td>184.32 </td>
+                <td>113.77 </td>
+                <td>139.89 </td>
+                <td>99 </td>
+                <td>65.47 </td>               
+                <td>4 </td>
+                <td>4 </td>
+                <td>6.15 </td>
+                <td>4 </td>
+                <td>129.48 </td>
+                <td>39.77 </td>
+                <td>129.48 </td>
+                <td>76020218 </td>
+
+                <td>2008/04/01 </td>
+                <td>46.51</td>
+                <td>2008/09/04 </td>
+                <td>38.97</td>
+                <td>-7.54</td>
+                <td>156</td>
+                <td>-16.21%</td>
+                <td>-37.93 %</td>
+            </tr>
+            <tr>
+                <th scope="row">83</th>
+                <td> 國揚 (2505)</td>
+                
+
+                <td>39.39 </td>
+                <td>33.3 </td>
+                <td>19.74 </td>
+                <td>13.12 </td>
+                <td>-4.1 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>0.91 </td>
+                <td>2 </td>
+                <td>810 </td>
+                <td>145.95 </td>
+                <td>810 </td>
+                <td>6749650 </td>
+
+                <td>2008/04/01 </td>
+                <td>20.02</td>
+                <td>2008/06/30 </td>
+                <td>16.40</td>
+                <td>-3.62</td>
+                <td>90</td>
+                <td>-18.08%</td>
+                <td>-73.33 %</td>
+            </tr>
+            <tr>
+                <th scope="row">84</th>
+                <td> 鉅祥 (2476)</td>
+                
+
+                <td>77.21 </td>
+                <td>75.18 </td>
+                <td>61.9 </td>
+                <td>43.46 </td>
+                <td>38.78 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>1.68 </td>
+                <td>2 </td>
+                <td>29.23 </td>
+                <td>0.6 </td>
+                <td>29.23 </td>
+                <td>7944148 </td>
+
+                <td>2008/04/01 </td>
+                <td>19.71</td>
+                <td>2008/07/18 </td>
+                <td>16.05</td>
+                <td>-3.66</td>
+                <td>108</td>
+                <td>-18.57%</td>
+                <td>-62.76 %</td>
+            </tr>
+            <tr>
+                <th scope="row">85</th>
+                <td> 長榮 (2603)</td>
+                
+
+                <td>87.2 </td>
+                <td>40.77 </td>
+                <td>98.86 </td>
+                <td>72.33 </td>
+                <td>46.27 </td>               
+                <td>3 </td>
+                <td>4 </td>
+                <td>2.97 </td>
+                <td>4 </td>
+                <td>32 </td>
+                <td>430.36 </td>
+                <td>32 </td>
+                <td>89802522 </td>
+
+                <td>2008/04/01 </td>
+                <td>22.67</td>
+                <td>2008/06/20 </td>
+                <td>19.23</td>
+                <td>-3.44</td>
+                <td>80</td>
+                <td>-15.17%</td>
+                <td>-69.23 %</td>
+            </tr>
+            <tr>
+                <th scope="row">86</th>
+                <td> 冠德 (2520)</td>
+                
+
+                <td>36.45 </td>
+                <td>32.29 </td>
+                <td>29.59 </td>
+                <td>26.66 </td>
+                <td>26.56 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>0.52 </td>
+                <td>2 </td>
+                <td>13.04 </td>
+                <td>271.43 </td>
+                <td>13.04 </td>
+                <td>5628135 </td>
+
+                <td>2008/04/01 </td>
+                <td>11.40</td>
+                <td>2008/06/30 </td>
+                <td>9.19</td>
+                <td>-2.21</td>
+                <td>90</td>
+                <td>-19.39%</td>
+                <td>-78.62 %</td>
+            </tr>
+            <tr>
+                <th scope="row">87</th>
+                <td> 華固 (2548)</td>
+                
+
+                <td>184.67 </td>
+                <td>135.94 </td>
+                <td>135.82 </td>
+                <td>50.24 </td>
+                <td>22 </td>               
+                <td>5 </td>
+                <td>5 </td>
+                <td>6.84 </td>
+                <td>3 </td>
+                <td>171.43 </td>
+                <td>57.6 </td>
+                <td>171.43 </td>
+                <td>12407318 </td>
+
+                <td>2008/04/01 </td>
+                <td>40.74</td>
+                <td>2008/06/13 </td>
+                <td>34.61</td>
+                <td>-6.13</td>
+                <td>73</td>
+                <td>-15.05%</td>
+                <td>-75.23 %</td>
+            </tr>
+            <tr>
+                <th scope="row">88</th>
+                <td> 萬海 (2615)</td>
+                
+
+                <td>68.48 </td>
+                <td>48.95 </td>
+                <td>69.07 </td>
+                <td>57.32 </td>
+                <td>47.3 </td>               
+                <td>4 </td>
+                <td>3 </td>
+                <td>2.28 </td>
+                <td>3 </td>
+                <td>68.89 </td>
+                <td>196.1 </td>
+                <td>68.89 </td>
+                <td>61132585 </td>
+
+                <td>2008/04/01 </td>
+                <td>16.30</td>
+                <td>2008/07/08 </td>
+                <td>13.16</td>
+                <td>-3.14</td>
+                <td>98</td>
+                <td>-19.26%</td>
+                <td>-71.75 %</td>
+            </tr>
+            <tr>
+                <th scope="row">89</th>
+                <td> 一詮 (2486)</td>
+                
+
+                <td>78.49 </td>
+                <td>68.04 </td>
+                <td>53.42 </td>
+                <td>30 </td>
+                <td>28.1 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>2.09 </td>
+                <td>2 </td>
+                <td>35.71 </td>
+                <td>52.55 </td>
+                <td>35.71 </td>
+                <td>5963040 </td>
+
+                <td>2008/04/01 </td>
+                <td>25.38</td>
+                <td>2008/06/30 </td>
+                <td>20.95</td>
+                <td>-4.43</td>
+                <td>90</td>
+                <td>-17.45%</td>
+                <td>-70.79 %</td>
+            </tr>
+            <tr>
+                <th scope="row">90</th>
+                <td> 華經 (2468)</td>
+                
+
+                <td>58.49 </td>
+                <td>45.39 </td>
+                <td>34.08 </td>
+                <td>32.88 </td>
+                <td>31.17 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>1.84 </td>
+                <td>2 </td>
+                <td>260.78 </td>
+                <td>253.85 </td>
+                <td>260.78 </td>
+                <td>1102112 </td>
+
+                <td>2008/04/01 </td>
+                <td>9.01</td>
+                <td>2008/06/23 </td>
+                <td>7.64</td>
+                <td>-1.37</td>
+                <td>83</td>
+                <td>-15.21%</td>
+                <td>-66.87 %</td>
+            </tr>
+            <tr>
+                <th scope="row">91</th>
+                <td> 陽明 (2609)</td>
+                
+
+                <td>73.02 </td>
+                <td>43.61 </td>
+                <td>90.99 </td>
+                <td>67.67 </td>
+                <td>56.54 </td>               
+                <td>3 </td>
+                <td>3 </td>
+                <td>2.09 </td>
+                <td>3 </td>
+                <td>5.03 </td>
+                <td>309.8 </td>
+                <td>5.03 </td>
+                <td>58450320 </td>
+
+                <td>2008/04/01 </td>
+                <td>35.11</td>
+                <td>2008/07/01 </td>
+                <td>29.78</td>
+                <td>-5.33</td>
+                <td>91</td>
+                <td>-15.18%</td>
+                <td>-60.89 %</td>
+            </tr>
+            <tr>
+                <th scope="row">92</th>
+                <td> 東和鋼鐵 (2006)</td>
+                
+
+                <td>103.82 </td>
+                <td>94.92 </td>
+                <td>74.91 </td>
+                <td>60.13 </td>
+                <td>33.56 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>2.47 </td>
+                <td>2 </td>
+                <td>63.58 </td>
+                <td>1.23 </td>
+                <td>63.58 </td>
+                <td>50588323 </td>
+
+                <td>2008/04/01 </td>
+                <td>32.16</td>
+                <td>2008/07/22 </td>
+                <td>26.81</td>
+                <td>-5.35</td>
+                <td>112</td>
+                <td>-16.64%</td>
+                <td>-54.21 %</td>
+            </tr>
+            <tr>
+                <th scope="row">93</th>
+                <td> 鴻海 (2317)</td>
+                
+
+                <td>258.76 </td>
+                <td>234.84 </td>
+                <td>207.62 </td>
+                <td>185.09 </td>
+                <td>124.52 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>7.38 </td>
+                <td>2 </td>
+                <td>20.2 </td>
+                <td>48.49 </td>
+                <td>20.2 </td>
+                <td>1270734732 </td>
+
+                <td>2008/04/01 </td>
+                <td>51.59</td>
+                <td>2008/07/09 </td>
+                <td>41.91</td>
+                <td>-9.68</td>
+                <td>99</td>
+                <td>-18.76%</td>
+                <td>-69.18 %</td>
+            </tr>
+            <tr>
+                <th scope="row">94</th>
+                <td> 金像電 (2368)</td>
+                
+
+                <td>67.19 </td>
+                <td>62.88 </td>
+                <td>57.76 </td>
+                <td>36.36 </td>
+                <td>29.33 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>1.64 </td>
+                <td>2 </td>
+                <td>10.81 </td>
+                <td>60.78 </td>
+                <td>10.81 </td>
+                <td>14791251 </td>
+
+                <td>2008/04/01 </td>
+                <td>18.04</td>
+                <td>2008/06/30 </td>
+                <td>14.97</td>
+                <td>-3.07</td>
+                <td>90</td>
+                <td>-17.02%</td>
+                <td>-69.02 %</td>
+            </tr>
+            <tr>
+                <th scope="row">95</th>
+                <td> 鴻準 (2354)</td>
+                
+
+                <td>272.12 </td>
+                <td>188.68 </td>
+                <td>123.25 </td>
+                <td>65.47 </td>
+                <td>48.68 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>7.42 </td>
+                <td>2 </td>
+                <td>87.85 </td>
+                <td>64.89 </td>
+                <td>87.85 </td>
+                <td>200364120 </td>
+
+                <td>2008/04/01 </td>
+                <td>82.29</td>
+                <td>2008/06/23 </td>
+                <td>69.45</td>
+                <td>-12.84</td>
+                <td>83</td>
+                <td>-15.60%</td>
+                <td>-68.62 %</td>
+            </tr>
+            <tr>
+                <th scope="row">96</th>
+                <td> 光罩 (2338)</td>
+                
+
+                <td>59.96 </td>
+                <td>52.83 </td>
+                <td>52.65 </td>
+                <td>39.25 </td>
+                <td>35.26 </td>               
+                <td>2 </td>
+                <td>3 </td>
+                <td>1.58 </td>
+                <td>2 </td>
+                <td>44.95 </td>
+                <td>92.68 </td>
+                <td>44.95 </td>
+                <td>6582577 </td>
+
+                <td>2008/04/01 </td>
+                <td>10.79</td>
+                <td>2008/07/15 </td>
+                <td>9.05</td>
+                <td>-1.74</td>
+                <td>105</td>
+                <td>-16.13%</td>
+                <td>-56.06 %</td>
+            </tr>
+            <tr>
+                <th scope="row">97</th>
+                <td> 友訊 (2332)</td>
+                
+
+                <td>92.5 </td>
+                <td>71.04 </td>
+                <td>61.78 </td>
+                <td>65.31 </td>
+                <td>56.48 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>2.13 </td>
+                <td>2 </td>
+                <td>97.22 </td>
+                <td>90.18 </td>
+                <td>97.22 </td>
+                <td>39184319 </td>
+
+                <td>2008/04/01 </td>
+                <td>26.56</td>
+                <td>2008/06/30 </td>
+                <td>22.18</td>
+                <td>-4.38</td>
+                <td>90</td>
+                <td>-16.49%</td>
+                <td>-66.88 %</td>
+            </tr>
+            <tr>
+                <th scope="row">98</th>
+                <td> 中橡 (2104)</td>
+                
+
+                <td>93.75 </td>
+                <td>72.97 </td>
+                <td>61.16 </td>
+                <td>39.23 </td>
+                <td>20.08 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>1.81 </td>
+                <td>2 </td>
+                <td>98.9 </td>
+                <td>79.21 </td>
+                <td>98.9 </td>
+                <td>15001616 </td>
+
+                <td>2008/04/01 </td>
+                <td>21.34</td>
+                <td>2008/06/10 </td>
+                <td>17.51</td>
+                <td>-3.83</td>
+                <td>70</td>
+                <td>-17.95%</td>
+                <td>-93.58 %</td>
+            </tr>
+            <tr>
+                <th scope="row">99</th>
+                <td> 精技 (2414)</td>
+                
+
+                <td>42.84 </td>
+                <td>41.7 </td>
+                <td>43 </td>
+                <td>35.33 </td>
+                <td>31.89 </td>               
+                <td>3 </td>
+                <td>3 </td>
+                <td>0.83 </td>
+                <td>2 </td>
+                <td>93.02 </td>
+                <td>76.6 </td>
+                <td>93.02 </td>
+                <td>2871761 </td>
+
+                <td>2008/04/01 </td>
+                <td>9.87</td>
+                <td>2008/06/13 </td>
+                <td>8.26</td>
+                <td>-1.61</td>
+                <td>73</td>
+                <td>-16.31%</td>
+                <td>-81.56 %</td>
+            </tr>
+            <tr>
+                <th scope="row">100</th>
+                <td> 圓剛 (2417)</td>
+                
+
+                <td>95.35 </td>
+                <td>70.81 </td>
+                <td>73.03 </td>
+                <td>54.86 </td>
+                <td>52.6 </td>               
+                <td>2 </td>
+                <td>4 </td>
+                <td>2.95 </td>
+                <td>2 </td>
+                <td>34.09 </td>
+                <td>61.2 </td>
+                <td>34.09 </td>
+                <td>14584202 </td>
+
+                <td>2008/04/01 </td>
+                <td>30.92</td>
+                <td>2008/07/09 </td>
+                <td>24.73</td>
+                <td>-6.19</td>
+                <td>99</td>
+                <td>-20.02%</td>
+                <td>-73.81 %</td>
+            </tr>
+            <tr>
+                <th scope="row">101</th>
+                <td> 互盛電 (2433)</td>
+                
+
+                <td>66.16 </td>
+                <td>30.11 </td>
+                <td>40.58 </td>
+                <td>33.59 </td>
+                <td>24.94 </td>               
+                <td>1 </td>
+                <td>3 </td>
+                <td>2.16 </td>
+                <td>3 </td>
+                <td>184.21 </td>
+                <td>176.92 </td>
+                <td>184.21 </td>
+                <td>2791562 </td>
+
+                <td>2008/04/01 </td>
+                <td>8.31</td>
+                <td>2008/11/18 </td>
+                <td>7.02</td>
+                <td>-1.29</td>
+                <td>231</td>
+                <td>-15.52%</td>
+                <td>-24.53 %</td>
+            </tr>
+            <tr>
+                <th scope="row">102</th>
+                <td> 友旺 (2444)</td>
+                
+
+                <td>29.02 </td>
+                <td>2.71 </td>
+                <td>9.62 </td>
+                <td>8.17 </td>
+                <td>-9.49 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>0.45 </td>
+                <td>3 </td>
+                <td>125 </td>
+                <td>32.35 </td>
+                <td>125 </td>
+                <td>1684156 </td>
+
+                <td>2008/04/01 </td>
+                <td>19.30</td>
+                <td>2008/07/01 </td>
+                <td>15.81</td>
+                <td>-3.49</td>
+                <td>91</td>
+                <td>-18.08%</td>
+                <td>-72.53 %</td>
+            </tr>
+            <tr>
+                <th scope="row">103</th>
+                <td> 春雨 (2012)</td>
+                
+
+                <td>35.99 </td>
+                <td>35.03 </td>
+                <td>35.42 </td>
+                <td>27.29 </td>
+                <td>21.84 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>0.42 </td>
+                <td>2 </td>
+                <td>500 </td>
+                <td>90.91 </td>
+                <td>500 </td>
+                <td>2431690 </td>
+
+                <td>2008/04/01 </td>
+                <td>7.50</td>
+                <td>2008/09/18 </td>
+                <td>6.17</td>
+                <td>-1.33</td>
+                <td>170</td>
+                <td>-17.73%</td>
+                <td>-38.07 %</td>
+            </tr>
+            <tr>
+                <th scope="row">104</th>
+                <td> 台積電 (2330)</td>
+                
+
+                <td>68.77 </td>
+                <td>67.59 </td>
+                <td>64.2 </td>
+                <td>56.82 </td>
+                <td>48.16 </td>               
+                <td>4 </td>
+                <td>4 </td>
+                <td>1.31 </td>
+                <td>4 </td>
+                <td>21.3 </td>
+                <td>13.91 </td>
+                <td>21.3 </td>
+                <td>1638480386 </td>
+
+                <td>2008/04/01 </td>
+                <td>40.89</td>
+                <td>2008/10/08 </td>
+                <td>32.87</td>
+                <td>-8.02</td>
+                <td>190</td>
+                <td>-19.61%</td>
+                <td>-37.68 %</td>
+            </tr>
+            <tr>
+                <th scope="row">105</th>
+                <td> 廣宇 (2328)</td>
+                
+
+                <td>112.97 </td>
+                <td>64.3 </td>
+                <td>58.08 </td>
+                <td>44.85 </td>
+                <td>37.83 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>1.36 </td>
+                <td>2 </td>
+                <td>36 </td>
+                <td>25.93 </td>
+                <td>36 </td>
+                <td>31346500 </td>
+
+                <td>2008/04/01 </td>
+                <td>41.82</td>
+                <td>2008/06/13 </td>
+                <td>35.52</td>
+                <td>-6.30</td>
+                <td>73</td>
+                <td>-15.06%</td>
+                <td>-75.32 %</td>
+            </tr>
+            <tr>
+                <th scope="row">106</th>
+                <td> 鑫永銓 (2114)</td>
+                
+
+                <td>110.01 </td>
+                <td>102.46 </td>
+                <td>59.89 </td>
+                <td>0 </td>
+                <td>0 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>3.6 </td>
+                <td>2 </td>
+                <td>267.35 </td>
+                <td>93.55 </td>
+                <td>267.35 </td>
+                <td>1982957 </td>
+
+                <td>2008/04/01 </td>
+                <td>17.07</td>
+                <td>2008/06/25 </td>
+                <td>14.50</td>
+                <td>-2.57</td>
+                <td>85</td>
+                <td>-15.06%</td>
+                <td>-64.65 %</td>
+            </tr>
+            <tr>
+                <th scope="row">107</th>
+                <td> 盟立 (2464)</td>
+                
+
+                <td>91.74 </td>
+                <td>89.45 </td>
+                <td>79.62 </td>
+                <td>40.51 </td>
+                <td>35.86 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>2.37 </td>
+                <td>2 </td>
+                <td>10.23 </td>
+                <td>3.49 </td>
+                <td>10.23 </td>
+                <td>6604186 </td>
+
+                <td>2008/04/01 </td>
+                <td>17.74</td>
+                <td>2008/09/05 </td>
+                <td>14.49</td>
+                <td>-3.25</td>
+                <td>157</td>
+                <td>-18.32%</td>
+                <td>-42.59 %</td>
+            </tr>
+            <tr>
+                <th scope="row">108</th>
+                <td> 億光 (2393)</td>
+                
+
+                <td>134.86 </td>
+                <td>122.48 </td>
+                <td>106.12 </td>
+                <td>68.24 </td>
+                <td>67.41 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>4.11 </td>
+                <td>2 </td>
+                <td>15.77 </td>
+                <td>64.4 </td>
+                <td>15.77 </td>
+                <td>41768524 </td>
+
+                <td>2008/04/01 </td>
+                <td>61.34</td>
+                <td>2008/06/27 </td>
+                <td>49.42</td>
+                <td>-11.92</td>
+                <td>87</td>
+                <td>-19.43%</td>
+                <td>-81.53 %</td>
+            </tr>
+            <tr>
+                <th scope="row">109</th>
+                <td> 台揚 (2314)</td>
+                
+
+                <td>37.79 </td>
+                <td>36.67 </td>
+                <td>24.72 </td>
+                <td>27.38 </td>
+                <td>22.8 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.65 </td>
+                <td>2 </td>
+                <td>209.52 </td>
+                <td>54.76 </td>
+                <td>209.52 </td>
+                <td>8704744 </td>
+
+                <td>2008/04/01 </td>
+                <td>56.15</td>
+                <td>2008/06/11 </td>
+                <td>46.72</td>
+                <td>-9.43</td>
+                <td>71</td>
+                <td>-16.79%</td>
+                <td>-86.34 %</td>
+            </tr>
+            <tr>
+                <th scope="row">110</th>
+                <td> 益航 (2601)</td>
+                
+
+                <td>132.39 </td>
+                <td>68.58 </td>
+                <td>39.41 </td>
+                <td>32.45 </td>
+                <td>-4.18 </td>               
+                <td>3 </td>
+                <td>3 </td>
+                <td>2.1 </td>
+                <td>5 </td>
+                <td>281.82 </td>
+                <td>5.53 </td>
+                <td>281.82 </td>
+                <td>18826895 </td>
+
+                <td>2008/05/02 </td>
+                <td>61.00</td>
+                <td>2008/05/26 </td>
+                <td>51.56</td>
+                <td>-9.44</td>
+                <td>24</td>
+                <td>-15.48%</td>
+                <td>-235.36 %</td>
+            </tr>
+            <tr>
+                <th scope="row">111</th>
+                <td> 全坤建 (2509)</td>
+                
+
+                <td>171.46 </td>
+                <td>83.64 </td>
+                <td>57.76 </td>
+                <td>45.6 </td>
+                <td>24 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>2.12 </td>
+                <td>2 </td>
+                <td>606.67 </td>
+                <td>84.35 </td>
+                <td>606.67 </td>
+                <td>6305255 </td>
+
+                <td>2008/05/02 </td>
+                <td>20.00</td>
+                <td>2008/06/11 </td>
+                <td>16.91</td>
+                <td>-3.09</td>
+                <td>40</td>
+                <td>-15.45%</td>
+                <td>-140.98 %</td>
+            </tr>
+            <tr>
+                <th scope="row">112</th>
+                <td> 第一金 (2892)</td>
+                
+
+                <td>95.58 </td>
+                <td>48.92 </td>
+                <td>47.15 </td>
+                <td>51.22 </td>
+                <td>37.26 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.57 </td>
+                <td>2 </td>
+                <td>16.33 </td>
+                <td>29.55 </td>
+                <td>16.33 </td>
+                <td>194018575 </td>
+
+                <td>2008/05/02 </td>
+                <td>16.50</td>
+                <td>2008/07/02 </td>
+                <td>13.12</td>
+                <td>-3.38</td>
+                <td>61</td>
+                <td>-20.48%</td>
+                <td>-122.57 %</td>
+            </tr>
+            <tr>
+                <th scope="row">113</th>
+                <td> 技嘉 (2376)</td>
+                
+
+                <td>154.2 </td>
+                <td>82.44 </td>
+                <td>57.68 </td>
+                <td>79.15 </td>
+                <td>66.22 </td>               
+                <td>4 </td>
+                <td>2 </td>
+                <td>1 </td>
+                <td>2 </td>
+                <td>376.19 </td>
+                <td>14.94 </td>
+                <td>376.19 </td>
+                <td>16145400 </td>
+
+                <td>2008/05/02 </td>
+                <td>13.47</td>
+                <td>2008/06/27 </td>
+                <td>11.39</td>
+                <td>-2.08</td>
+                <td>56</td>
+                <td>-15.44%</td>
+                <td>-100.65 %</td>
+            </tr>
+            <tr>
+                <th scope="row">114</th>
+                <td> 威致 (2028)</td>
+                
+
+                <td>68.25 </td>
+                <td>32.01 </td>
+                <td>30.36 </td>
+                <td>-0.04 </td>
+                <td>-20.06 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.76 </td>
+                <td>2 </td>
+                <td>49.02 </td>
+                <td>72.73 </td>
+                <td>49.02 </td>
+                <td>2650000 </td>
+
+                <td>2008/05/02 </td>
+                <td>38.58</td>
+                <td>2008/05/29 </td>
+                <td>32.17</td>
+                <td>-6.41</td>
+                <td>27</td>
+                <td>-16.61%</td>
+                <td>-224.61 %</td>
+            </tr>
+            <tr>
+                <th scope="row">115</th>
+                <td> 立隆電 (2472)</td>
+                
+
+                <td>54.7 </td>
+                <td>32.38 </td>
+                <td>30.61 </td>
+                <td>31.02 </td>
+                <td>17.76 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>-0.68 </td>
+                <td>1 </td>
+                <td>1600 </td>
+                <td>1033.33 </td>
+                <td>1600 </td>
+                <td>1581035 </td>
+
+                <td>2008/05/02 </td>
+                <td>8.02</td>
+                <td>2008/06/12 </td>
+                <td>6.64</td>
+                <td>-1.38</td>
+                <td>41</td>
+                <td>-17.21%</td>
+                <td>-153.18 %</td>
+            </tr>
+            <tr>
+                <th scope="row">116</th>
+                <td> 益航 (2601)</td>
+                
+
+                <td>132.39 </td>
+                <td>68.58 </td>
+                <td>39.41 </td>
+                <td>32.45 </td>
+                <td>-4.18 </td>               
+                <td>3 </td>
+                <td>3 </td>
+                <td>2.1 </td>
+                <td>5 </td>
+                <td>281.82 </td>
+                <td>5.53 </td>
+                <td>281.82 </td>
+                <td>18826895 </td>
+
+                <td>2008/05/27 </td>
+                <td>53.02</td>
+                <td>2008/06/12 </td>
+                <td>43.94</td>
+                <td>-9.08</td>
+                <td>16</td>
+                <td>-17.13%</td>
+                <td>-390.68 %</td>
+            </tr>
+            <tr>
+                <th scope="row">117</th>
+                <td> 威致 (2028)</td>
+                
+
+                <td>68.25 </td>
+                <td>32.01 </td>
+                <td>30.36 </td>
+                <td>-0.04 </td>
+                <td>-20.06 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.76 </td>
+                <td>2 </td>
+                <td>49.02 </td>
+                <td>72.73 </td>
+                <td>49.02 </td>
+                <td>2650000 </td>
+
+                <td>2008/05/30 </td>
+                <td>30.17</td>
+                <td>2008/06/24 </td>
+                <td>24.67</td>
+                <td>-5.50</td>
+                <td>25</td>
+                <td>-18.23%</td>
+                <td>-266.16 %</td>
+            </tr>
+            <tr>
+                <th scope="row">118</th>
+                <td> 全坤建 (2509)</td>
+                
+
+                <td>171.46 </td>
+                <td>83.64 </td>
+                <td>57.76 </td>
+                <td>45.6 </td>
+                <td>24 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>2.12 </td>
+                <td>2 </td>
+                <td>606.67 </td>
+                <td>84.35 </td>
+                <td>606.67 </td>
+                <td>6305255 </td>
+
+                <td>2008/06/12 </td>
+                <td>15.75</td>
+                <td>2008/06/27 </td>
+                <td>13.28</td>
+                <td>-2.47</td>
+                <td>15</td>
+                <td>-15.68%</td>
+                <td>-381.61 %</td>
+            </tr>
+            <tr>
+                <th scope="row">119</th>
+                <td> 立隆電 (2472)</td>
+                
+
+                <td>54.7 </td>
+                <td>32.38 </td>
+                <td>30.61 </td>
+                <td>31.02 </td>
+                <td>17.76 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>-0.68 </td>
+                <td>1 </td>
+                <td>1600 </td>
+                <td>1033.33 </td>
+                <td>1600 </td>
+                <td>1581035 </td>
+
+                <td>2008/06/13 </td>
+                <td>6.40</td>
+                <td>2008/07/01 </td>
+                <td>5.34</td>
+                <td>-1.06</td>
+                <td>18</td>
+                <td>-16.56%</td>
+                <td>-335.85 %</td>
+            </tr>
+            <tr>
+                <th scope="row">120</th>
+                <td> 益航 (2601)</td>
+                
+
+                <td>132.39 </td>
+                <td>68.58 </td>
+                <td>39.41 </td>
+                <td>32.45 </td>
+                <td>-4.18 </td>               
+                <td>3 </td>
+                <td>3 </td>
+                <td>2.1 </td>
+                <td>5 </td>
+                <td>281.82 </td>
+                <td>5.53 </td>
+                <td>281.82 </td>
+                <td>18826895 </td>
+
+                <td>2008/06/13 </td>
+                <td>40.89</td>
+                <td>2008/09/15 </td>
+                <td>34.13</td>
+                <td>-6.76</td>
+                <td>94</td>
+                <td>-16.53%</td>
+                <td>-64.19 %</td>
+            </tr>
+            <tr>
+                <th scope="row">121</th>
+                <td> 威致 (2028)</td>
+                
+
+                <td>68.25 </td>
+                <td>32.01 </td>
+                <td>30.36 </td>
+                <td>-0.04 </td>
+                <td>-20.06 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.76 </td>
+                <td>2 </td>
+                <td>49.02 </td>
+                <td>72.73 </td>
+                <td>49.02 </td>
+                <td>2650000 </td>
+
+                <td>2008/06/25 </td>
+                <td>25.50</td>
+                <td>2008/07/21 </td>
+                <td>21.50</td>
+                <td>-4.00</td>
+                <td>26</td>
+                <td>-15.69%</td>
+                <td>-220.21 %</td>
+            </tr>
+            <tr>
+                <th scope="row">122</th>
+                <td> 技嘉 (2376)</td>
+                
+
+                <td>154.2 </td>
+                <td>82.44 </td>
+                <td>57.68 </td>
+                <td>79.15 </td>
+                <td>66.22 </td>               
+                <td>4 </td>
+                <td>2 </td>
+                <td>1 </td>
+                <td>2 </td>
+                <td>376.19 </td>
+                <td>14.94 </td>
+                <td>376.19 </td>
+                <td>16145400 </td>
+
+                <td>2008/06/30 </td>
+                <td>11.64</td>
+                <td>2008/09/03 </td>
+                <td>9.65</td>
+                <td>-1.99</td>
+                <td>65</td>
+                <td>-17.10%</td>
+                <td>-96.00 %</td>
+            </tr>
+            <tr>
+                <th scope="row">123</th>
+                <td> 全坤建 (2509)</td>
+                
+
+                <td>171.46 </td>
+                <td>83.64 </td>
+                <td>57.76 </td>
+                <td>45.6 </td>
+                <td>24 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>2.12 </td>
+                <td>2 </td>
+                <td>606.67 </td>
+                <td>84.35 </td>
+                <td>606.67 </td>
+                <td>6305255 </td>
+
+                <td>2008/06/30 </td>
+                <td>12.37</td>
+                <td>2008/08/04 </td>
+                <td>10.39</td>
+                <td>-1.98</td>
+                <td>35</td>
+                <td>-16.01%</td>
+                <td>-166.92 %</td>
+            </tr>
+                    <tr>
+                        <td>
+                            2008 Q3
+
+                        </td>
+                    </tr>
+            <tr>
+                <th scope="row">124</th>
+                <td> 立隆電 (2472)</td>
+                
+
+                <td>54.7 </td>
+                <td>32.38 </td>
+                <td>30.61 </td>
+                <td>31.02 </td>
+                <td>17.76 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>-0.68 </td>
+                <td>1 </td>
+                <td>1600 </td>
+                <td>1033.33 </td>
+                <td>1600 </td>
+                <td>1581035 </td>
+
+                <td>2008/07/02 </td>
+                <td>5.30</td>
+                <td>2008/09/15 </td>
+                <td>4.36</td>
+                <td>-0.94</td>
+                <td>75</td>
+                <td>-17.74%</td>
+                <td>-86.31 %</td>
+            </tr>
+            <tr>
+                <th scope="row">125</th>
+                <td> 第一金 (2892)</td>
+                
+
+                <td>95.58 </td>
+                <td>48.92 </td>
+                <td>47.15 </td>
+                <td>51.22 </td>
+                <td>37.26 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.57 </td>
+                <td>2 </td>
+                <td>16.33 </td>
+                <td>29.55 </td>
+                <td>16.33 </td>
+                <td>194018575 </td>
+
+                <td>2008/07/03 </td>
+                <td>12.88</td>
+                <td>2008/07/15 </td>
+                <td>10.77</td>
+                <td>-2.11</td>
+                <td>12</td>
+                <td>-16.38%</td>
+                <td>-498.29 %</td>
+            </tr>
+            <tr>
+                <th scope="row">126</th>
+                <td> 第一金 (2892)</td>
+                
+
+                <td>95.58 </td>
+                <td>48.92 </td>
+                <td>47.15 </td>
+                <td>51.22 </td>
+                <td>37.26 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.57 </td>
+                <td>2 </td>
+                <td>16.33 </td>
+                <td>29.55 </td>
+                <td>16.33 </td>
+                <td>194018575 </td>
+
+                <td>2008/07/16 </td>
+                <td>10.86</td>
+                <td>2008/09/18 </td>
+                <td>8.77</td>
+                <td>-2.09</td>
+                <td>64</td>
+                <td>-19.24%</td>
+                <td>-109.76 %</td>
+            </tr>
+            <tr>
+                <th scope="row">127</th>
+                <td> 威致 (2028)</td>
+                
+
+                <td>68.25 </td>
+                <td>32.01 </td>
+                <td>30.36 </td>
+                <td>-0.04 </td>
+                <td>-20.06 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.76 </td>
+                <td>2 </td>
+                <td>49.02 </td>
+                <td>72.73 </td>
+                <td>49.02 </td>
+                <td>2650000 </td>
+
+                <td>2008/07/22 </td>
+                <td>21.67</td>
+                <td>2008/08/11 </td>
+                <td>18.33</td>
+                <td>-3.34</td>
+                <td>20</td>
+                <td>-15.41%</td>
+                <td>-281.29 %</td>
+            </tr>
+            <tr>
+                <th scope="row">128</th>
+                <td> 全坤建 (2509)</td>
+                
+
+                <td>171.46 </td>
+                <td>83.64 </td>
+                <td>57.76 </td>
+                <td>45.6 </td>
+                <td>24 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>2.12 </td>
+                <td>2 </td>
+                <td>606.67 </td>
+                <td>84.35 </td>
+                <td>606.67 </td>
+                <td>6305255 </td>
+
+                <td>2008/08/05 </td>
+                <td>9.85</td>
+                <td>2008/09/15 </td>
+                <td>8.20</td>
+                <td>-1.65</td>
+                <td>41</td>
+                <td>-16.75%</td>
+                <td>-149.13 %</td>
+            </tr>
+            <tr>
+                <th scope="row">129</th>
+                <td> 威致 (2028)</td>
+                
+
+                <td>68.25 </td>
+                <td>32.01 </td>
+                <td>30.36 </td>
+                <td>-0.04 </td>
+                <td>-20.06 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.76 </td>
+                <td>2 </td>
+                <td>49.02 </td>
+                <td>72.73 </td>
+                <td>49.02 </td>
+                <td>2650000 </td>
+
+                <td>2008/08/12 </td>
+                <td>18.00</td>
+                <td>2008/09/17 </td>
+                <td>14.23</td>
+                <td>-3.77</td>
+                <td>36</td>
+                <td>-20.94%</td>
+                <td>-212.35 %</td>
+            </tr>
+            <tr>
+                <th scope="row">130</th>
+                <td> 金寶 (2312)</td>
+                
+
+                <td>79.89 </td>
+                <td>42.62 </td>
+                <td>38.65 </td>
+                <td>34.66 </td>
+                <td>32.4 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>0.38 </td>
+                <td>2 </td>
+                <td>31.03 </td>
+                <td>171.43 </td>
+                <td>31.03 </td>
+                <td>12982888 </td>
+
+                <td>2008/09/01 </td>
+                <td>7.73</td>
+                <td>2008/09/18 </td>
+                <td>6.15</td>
+                <td>-1.58</td>
+                <td>17</td>
+                <td>-20.44%</td>
+                <td>-438.86 %</td>
+            </tr>
+            <tr>
+                <th scope="row">131</th>
+                <td> 陽明 (2609)</td>
+                
+
+                <td>120.87 </td>
+                <td>73.02 </td>
+                <td>43.61 </td>
+                <td>90.99 </td>
+                <td>67.67 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.33 </td>
+                <td>2 </td>
+                <td>560 </td>
+                <td>43.48 </td>
+                <td>560 </td>
+                <td>46591220 </td>
+
+                <td>2008/09/01 </td>
+                <td>26.53</td>
+                <td>2008/09/15 </td>
+                <td>21.83</td>
+                <td>-4.70</td>
+                <td>14</td>
+                <td>-17.72%</td>
+                <td>-461.88 %</td>
+            </tr>
+            <tr>
+                <th scope="row">132</th>
+                <td> 中櫃 (2613)</td>
+                
+
+                <td>129.02 </td>
+                <td>67.69 </td>
+                <td>54.2 </td>
+                <td>60.64 </td>
+                <td>49.64 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>0.69 </td>
+                <td>2 </td>
+                <td>15 </td>
+                <td>21.05 </td>
+                <td>15 </td>
+                <td>1877921 </td>
+
+                <td>2008/09/01 </td>
+                <td>15.05</td>
+                <td>2008/09/04 </td>
+                <td>12.74</td>
+                <td>-2.31</td>
+                <td>3</td>
+                <td>-15.35%</td>
+                <td>-1867.44 %</td>
+            </tr>
+            <tr>
+                <th scope="row">133</th>
+                <td> 台航 (2617)</td>
+                
+
+                <td>157.84 </td>
+                <td>81.77 </td>
+                <td>64.01 </td>
+                <td>70.97 </td>
+                <td>42.96 </td>               
+                <td>1 </td>
+                <td>3 </td>
+                <td>1.82 </td>
+                <td>2 </td>
+                <td>46.77 </td>
+                <td>27.27 </td>
+                <td>46.77 </td>
+                <td>22533876 </td>
+
+                <td>2008/09/01 </td>
+                <td>39.01</td>
+                <td>2008/09/05 </td>
+                <td>31.49</td>
+                <td>-7.52</td>
+                <td>4</td>
+                <td>-19.28%</td>
+                <td>-1759.04 %</td>
+            </tr>
+            <tr>
+                <th scope="row">134</th>
+                <td> 長榮 (2603)</td>
+                
+
+                <td>134.86 </td>
+                <td>87.2 </td>
+                <td>40.77 </td>
+                <td>98.86 </td>
+                <td>72.33 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>0.27 </td>
+                <td>2 </td>
+                <td>125 </td>
+                <td>125 </td>
+                <td>125 </td>
+                <td>73766340 </td>
+
+                <td>2008/09/01 </td>
+                <td>14.81</td>
+                <td>2008/09/18 </td>
+                <td>11.85</td>
+                <td>-2.96</td>
+                <td>17</td>
+                <td>-19.99%</td>
+                <td>-429.12 %</td>
+            </tr>
+            <tr>
+                <th scope="row">135</th>
+                <td> 震旦行 (2373)</td>
+                
+
+                <td>93.94 </td>
+                <td>53.86 </td>
+                <td>53.04 </td>
+                <td>53.2 </td>
+                <td>32.06 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.49 </td>
+                <td>2 </td>
+                <td>122.73 </td>
+                <td>145 </td>
+                <td>122.73 </td>
+                <td>9182954 </td>
+
+                <td>2008/09/01 </td>
+                <td>22.03</td>
+                <td>2008/09/17 </td>
+                <td>17.98</td>
+                <td>-4.05</td>
+                <td>16</td>
+                <td>-18.38%</td>
+                <td>-419.39 %</td>
+            </tr>
+            <tr>
+                <th scope="row">136</th>
+                <td> 國建 (2501)</td>
+                
+
+                <td>58.46 </td>
+                <td>31.45 </td>
+                <td>34.46 </td>
+                <td>23.7 </td>
+                <td>21.1 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>0.11 </td>
+                <td>2 </td>
+                <td>83.33 </td>
+                <td>37.5 </td>
+                <td>83.33 </td>
+                <td>28077929 </td>
+
+                <td>2008/09/01 </td>
+                <td>9.97</td>
+                <td>2008/09/05 </td>
+                <td>8.21</td>
+                <td>-1.76</td>
+                <td>4</td>
+                <td>-17.65%</td>
+                <td>-1610.83 %</td>
+            </tr>
+            <tr>
+                <th scope="row">137</th>
+                <td> 義隆 (2458)</td>
+                
+
+                <td>81.32 </td>
+                <td>48.6 </td>
+                <td>35.08 </td>
+                <td>38.25 </td>
+                <td>34.6 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.34 </td>
+                <td>2 </td>
+                <td>6.25 </td>
+                <td>240 </td>
+                <td>6.25 </td>
+                <td>12517726 </td>
+
+                <td>2008/09/01 </td>
+                <td>23.86</td>
+                <td>2008/09/05 </td>
+                <td>19.26</td>
+                <td>-4.60</td>
+                <td>4</td>
+                <td>-19.28%</td>
+                <td>-1759.22 %</td>
+            </tr>
+            <tr>
+                <th scope="row">138</th>
+                <td> 中櫃 (2613)</td>
+                
+
+                <td>129.02 </td>
+                <td>67.69 </td>
+                <td>54.2 </td>
+                <td>60.64 </td>
+                <td>49.64 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>0.69 </td>
+                <td>2 </td>
+                <td>15 </td>
+                <td>21.05 </td>
+                <td>15 </td>
+                <td>1877921 </td>
+
+                <td>2008/09/05 </td>
+                <td>11.89</td>
+                <td>2008/10/08 </td>
+                <td>9.53</td>
+                <td>-2.36</td>
+                <td>33</td>
+                <td>-19.85%</td>
+                <td>-219.54 %</td>
+            </tr>
+            <tr>
+                <th scope="row">139</th>
+                <td> 台航 (2617)</td>
+                
+
+                <td>157.84 </td>
+                <td>81.77 </td>
+                <td>64.01 </td>
+                <td>70.97 </td>
+                <td>42.96 </td>               
+                <td>1 </td>
+                <td>3 </td>
+                <td>1.82 </td>
+                <td>2 </td>
+                <td>46.77 </td>
+                <td>27.27 </td>
+                <td>46.77 </td>
+                <td>22533876 </td>
+
+                <td>2008/09/08 </td>
+                <td>33.67</td>
+                <td>2008/09/26 </td>
+                <td>26.95</td>
+                <td>-6.72</td>
+                <td>18</td>
+                <td>-19.96%</td>
+                <td>-404.71 %</td>
+            </tr>
+            <tr>
+                <th scope="row">140</th>
+                <td> 國建 (2501)</td>
+                
+
+                <td>58.46 </td>
+                <td>31.45 </td>
+                <td>34.46 </td>
+                <td>23.7 </td>
+                <td>21.1 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>0.11 </td>
+                <td>2 </td>
+                <td>83.33 </td>
+                <td>37.5 </td>
+                <td>83.33 </td>
+                <td>28077929 </td>
+
+                <td>2008/09/08 </td>
+                <td>8.78</td>
+                <td>2008/09/17 </td>
+                <td>7.25</td>
+                <td>-1.53</td>
+                <td>9</td>
+                <td>-17.43%</td>
+                <td>-706.72 %</td>
+            </tr>
+            <tr>
+                <th scope="row">141</th>
+                <td> 義隆 (2458)</td>
+                
+
+                <td>81.32 </td>
+                <td>48.6 </td>
+                <td>35.08 </td>
+                <td>38.25 </td>
+                <td>34.6 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.34 </td>
+                <td>2 </td>
+                <td>6.25 </td>
+                <td>240 </td>
+                <td>6.25 </td>
+                <td>12517726 </td>
+
+                <td>2008/09/08 </td>
+                <td>20.58</td>
+                <td>2008/09/12 </td>
+                <td>17.30</td>
+                <td>-3.28</td>
+                <td>4</td>
+                <td>-15.94%</td>
+                <td>-1454.32 %</td>
+            </tr>
+            <tr>
+                <th scope="row">142</th>
+                <td> 義隆 (2458)</td>
+                
+
+                <td>81.32 </td>
+                <td>48.6 </td>
+                <td>35.08 </td>
+                <td>38.25 </td>
+                <td>34.6 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.34 </td>
+                <td>2 </td>
+                <td>6.25 </td>
+                <td>240 </td>
+                <td>6.25 </td>
+                <td>12517726 </td>
+
+                <td>2008/09/15 </td>
+                <td>16.11</td>
+                <td>2008/09/18 </td>
+                <td>12.99</td>
+                <td>-3.12</td>
+                <td>3</td>
+                <td>-19.37%</td>
+                <td>-2356.30 %</td>
+            </tr>
+            <tr>
+                <th scope="row">143</th>
+                <td> 益航 (2601)</td>
+                
+
+                <td>156.96 </td>
+                <td>68.58 </td>
+                <td>39.41 </td>
+                <td>32.45 </td>
+                <td>-4.18 </td>               
+                <td>4 </td>
+                <td>4 </td>
+                <td>2.33 </td>
+                <td>6 </td>
+                <td>194.94 </td>
+                <td>10.95 </td>
+                <td>194.94 </td>
+                <td>12282656 </td>
+
+                <td>2008/09/16 </td>
+                <td>31.77</td>
+                <td>2008/10/08 </td>
+                <td>26.28</td>
+                <td>-5.49</td>
+                <td>22</td>
+                <td>-17.28%</td>
+                <td>-286.70 %</td>
+            </tr>
+            <tr>
+                <th scope="row">144</th>
+                <td> 陽明 (2609)</td>
+                
+
+                <td>120.87 </td>
+                <td>73.02 </td>
+                <td>43.61 </td>
+                <td>90.99 </td>
+                <td>67.67 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.33 </td>
+                <td>2 </td>
+                <td>560 </td>
+                <td>43.48 </td>
+                <td>560 </td>
+                <td>46591220 </td>
+
+                <td>2008/09/16 </td>
+                <td>20.32</td>
+                <td>2008/10/09 </td>
+                <td>16.20</td>
+                <td>-4.12</td>
+                <td>23</td>
+                <td>-20.28%</td>
+                <td>-321.76 %</td>
+            </tr>
+            <tr>
+                <th scope="row">145</th>
+                <td> 新產 (2850)</td>
+                
+
+                <td>84.82 </td>
+                <td>41.45 </td>
+                <td>42.1 </td>
+                <td>35.72 </td>
+                <td>34.08 </td>               
+                <td>2 </td>
+                <td>3 </td>
+                <td>0.87 </td>
+                <td>3 </td>
+                <td>383.33 </td>
+                <td>180.65 </td>
+                <td>383.33 </td>
+                <td>5025314 </td>
+
+                <td>2008/09/17 </td>
+                <td>7.22</td>
+                <td>2008/10/07 </td>
+                <td>5.97</td>
+                <td>-1.25</td>
+                <td>20</td>
+                <td>-17.31%</td>
+                <td>-315.96 %</td>
+            </tr>
+            <tr>
+                <th scope="row">146</th>
+                <td> 國建 (2501)</td>
+                
+
+                <td>58.46 </td>
+                <td>31.45 </td>
+                <td>34.46 </td>
+                <td>23.7 </td>
+                <td>21.1 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>0.11 </td>
+                <td>2 </td>
+                <td>83.33 </td>
+                <td>37.5 </td>
+                <td>83.33 </td>
+                <td>28077929 </td>
+
+                <td>2008/09/18 </td>
+                <td>6.76</td>
+                <td>2008/10/13 </td>
+                <td>5.73</td>
+                <td>-1.03</td>
+                <td>25</td>
+                <td>-15.24%</td>
+                <td>-222.46 %</td>
+            </tr>
+            <tr>
+                <th scope="row">147</th>
+                <td> 威致 (2028)</td>
+                
+
+                <td>72.23 </td>
+                <td>32.01 </td>
+                <td>30.36 </td>
+                <td>-0.04 </td>
+                <td>-20.06 </td>               
+                <td>1 </td>
+                <td>3 </td>
+                <td>0.89 </td>
+                <td>3 </td>
+                <td>11.25 </td>
+                <td>17.11 </td>
+                <td>11.25 </td>
+                <td>3975000 </td>
+
+                <td>2008/09/18 </td>
+                <td>14.00</td>
+                <td>2008/10/08 </td>
+                <td>11.45</td>
+                <td>-2.55</td>
+                <td>20</td>
+                <td>-18.21%</td>
+                <td>-332.41 %</td>
+            </tr>
+            <tr>
+                <th scope="row">148</th>
+                <td> 春雨 (2012)</td>
+                
+
+                <td>72.98 </td>
+                <td>35.99 </td>
+                <td>35.03 </td>
+                <td>35.42 </td>
+                <td>27.29 </td>               
+                <td>3 </td>
+                <td>2 </td>
+                <td>0.43 </td>
+                <td>2 </td>
+                <td>86.96 </td>
+                <td>104.76 </td>
+                <td>86.96 </td>
+                <td>3338178 </td>
+
+                <td>2008/09/19 </td>
+                <td>6.60</td>
+                <td>2008/10/21 </td>
+                <td>5.57</td>
+                <td>-1.03</td>
+                <td>32</td>
+                <td>-15.61%</td>
+                <td>-178.01 %</td>
+            </tr>
+            <tr>
+                <th scope="row">149</th>
+                <td> 金寶 (2312)</td>
+                
+
+                <td>79.89 </td>
+                <td>42.62 </td>
+                <td>38.65 </td>
+                <td>34.66 </td>
+                <td>32.4 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>0.38 </td>
+                <td>2 </td>
+                <td>31.03 </td>
+                <td>171.43 </td>
+                <td>31.03 </td>
+                <td>12982888 </td>
+
+                <td>2008/09/19 </td>
+                <td>6.58</td>
+                <td>2008/10/24 </td>
+                <td>5.46</td>
+                <td>-1.12</td>
+                <td>35</td>
+                <td>-17.02%</td>
+                <td>-177.51 %</td>
+            </tr>
+            <tr>
+                <th scope="row">150</th>
+                <td> 義隆 (2458)</td>
+                
+
+                <td>81.32 </td>
+                <td>48.6 </td>
+                <td>35.08 </td>
+                <td>38.25 </td>
+                <td>34.6 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.34 </td>
+                <td>2 </td>
+                <td>6.25 </td>
+                <td>240 </td>
+                <td>6.25 </td>
+                <td>12517726 </td>
+
+                <td>2008/09/19 </td>
+                <td>13.72</td>
+                <td>2008/10/13 </td>
+                <td>11.60</td>
+                <td>-2.12</td>
+                <td>24</td>
+                <td>-15.45%</td>
+                <td>-235.00 %</td>
+            </tr>
+            <tr>
+                <th scope="row">151</th>
+                <td> 台航 (2617)</td>
+                
+
+                <td>157.84 </td>
+                <td>81.77 </td>
+                <td>64.01 </td>
+                <td>70.97 </td>
+                <td>42.96 </td>               
+                <td>1 </td>
+                <td>3 </td>
+                <td>1.82 </td>
+                <td>2 </td>
+                <td>46.77 </td>
+                <td>27.27 </td>
+                <td>46.77 </td>
+                <td>22533876 </td>
+
+                <td>2008/09/30 </td>
+                <td>25.07</td>
+                <td>2008/10/24 </td>
+                <td>20.91</td>
+                <td>-4.16</td>
+                <td>24</td>
+                <td>-16.59%</td>
+                <td>-252.36 %</td>
+            </tr>
+                    <tr>
+                        <td>
+                            2008 Q4
+
+                        </td>
+                    </tr>
+            <tr>
+                <th scope="row">152</th>
+                <td> 新產 (2850)</td>
+                
+
+                <td>84.82 </td>
+                <td>41.45 </td>
+                <td>42.1 </td>
+                <td>35.72 </td>
+                <td>34.08 </td>               
+                <td>2 </td>
+                <td>3 </td>
+                <td>0.87 </td>
+                <td>3 </td>
+                <td>383.33 </td>
+                <td>180.65 </td>
+                <td>383.33 </td>
+                <td>5025314 </td>
+
+                <td>2008/10/08 </td>
+                <td>5.55</td>
+                <td>2008/10/27 </td>
+                <td>4.56</td>
+                <td>-0.99</td>
+                <td>19</td>
+                <td>-17.84%</td>
+                <td>-342.67 %</td>
+            </tr>
+            <tr>
+                <th scope="row">153</th>
+                <td> 益航 (2601)</td>
+                
+
+                <td>156.96 </td>
+                <td>68.58 </td>
+                <td>39.41 </td>
+                <td>32.45 </td>
+                <td>-4.18 </td>               
+                <td>4 </td>
+                <td>4 </td>
+                <td>2.33 </td>
+                <td>6 </td>
+                <td>194.94 </td>
+                <td>10.95 </td>
+                <td>194.94 </td>
+                <td>12282656 </td>
+
+                <td>2008/10/09 </td>
+                <td>24.76</td>
+                <td>2008/10/22 </td>
+                <td>20.67</td>
+                <td>-4.09</td>
+                <td>13</td>
+                <td>-16.52%</td>
+                <td>-463.79 %</td>
+            </tr>
+            <tr>
+                <th scope="row">154</th>
+                <td> 威致 (2028)</td>
+                
+
+                <td>72.23 </td>
+                <td>32.01 </td>
+                <td>30.36 </td>
+                <td>-0.04 </td>
+                <td>-20.06 </td>               
+                <td>1 </td>
+                <td>3 </td>
+                <td>0.89 </td>
+                <td>3 </td>
+                <td>11.25 </td>
+                <td>17.11 </td>
+                <td>11.25 </td>
+                <td>3975000 </td>
+
+                <td>2008/10/09 </td>
+                <td>11.27</td>
+                <td>2008/10/22 </td>
+                <td>9.32</td>
+                <td>-1.95</td>
+                <td>13</td>
+                <td>-17.30%</td>
+                <td>-485.80 %</td>
+            </tr>
+            <tr>
+                <th scope="row">155</th>
+                <td> 台積電 (2330)</td>
+                
+
+                <td>133.53 </td>
+                <td>68.77 </td>
+                <td>67.59 </td>
+                <td>64.2 </td>
+                <td>56.82 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>1.12 </td>
+                <td>2 </td>
+                <td>15.46 </td>
+                <td>1.82 </td>
+                <td>15.46 </td>
+                <td>1666039050 </td>
+
+                <td>2008/10/09 </td>
+                <td>32.77</td>
+                <td>2008/10/27 </td>
+                <td>27.22</td>
+                <td>-5.55</td>
+                <td>18</td>
+                <td>-16.94%</td>
+                <td>-343.43 %</td>
+            </tr>
+            <tr>
+                <th scope="row">156</th>
+                <td> 中櫃 (2613)</td>
+                
+
+                <td>129.02 </td>
+                <td>67.69 </td>
+                <td>54.2 </td>
+                <td>60.64 </td>
+                <td>49.64 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>0.69 </td>
+                <td>2 </td>
+                <td>15 </td>
+                <td>21.05 </td>
+                <td>15 </td>
+                <td>1877921 </td>
+
+                <td>2008/10/09 </td>
+                <td>8.88</td>
+                <td>2008/10/27 </td>
+                <td>7.54</td>
+                <td>-1.34</td>
+                <td>18</td>
+                <td>-15.09%</td>
+                <td>-305.99 %</td>
+            </tr>
+            <tr>
+                <th scope="row">157</th>
+                <td> 陽明 (2609)</td>
+                
+
+                <td>120.87 </td>
+                <td>73.02 </td>
+                <td>43.61 </td>
+                <td>90.99 </td>
+                <td>67.67 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.33 </td>
+                <td>2 </td>
+                <td>560 </td>
+                <td>43.48 </td>
+                <td>560 </td>
+                <td>46591220 </td>
+
+                <td>2008/10/13 </td>
+                <td>15.71</td>
+                <td>2008/10/27 </td>
+                <td>12.62</td>
+                <td>-3.09</td>
+                <td>14</td>
+                <td>-19.67%</td>
+                <td>-512.80 %</td>
+            </tr>
+            <tr>
+                <th scope="row">158</th>
+                <td> 國建 (2501)</td>
+                
+
+                <td>58.46 </td>
+                <td>31.45 </td>
+                <td>34.46 </td>
+                <td>23.7 </td>
+                <td>21.1 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>0.11 </td>
+                <td>2 </td>
+                <td>83.33 </td>
+                <td>37.5 </td>
+                <td>83.33 </td>
+                <td>28077929 </td>
+
+                <td>2008/10/14 </td>
+                <td>6.12</td>
+                <td>2008/10/24 </td>
+                <td>5.12</td>
+                <td>-1.00</td>
+                <td>10</td>
+                <td>-16.34%</td>
+                <td>-596.41 %</td>
+            </tr>
+            <tr>
+                <th scope="row">159</th>
+                <td> 義隆 (2458)</td>
+                
+
+                <td>81.32 </td>
+                <td>48.6 </td>
+                <td>35.08 </td>
+                <td>38.25 </td>
+                <td>34.6 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.34 </td>
+                <td>2 </td>
+                <td>6.25 </td>
+                <td>240 </td>
+                <td>6.25 </td>
+                <td>12517726 </td>
+
+                <td>2008/10/14 </td>
+                <td>12.40</td>
+                <td>2008/11/18 </td>
+                <td>10.34</td>
+                <td>-2.06</td>
+                <td>35</td>
+                <td>-16.61%</td>
+                <td>-173.25 %</td>
+            </tr>
+            <tr>
+                <th scope="row">160</th>
+                <td> 威致 (2028)</td>
+                
+
+                <td>72.23 </td>
+                <td>32.01 </td>
+                <td>30.36 </td>
+                <td>-0.04 </td>
+                <td>-20.06 </td>               
+                <td>1 </td>
+                <td>3 </td>
+                <td>0.89 </td>
+                <td>3 </td>
+                <td>11.25 </td>
+                <td>17.11 </td>
+                <td>11.25 </td>
+                <td>3975000 </td>
+
+                <td>2008/10/23 </td>
+                <td>9.00</td>
+                <td>2008/10/29 </td>
+                <td>7.15</td>
+                <td>-1.85</td>
+                <td>6</td>
+                <td>-20.56%</td>
+                <td>-1250.46 %</td>
+            </tr>
+            <tr>
+                <th scope="row">161</th>
+                <td> 益航 (2601)</td>
+                
+
+                <td>156.96 </td>
+                <td>68.58 </td>
+                <td>39.41 </td>
+                <td>32.45 </td>
+                <td>-4.18 </td>               
+                <td>4 </td>
+                <td>4 </td>
+                <td>2.33 </td>
+                <td>6 </td>
+                <td>194.94 </td>
+                <td>10.95 </td>
+                <td>194.94 </td>
+                <td>12282656 </td>
+
+                <td>2008/10/23 </td>
+                <td>19.96</td>
+                <td>2008/10/28 </td>
+                <td>16.73</td>
+                <td>-3.23</td>
+                <td>5</td>
+                <td>-16.18%</td>
+                <td>-1181.31 %</td>
+            </tr>
+            <tr>
+                <th scope="row">162</th>
+                <td> 台航 (2617)</td>
+                
+
+                <td>157.84 </td>
+                <td>81.77 </td>
+                <td>64.01 </td>
+                <td>70.97 </td>
+                <td>42.96 </td>               
+                <td>1 </td>
+                <td>3 </td>
+                <td>1.82 </td>
+                <td>2 </td>
+                <td>46.77 </td>
+                <td>27.27 </td>
+                <td>46.77 </td>
+                <td>22533876 </td>
+
+                <td>2008/10/27 </td>
+                <td>19.48</td>
+                <td>2008/11/14 </td>
+                <td>30.46</td>
+                <td>10.98</td>
+                <td>18</td>
+                <td>56.37%</td>
+                <td>1142.97 %</td>
+            </tr>
+            <tr>
+                <th scope="row">163</th>
+                <td> 中櫃 (2613)</td>
+                
+
+                <td>129.02 </td>
+                <td>67.69 </td>
+                <td>54.2 </td>
+                <td>60.64 </td>
+                <td>49.64 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>0.69 </td>
+                <td>2 </td>
+                <td>15 </td>
+                <td>21.05 </td>
+                <td>15 </td>
+                <td>1877921 </td>
+
+                <td>2008/10/28 </td>
+                <td>7.73</td>
+                <td>2008/11/06 </td>
+                <td>12.05</td>
+                <td>4.32</td>
+                <td>9</td>
+                <td>55.89%</td>
+                <td>2266.49 %</td>
+            </tr>
+            <tr>
+                <th scope="row">164</th>
+                <td> 陽明 (2609)</td>
+                
+
+                <td>120.87 </td>
+                <td>73.02 </td>
+                <td>43.61 </td>
+                <td>90.99 </td>
+                <td>67.67 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.33 </td>
+                <td>2 </td>
+                <td>560 </td>
+                <td>43.48 </td>
+                <td>560 </td>
+                <td>46591220 </td>
+
+                <td>2008/10/28 </td>
+                <td>13.22</td>
+                <td>2008/11/10 </td>
+                <td>19.97</td>
+                <td>6.75</td>
+                <td>13</td>
+                <td>51.06%</td>
+                <td>1433.58 %</td>
+            </tr>
+            <tr>
+                <th scope="row">165</th>
+                <td> 國巨 (2327)</td>
+                
+
+                <td>72.55 </td>
+                <td>35.84 </td>
+                <td>33.12 </td>
+                <td>11.53 </td>
+                <td>-49.93 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.66 </td>
+                <td>3 </td>
+                <td>29.41 </td>
+                <td>106.25 </td>
+                <td>29.41 </td>
+                <td>14047117 </td>
+
+                <td>2008/11/03 </td>
+                <td>16.86</td>
+                <td>2008/11/12 </td>
+                <td>14.00</td>
+                <td>-2.86</td>
+                <td>9</td>
+                <td>-16.96%</td>
+                <td>-687.95 %</td>
+            </tr>
+            <tr>
+                <th scope="row">166</th>
+                <td> 浩鑫 (2405)</td>
+                
+
+                <td>58.53 </td>
+                <td>29.48 </td>
+                <td>26.44 </td>
+                <td>32.3 </td>
+                <td>24.72 </td>               
+                <td>1 </td>
+                <td>6 </td>
+                <td>0.03 </td>
+                <td>2 </td>
+                <td>50 </td>
+                <td>50 </td>
+                <td>50 </td>
+                <td>1756668 </td>
+
+                <td>2008/11/03 </td>
+                <td>7.12</td>
+                <td>2008/11/18 </td>
+                <td>5.81</td>
+                <td>-1.31</td>
+                <td>15</td>
+                <td>-18.40%</td>
+                <td>-447.71 %</td>
+            </tr>
+            <tr>
+                <th scope="row">167</th>
+                <td> 中壽 (2823)</td>
+                
+
+                <td>61.2 </td>
+                <td>32.74 </td>
+                <td>20.02 </td>
+                <td>22.08 </td>
+                <td>-44.32 </td>               
+                <td>4 </td>
+                <td>4 </td>
+                <td>1.2 </td>
+                <td>4 </td>
+                <td>48.15 </td>
+                <td>344.44 </td>
+                <td>48.15 </td>
+                <td>16165541 </td>
+
+                <td>2008/11/03 </td>
+                <td>5.59</td>
+                <td>2008/11/20 </td>
+                <td>4.69</td>
+                <td>-0.90</td>
+                <td>17</td>
+                <td>-16.10%</td>
+                <td>-345.68 %</td>
+            </tr>
+            <tr>
+                <th scope="row">168</th>
+                <td> 國巨 (2327)</td>
+                
+
+                <td>72.55 </td>
+                <td>35.84 </td>
+                <td>33.12 </td>
+                <td>11.53 </td>
+                <td>-49.93 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.66 </td>
+                <td>3 </td>
+                <td>29.41 </td>
+                <td>106.25 </td>
+                <td>29.41 </td>
+                <td>14047117 </td>
+
+                <td>2008/11/13 </td>
+                <td>13.04</td>
+                <td>2008/11/20 </td>
+                <td>10.44</td>
+                <td>-2.60</td>
+                <td>7</td>
+                <td>-19.94%</td>
+                <td>-1039.66 %</td>
+            </tr>
+            <tr>
+                <th scope="row">169</th>
+                <td> 台航 (2617)</td>
+                
+
+                <td>170.62 </td>
+                <td>81.77 </td>
+                <td>64.01 </td>
+                <td>70.97 </td>
+                <td>42.96 </td>               
+                <td>2 </td>
+                <td>4 </td>
+                <td>2.73 </td>
+                <td>3 </td>
+                <td>42.19 </td>
+                <td>50 </td>
+                <td>42.19 </td>
+                <td>15335555 </td>
+
+                <td>2008/11/17 </td>
+                <td>29.27</td>
+                <td>2008/12/05 </td>
+                <td>24.43</td>
+                <td>-4.84</td>
+                <td>18</td>
+                <td>-16.54%</td>
+                <td>-335.31 %</td>
+            </tr>
+    </tbody>
+</table>
+
+
+
+        <hr>
+        <footer>
+            <p>© 2018 - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="2008_files/jquery-1.js"></script>
+
+    <script src="2008_files/bootstrap.js"></script>
+<script src="2008_files/respond.js"></script>
+
+    
+
+<!-- Visual Studio Browser Link -->
+<script type="application/json" id="__browserLink_initializationData">
+    {"appName":"Firefox","requestId":"1879b9a1f98b4a5294c4393333a8a04c"}
+</script>
+<script type="text/javascript" src="2008_files/browserLink" async="async"></script>
+<!-- End Browser Link -->
+
+
+
+</body></html>

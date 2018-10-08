@@ -93,7 +93,10 @@ namespace StockSimulationMVC.Simulation_SimulationStart
                 DataList.AddLineGraphDictionary("MoveAverageValue", 5);
                 DataList.AddLineGraphDictionary("MoveAverageValue", 10);
                 DataList.AddLineGraphDictionary("MoveAverageValue", 20);
+                DataList.AddLineGraphDictionary("MoveAverageValue", 30);
                 DataList.AddLineGraphDictionary("MoveAverageValue", 60);
+                DataList.AddLineGraphDictionary("MoveAverageValue", 120);
+                DataList.AddLineGraphDictionary("MoveAverageValue", 240);
                 DataList.AddLineGraphDictionary("MinValue", 1);
                 DataList.AddLineGraphDictionary("MaxValue", 60);
                 DataList.AddLineGraphDictionary("MinValue", 20, "Volume");
@@ -101,7 +104,7 @@ namespace StockSimulationMVC.Simulation_SimulationStart
                 DataList.AddLineGraphDictionary("BollingerBandsUp", 20, "ClosePrice", 2.1);
                 DataList.AddLineGraphDictionary("MoveAverageValue", 1);
 
-                DataList.AddLineGraphDictionary("MoveAverageValue", 30, "Volume");
+               
                 DataList.AddLineGraphDictionary("CountDropinDays", 20, "ReturnOnInvestment");
                 DataList.AddLineGraphDictionary("CountRaiseinDays", 20, "ReturnOnInvestment");
                 DataList.AddLineGraphDictionary("CountRaiseinDays", 10, "ReturnOnInvestment");
@@ -145,7 +148,7 @@ namespace StockSimulationMVC.Simulation_SimulationStart
                     {
                         transaction = new Transaction();
                         transaction.Buy(DataList.TechData[j].Company.ToString(), DataList.TechData[j].CompanyName,
-                            DataList.TechData[j].OpenPrice, DataList.TechData[j].Date);
+                            DataList.TechData[j].ClosePrice, DataList.TechData[j].Date);
 
                         transaction.DataOutput = InitialData.OutputData;
 

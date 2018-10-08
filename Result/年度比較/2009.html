@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html style="" class=" js flexbox flexboxlegacy canvas canvastext webgl touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Index</title>
+    <link href="2009_files/bootstrap.css" rel="stylesheet">
+<link href="2009_files/site.css" rel="stylesheet">
+
+    <script src="2009_files/modernizr-2.js"></script>
+
+
+    
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://localhost:13527/Home">Application name</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="http://localhost:13527/Home">Home</a></li>
+                    <li><a href="http://localhost:13527/Help">API</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        
+
+
+
+<form class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>股票篩選</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">起始年度</label>
+            <div class="col-md-4">
+                <input id="StartYear" name="StartYear" placeholder="輸入選股起始年度" class="form-control input-md" value="2016" type="text">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">結束年度</label>
+            <div class="col-md-4">
+                <input id="EndYear" name="EndYear" placeholder="輸入選股結束年度" class="form-control input-md" value="2019" type="text">
+
+            </div>
+        </div>
+
+        <!-- Multiple Radios (inline) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="radios">股票評價參數</label>
+            <div class="col-md-4">
+                <label class="radio-inline" for="radios-0">
+                    <input name="ValuationParameter" id="radios-0" value="3" checked="checked" type="radio">
+                    3
+                </label>
+                <label class="radio-inline" for="radios-1">
+                    <input name="ValuationParameter" id="radios-1" value="4" type="radio">
+                    4
+                </label>
+                <label class="radio-inline" for="radios-2">
+                    <input name="ValuationParameter" id="radios-2" value="5" type="radio">
+                    5
+                </label>
+            </div>
+        </div>
+
+        <!-- Multiple Checkboxes (inline) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="checkboxes">OCF&gt;0</label>
+            <div class="col-md-4">
+                <label class="checkbox-inline" for="checkboxes-0">
+                    <input name="OperationCashFlowSet" id="checkboxes-OCF" value="true" type="checkbox">
+                    加入條件
+                </label>
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">營利率成長連續期數</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="operationIncomePercentageCountCheckbox" type="checkbox">
+                    </span>
+                    <input id="operationIncomePercentageCount" name="operationIncomePercentageCountSet" class="form-control" placeholder="輸入數字" value="0" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">稅後純益率成長連續期數</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="netIncomePercentageCountCheckbox" type="checkbox">
+                    </span>
+                    <input id="netIncomePercentageCountSet" name="netIncomePercentageCount" class="form-control" placeholder="輸入數字" value="0" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPS大於</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPS" name="EPSSet" class="form-control" placeholder="輸入數字" value="-10000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPS連續期數</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSCountCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSCount" name="EPSCountSet" class="form-control" placeholder="輸入數字" value="0" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPSQoQ</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSQoQCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSQoQ" name="EPSQoQSet" class="form-control" placeholder="輸入數字" value="-1000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPSYoY</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSYoYCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSYoY" name="EPSYoYSet" class="form-control" placeholder="輸入數字" value="-1000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">累積EPS YoY</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSAccumulationYoYCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSAccumulationYoY" name="EPSAccumulationYoYSet" class="form-control" placeholder="輸入數字" value="-1000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        <button id="form-send">送出</button>
+
+    </fieldset>
+</form>
+
+
+
+<h2>Index</h2>
+<h2>Win : 28 </h2>
+<h2>Loss: 6</h2>
+<h2>WinRatio: 82.35</h2>
+<h2>平均持有時間: 99.03</h2>
+<h2>平均報酬: 41.43</h2>
+<h2>最大報酬: 59.34</h2>
+<h2>最低報酬: -18.11</h2>
+<h2>報酬標準差: 26.9082719623539</h2>
+<h2>總報酬: 1408.62</h2>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>計數</th>
+            <th>公司</th>
+            
+            <th>評價 1 期</th>
+            <th>評價 2 期</th>
+            <th>評價 3 期</th>
+            <th>評價 4 期</th>
+            <th>評價 5 期</th>
+            <th>營利率連續成長期數</th>
+            <th>稅後純益率連續成長期數</th>
+            <th>EPS</th>
+            <th>EPS 連續成長期數(季)</th>
+            <th>EPS 值的近一季 YoY</th>
+            <th>EPS 值的近一季 QoQ</th>
+            <th>累計EPS YoY</th>
+            <th>市值</th>
+
+            <th>買進日期</th>
+            <th>買進價格</th>
+            <th>賣出日期</th>
+            <th>賣出價格</th>
+            <th>獲利</th>
+            <th>持有天數</th>
+            <th>報酬率</th>
+            <th>年化報酬率</th>
+        </tr>
+    </thead>
+
+
+
+
+    <tbody>
+
+            <tr>
+                <th scope="row">1</th>
+                <td> 春雨 (2012)</td>
+                
+
+                <td>78.86 </td>
+                <td>35.99 </td>
+                <td>35.03 </td>
+                <td>35.42 </td>
+                <td>27.29 </td>               
+                <td>1 </td>
+                <td>3 </td>
+                <td>0.59 </td>
+                <td>3 </td>
+                <td>168.18 </td>
+                <td>37.21 </td>
+                <td>168.18 </td>
+                <td>2187082 </td>
+
+                <td>2008/12/15 </td>
+                <td>5.77</td>
+                <td>2009/04/10 </td>
+                <td>9.18</td>
+                <td>3.41</td>
+                <td>116</td>
+                <td>59.10%</td>
+                <td>185.96 %</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td> 中壽 (2823)</td>
+                
+
+                <td>61.2 </td>
+                <td>32.74 </td>
+                <td>20.02 </td>
+                <td>22.08 </td>
+                <td>-44.32 </td>               
+                <td>4 </td>
+                <td>4 </td>
+                <td>1.2 </td>
+                <td>4 </td>
+                <td>48.15 </td>
+                <td>344.44 </td>
+                <td>48.15 </td>
+                <td>16165541 </td>
+
+                <td>2008/12/15 </td>
+                <td>5.36</td>
+                <td>2009/03/06 </td>
+                <td>4.54</td>
+                <td>-0.82</td>
+                <td>81</td>
+                <td>-15.30%</td>
+                <td>-68.94 %</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td> 台航 (2617)</td>
+                
+
+                <td>170.62 </td>
+                <td>81.77 </td>
+                <td>64.01 </td>
+                <td>70.97 </td>
+                <td>42.96 </td>               
+                <td>2 </td>
+                <td>4 </td>
+                <td>2.73 </td>
+                <td>3 </td>
+                <td>42.19 </td>
+                <td>50 </td>
+                <td>42.19 </td>
+                <td>15335555 </td>
+
+                <td>2008/12/15 </td>
+                <td>28.66</td>
+                <td>2009/05/07 </td>
+                <td>43.53</td>
+                <td>14.87</td>
+                <td>143</td>
+                <td>51.88%</td>
+                <td>132.43 %</td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td> 大毅 (2478)</td>
+                
+
+                <td>102.38 </td>
+                <td>58.1 </td>
+                <td>66.74 </td>
+                <td>65.15 </td>
+                <td>48.58 </td>               
+                <td>3 </td>
+                <td>3 </td>
+                <td>0.58 </td>
+                <td>3 </td>
+                <td>5.45 </td>
+                <td>9.43 </td>
+                <td>5.45 </td>
+                <td>2941900 </td>
+
+                <td>2008/12/15 </td>
+                <td>11.93</td>
+                <td>2009/01/15 </td>
+                <td>9.77</td>
+                <td>-2.16</td>
+                <td>31</td>
+                <td>-18.11%</td>
+                <td>-213.18 %</td>
+            </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td> 浩鑫 (2405)</td>
+                
+
+                <td>58.53 </td>
+                <td>29.48 </td>
+                <td>26.44 </td>
+                <td>32.3 </td>
+                <td>24.72 </td>               
+                <td>1 </td>
+                <td>6 </td>
+                <td>0.03 </td>
+                <td>2 </td>
+                <td>50 </td>
+                <td>50 </td>
+                <td>50 </td>
+                <td>1756668 </td>
+
+                <td>2008/12/15 </td>
+                <td>6.72</td>
+                <td>2008/12/23 </td>
+                <td>5.70</td>
+                <td>-1.02</td>
+                <td>8</td>
+                <td>-15.18%</td>
+                <td>-692.52 %</td>
+            </tr>
+            <tr>
+                <th scope="row">6</th>
+                <td> 台積電 (2330)</td>
+                
+
+                <td>132.94 </td>
+                <td>68.77 </td>
+                <td>67.59 </td>
+                <td>64.2 </td>
+                <td>56.82 </td>               
+                <td>3 </td>
+                <td>3 </td>
+                <td>1.18 </td>
+                <td>3 </td>
+                <td>2.61 </td>
+                <td>5.36 </td>
+                <td>2.61 </td>
+                <td>1359968663 </td>
+
+                <td>2008/12/15 </td>
+                <td>30.88</td>
+                <td>2009/09/07 </td>
+                <td>46.81</td>
+                <td>15.93</td>
+                <td>266</td>
+                <td>51.59%</td>
+                <td>70.79 %</td>
+            </tr>
+            <tr>
+                <th scope="row">7</th>
+                <td> 互盛電 (2433)</td>
+                
+
+                <td>118.72 </td>
+                <td>66.16 </td>
+                <td>30.11 </td>
+                <td>40.58 </td>
+                <td>33.59 </td>               
+                <td>2 </td>
+                <td>3 </td>
+                <td>0.91 </td>
+                <td>3 </td>
+                <td>16.67 </td>
+                <td>12.35 </td>
+                <td>16.67 </td>
+                <td>2449207 </td>
+
+                <td>2008/12/15 </td>
+                <td>7.00</td>
+                <td>2009/06/01 </td>
+                <td>10.55</td>
+                <td>3.55</td>
+                <td>168</td>
+                <td>50.71%</td>
+                <td>110.18 %</td>
+            </tr>
+            <tr>
+                <th scope="row">8</th>
+                <td> 國巨 (2327)</td>
+                
+
+                <td>72.55 </td>
+                <td>35.84 </td>
+                <td>33.12 </td>
+                <td>11.53 </td>
+                <td>-49.93 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.66 </td>
+                <td>3 </td>
+                <td>29.41 </td>
+                <td>106.25 </td>
+                <td>29.41 </td>
+                <td>14047117 </td>
+
+                <td>2008/12/15 </td>
+                <td>12.38</td>
+                <td>2009/03/10 </td>
+                <td>18.68</td>
+                <td>6.30</td>
+                <td>85</td>
+                <td>50.89%</td>
+                <td>218.52 %</td>
+            </tr>
+            <tr>
+                <th scope="row">9</th>
+                <td> 浩鑫 (2405)</td>
+                
+
+                <td>58.53 </td>
+                <td>29.48 </td>
+                <td>26.44 </td>
+                <td>32.3 </td>
+                <td>24.72 </td>               
+                <td>1 </td>
+                <td>6 </td>
+                <td>0.03 </td>
+                <td>2 </td>
+                <td>50 </td>
+                <td>50 </td>
+                <td>50 </td>
+                <td>1756668 </td>
+
+                <td>2008/12/24 </td>
+                <td>5.79</td>
+                <td>2009/04/29 </td>
+                <td>9.22</td>
+                <td>3.43</td>
+                <td>126</td>
+                <td>59.24%</td>
+                <td>171.61 %</td>
+            </tr>
+                <tr>
+                    <td>
+                          2009 Q1  
+
+                    </td>
+                </tr>
+            <tr>
+                <th scope="row">10</th>
+                <td> 大毅 (2478)</td>
+                
+
+                <td>102.38 </td>
+                <td>58.1 </td>
+                <td>66.74 </td>
+                <td>65.15 </td>
+                <td>48.58 </td>               
+                <td>3 </td>
+                <td>3 </td>
+                <td>0.58 </td>
+                <td>3 </td>
+                <td>5.45 </td>
+                <td>9.43 </td>
+                <td>5.45 </td>
+                <td>2941900 </td>
+
+                <td>2009/01/16 </td>
+                <td>9.77</td>
+                <td>2009/04/10 </td>
+                <td>14.89</td>
+                <td>5.12</td>
+                <td>84</td>
+                <td>52.41%</td>
+                <td>227.71 %</td>
+            </tr>
+            <tr>
+                <th scope="row">11</th>
+                <td> 國巨 (2327)</td>
+                
+
+                <td>72.55 </td>
+                <td>35.84 </td>
+                <td>33.12 </td>
+                <td>11.53 </td>
+                <td>-49.93 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.66 </td>
+                <td>3 </td>
+                <td>29.41 </td>
+                <td>106.25 </td>
+                <td>29.41 </td>
+                <td>14047117 </td>
+
+                <td>2009/03/11 </td>
+                <td>18.61</td>
+                <td>2009/08/04 </td>
+                <td>28.14</td>
+                <td>9.53</td>
+                <td>146</td>
+                <td>51.21%</td>
+                <td>128.02 %</td>
+            </tr>
+            <tr>
+                <th scope="row">12</th>
+                <td> 智邦 (2345)</td>
+                
+
+                <td>49.52 </td>
+                <td>17.1 </td>
+                <td>23.24 </td>
+                <td>15.59 </td>
+                <td>14.07 </td>               
+                <td>2 </td>
+                <td>4 </td>
+                <td>0.43 </td>
+                <td>4 </td>
+                <td>760 </td>
+                <td>72 </td>
+                <td>760 </td>
+                <td>3778927 </td>
+
+                <td>2009/03/18 </td>
+                <td>5.30</td>
+                <td>2009/12/18 </td>
+                <td>8.12</td>
+                <td>2.82</td>
+                <td>275</td>
+                <td>53.21%</td>
+                <td>70.62 %</td>
+            </tr>
+            <tr>
+                <th scope="row">13</th>
+                <td> 中壽 (2823)</td>
+                
+
+                <td>61.2 </td>
+                <td>32.74 </td>
+                <td>20.02 </td>
+                <td>22.08 </td>
+                <td>-44.32 </td>               
+                <td>4 </td>
+                <td>4 </td>
+                <td>1.2 </td>
+                <td>4 </td>
+                <td>48.15 </td>
+                <td>344.44 </td>
+                <td>48.15 </td>
+                <td>16165541 </td>
+
+                <td>2009/03/19 </td>
+                <td>5.08</td>
+                <td>2009/05/06 </td>
+                <td>7.91</td>
+                <td>2.83</td>
+                <td>48</td>
+                <td>55.71%</td>
+                <td>423.62 %</td>
+            </tr>
+                    <tr>
+                        <td>
+                            2009 Q2
+
+                        </td>
+                    </tr>
+            <tr>
+                <th scope="row">14</th>
+                <td> 元富證 (2856)</td>
+                
+
+                <td>34.23 </td>
+                <td>31.28 </td>
+                <td>33.7 </td>
+                <td>32.86 </td>
+                <td>31.22 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>-0.94 </td>
+                <td>1 </td>
+                <td>203.23 </td>
+                <td>2250 </td>
+                <td>203.23 </td>
+                <td>11372829 </td>
+
+                <td>2009/04/01 </td>
+                <td>5.63</td>
+                <td>2009/05/15 </td>
+                <td>8.55</td>
+                <td>2.92</td>
+                <td>44</td>
+                <td>51.87%</td>
+                <td>430.24 %</td>
+            </tr>
+            <tr>
+                <th scope="row">15</th>
+                <td> 欣欣 (2901)</td>
+                
+
+                <td>49.04 </td>
+                <td>24.78 </td>
+                <td>21.16 </td>
+                <td>24.15 </td>
+                <td>22.4 </td>               
+                <td>3 </td>
+                <td>5 </td>
+                <td>0.09 </td>
+                <td>3 </td>
+                <td>12.5 </td>
+                <td>12.5 </td>
+                <td>12.5 </td>
+                <td>1256340 </td>
+
+                <td>2009/04/01 </td>
+                <td>16.24</td>
+                <td>2009/06/02 </td>
+                <td>24.85</td>
+                <td>8.61</td>
+                <td>62</td>
+                <td>53.02%</td>
+                <td>312.12 %</td>
+            </tr>
+            <tr>
+                <th scope="row">16</th>
+                <td> 飛宏 (2457)</td>
+                
+
+                <td>79.68 </td>
+                <td>73.27 </td>
+                <td>57.66 </td>
+                <td>53.84 </td>
+                <td>52.57 </td>               
+                <td>1 </td>
+                <td>5 </td>
+                <td>0.54 </td>
+                <td>2 </td>
+                <td>1700 </td>
+                <td>63.64 </td>
+                <td>1700 </td>
+                <td>3840500 </td>
+
+                <td>2009/05/04 </td>
+                <td>9.77</td>
+                <td>2009/07/21 </td>
+                <td>15.29</td>
+                <td>5.52</td>
+                <td>78</td>
+                <td>56.50%</td>
+                <td>264.39 %</td>
+            </tr>
+            <tr>
+                <th scope="row">17</th>
+                <td> 厚生 (2107)</td>
+                
+
+                <td>79.98 </td>
+                <td>79.81 </td>
+                <td>34.1 </td>
+                <td>33.84 </td>
+                <td>22.01 </td>               
+                <td>8 </td>
+                <td>1 </td>
+                <td>0.55 </td>
+                <td>2 </td>
+                <td>1.85 </td>
+                <td>30.95 </td>
+                <td>1.85 </td>
+                <td>6270467 </td>
+
+                <td>2009/05/04 </td>
+                <td>9.64</td>
+                <td>2009/10/12 </td>
+                <td>14.77</td>
+                <td>5.13</td>
+                <td>161</td>
+                <td>53.22%</td>
+                <td>120.64 %</td>
+            </tr>
+            <tr>
+                <th scope="row">18</th>
+                <td> 創見 (2451)</td>
+                
+
+                <td>232.48 </td>
+                <td>214.44 </td>
+                <td>159.94 </td>
+                <td>136.68 </td>
+                <td>98.76 </td>               
+                <td>3 </td>
+                <td>1 </td>
+                <td>2.3 </td>
+                <td>2 </td>
+                <td>125.49 </td>
+                <td>43.75 </td>
+                <td>125.49 </td>
+                <td>29196108 </td>
+
+                <td>2009/05/04 </td>
+                <td>52.78</td>
+                <td>2009/06/09 </td>
+                <td>43.94</td>
+                <td>-8.84</td>
+                <td>36</td>
+                <td>-16.75%</td>
+                <td>-169.81 %</td>
+            </tr>
+            <tr>
+                <th scope="row">19</th>
+                <td> 為升 (2231)</td>
+                
+
+                <td>102.59 </td>
+                <td>96.13 </td>
+                <td>69.19 </td>
+                <td>0 </td>
+                <td>0 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.93 </td>
+                <td>2 </td>
+                <td>75.47 </td>
+                <td>24 </td>
+                <td>75.47 </td>
+                <td>1486033 </td>
+
+                <td>2009/05/04 </td>
+                <td>15.55</td>
+                <td>2009/08/14 </td>
+                <td>24.72</td>
+                <td>9.17</td>
+                <td>102</td>
+                <td>58.97%</td>
+                <td>211.02 %</td>
+            </tr>
+            <tr>
+                <th scope="row">20</th>
+                <td> 映泰 (2399)</td>
+                
+
+                <td>72.76 </td>
+                <td>65.53 </td>
+                <td>58.18 </td>
+                <td>45.16 </td>
+                <td>43.58 </td>               
+                <td>3 </td>
+                <td>1 </td>
+                <td>0.88 </td>
+                <td>2 </td>
+                <td>193.33 </td>
+                <td>203.45 </td>
+                <td>193.33 </td>
+                <td>1870050 </td>
+
+                <td>2009/05/04 </td>
+                <td>10.26</td>
+                <td>2009/07/20 </td>
+                <td>16.00</td>
+                <td>5.74</td>
+                <td>77</td>
+                <td>55.95%</td>
+                <td>265.20 %</td>
+            </tr>
+            <tr>
+                <th scope="row">21</th>
+                <td> 敬鵬 (2355)</td>
+                
+
+                <td>115.1 </td>
+                <td>114.22 </td>
+                <td>107.51 </td>
+                <td>73.68 </td>
+                <td>57.99 </td>               
+                <td>2 </td>
+                <td>1 </td>
+                <td>0.31 </td>
+                <td>2 </td>
+                <td>19.23 </td>
+                <td>29.17 </td>
+                <td>19.23 </td>
+                <td>5128769 </td>
+
+                <td>2009/05/04 </td>
+                <td>10.12</td>
+                <td>2009/09/11 </td>
+                <td>15.40</td>
+                <td>5.28</td>
+                <td>130</td>
+                <td>52.17%</td>
+                <td>146.49 %</td>
+            </tr>
+            <tr>
+                <th scope="row">22</th>
+                <td> 興勤 (2428)</td>
+                
+
+                <td>101.68 </td>
+                <td>96.11 </td>
+                <td>75.82 </td>
+                <td>63.1 </td>
+                <td>38.29 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>0.43 </td>
+                <td>2 </td>
+                <td>186.67 </td>
+                <td>38.71 </td>
+                <td>186.67 </td>
+                <td>1764939 </td>
+
+                <td>2009/05/04 </td>
+                <td>12.04</td>
+                <td>2009/07/28 </td>
+                <td>18.35</td>
+                <td>6.31</td>
+                <td>85</td>
+                <td>52.41%</td>
+                <td>225.05 %</td>
+            </tr>
+            <tr>
+                <th scope="row">23</th>
+                <td> 正新 (2105)</td>
+                
+
+                <td>111.18 </td>
+                <td>108.43 </td>
+                <td>90.99 </td>
+                <td>53.54 </td>
+                <td>48.14 </td>               
+                <td>3 </td>
+                <td>1 </td>
+                <td>1.06 </td>
+                <td>2 </td>
+                <td>27.71 </td>
+                <td>307.69 </td>
+                <td>27.71 </td>
+                <td>49224740 </td>
+
+                <td>2009/05/04 </td>
+                <td>18.67</td>
+                <td>2009/09/08 </td>
+                <td>28.03</td>
+                <td>9.36</td>
+                <td>127</td>
+                <td>50.13%</td>
+                <td>144.09 %</td>
+            </tr>
+            <tr>
+                <th scope="row">24</th>
+                <td> 達欣工 (2535)</td>
+                
+
+                <td>83.02 </td>
+                <td>82.24 </td>
+                <td>53.97 </td>
+                <td>51.66 </td>
+                <td>42.42 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>0.45 </td>
+                <td>3 </td>
+                <td>12.5 </td>
+                <td>55.17 </td>
+                <td>12.5 </td>
+                <td>3830384 </td>
+
+                <td>2009/05/04 </td>
+                <td>8.60</td>
+                <td>2009/05/26 </td>
+                <td>13.68</td>
+                <td>5.08</td>
+                <td>22</td>
+                <td>59.07%</td>
+                <td>980.02 %</td>
+            </tr>
+            <tr>
+                <th scope="row">25</th>
+                <td> 基泰 (2538)</td>
+                
+
+                <td>72.88 </td>
+                <td>72.78 </td>
+                <td>40.56 </td>
+                <td>32.52 </td>
+                <td>10.29 </td>               
+                <td>2 </td>
+                <td>1 </td>
+                <td>0.28 </td>
+                <td>2 </td>
+                <td>27.27 </td>
+                <td>55.56 </td>
+                <td>27.27 </td>
+                <td>3212339 </td>
+
+                <td>2009/05/04 </td>
+                <td>5.61</td>
+                <td>2009/09/21 </td>
+                <td>8.54</td>
+                <td>2.93</td>
+                <td>140</td>
+                <td>52.23%</td>
+                <td>136.17 %</td>
+            </tr>
+            <tr>
+                <th scope="row">26</th>
+                <td> 建大 (2106)</td>
+                
+
+                <td>83.76 </td>
+                <td>71 </td>
+                <td>41.91 </td>
+                <td>39.08 </td>
+                <td>29.1 </td>               
+                <td>5 </td>
+                <td>1 </td>
+                <td>0.87 </td>
+                <td>3 </td>
+                <td>1350 </td>
+                <td>200 </td>
+                <td>1350 </td>
+                <td>9156750 </td>
+
+                <td>2009/05/04 </td>
+                <td>13.47</td>
+                <td>2009/07/20 </td>
+                <td>20.68</td>
+                <td>7.21</td>
+                <td>77</td>
+                <td>53.53%</td>
+                <td>253.73 %</td>
+            </tr>
+            <tr>
+                <th scope="row">27</th>
+                <td> 達欣工 (2535)</td>
+                
+
+                <td>83.02 </td>
+                <td>82.24 </td>
+                <td>53.97 </td>
+                <td>51.66 </td>
+                <td>42.42 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>0.45 </td>
+                <td>3 </td>
+                <td>12.5 </td>
+                <td>55.17 </td>
+                <td>12.5 </td>
+                <td>3830384 </td>
+
+                <td>2009/05/27 </td>
+                <td>14.07</td>
+                <td>2009/06/09 </td>
+                <td>11.55</td>
+                <td>-2.52</td>
+                <td>13</td>
+                <td>-17.91%</td>
+                <td>-502.87 %</td>
+            </tr>
+            <tr>
+                <th scope="row">28</th>
+                <td> 創見 (2451)</td>
+                
+
+                <td>232.48 </td>
+                <td>214.44 </td>
+                <td>159.94 </td>
+                <td>136.68 </td>
+                <td>98.76 </td>               
+                <td>3 </td>
+                <td>1 </td>
+                <td>2.3 </td>
+                <td>2 </td>
+                <td>125.49 </td>
+                <td>43.75 </td>
+                <td>125.49 </td>
+                <td>29196108 </td>
+
+                <td>2009/06/10 </td>
+                <td>44.77</td>
+                <td>2009/09/02 </td>
+                <td>67.58</td>
+                <td>22.81</td>
+                <td>84</td>
+                <td>50.95%</td>
+                <td>221.39 %</td>
+            </tr>
+                    <tr>
+                        <td>
+                            2009 Q3
+
+                        </td>
+                    </tr>
+            <tr>
+                <th scope="row">29</th>
+                <td> 建大 (2106)</td>
+                
+
+                <td>83.76 </td>
+                <td>71 </td>
+                <td>41.91 </td>
+                <td>39.08 </td>
+                <td>29.1 </td>               
+                <td>5 </td>
+                <td>1 </td>
+                <td>0.87 </td>
+                <td>3 </td>
+                <td>1350 </td>
+                <td>200 </td>
+                <td>1350 </td>
+                <td>9156750 </td>
+
+                <td>2009/07/21 </td>
+                <td>20.95</td>
+                <td>2009/12/18 </td>
+                <td>17.79</td>
+                <td>-3.16</td>
+                <td>150</td>
+                <td>-15.08%</td>
+                <td>-36.70 %</td>
+            </tr>
+            <tr>
+                <th scope="row">30</th>
+                <td> 飛宏 (2457)</td>
+                
+
+                <td>79.68 </td>
+                <td>73.27 </td>
+                <td>57.66 </td>
+                <td>53.84 </td>
+                <td>52.57 </td>               
+                <td>1 </td>
+                <td>5 </td>
+                <td>0.54 </td>
+                <td>2 </td>
+                <td>1700 </td>
+                <td>63.64 </td>
+                <td>1700 </td>
+                <td>3840500 </td>
+
+                <td>2009/07/22 </td>
+                <td>16.35</td>
+                <td>2009/10/21 </td>
+                <td>24.76</td>
+                <td>8.41</td>
+                <td>91</td>
+                <td>51.44%</td>
+                <td>206.31 %</td>
+            </tr>
+            <tr>
+                <th scope="row">31</th>
+                <td> 興勤 (2428)</td>
+                
+
+                <td>101.68 </td>
+                <td>96.11 </td>
+                <td>75.82 </td>
+                <td>63.1 </td>
+                <td>38.29 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>0.43 </td>
+                <td>2 </td>
+                <td>186.67 </td>
+                <td>38.71 </td>
+                <td>186.67 </td>
+                <td>1764939 </td>
+
+                <td>2009/07/29 </td>
+                <td>18.84</td>
+                <td>2009/09/21 </td>
+                <td>30.02</td>
+                <td>11.18</td>
+                <td>54</td>
+                <td>59.34%</td>
+                <td>401.11 %</td>
+            </tr>
+            <tr>
+                <th scope="row">32</th>
+                <td> 全新 (2455)</td>
+                
+
+                <td>55.92 </td>
+                <td>52.46 </td>
+                <td>44.4 </td>
+                <td>28.33 </td>
+                <td>12.03 </td>               
+                <td>3 </td>
+                <td>3 </td>
+                <td>0.74 </td>
+                <td>3 </td>
+                <td>7300 </td>
+                <td>516.67 </td>
+                <td>7300 </td>
+                <td>5329387 </td>
+
+                <td>2009/09/01 </td>
+                <td>29.37</td>
+                <td>2009/12/01 </td>
+                <td>45.15</td>
+                <td>15.78</td>
+                <td>91</td>
+                <td>53.73%</td>
+                <td>215.50 %</td>
+            </tr>
+            <tr>
+                <th scope="row">33</th>
+                <td> 瑞軒 (2489)</td>
+                
+
+                <td>95.26 </td>
+                <td>90.1 </td>
+                <td>84.07 </td>
+                <td>60.97 </td>
+                <td>18.73 </td>               
+                <td>3 </td>
+                <td>2 </td>
+                <td>0.79 </td>
+                <td>4 </td>
+                <td>79.55 </td>
+                <td>14.49 </td>
+                <td>79.55 </td>
+                <td>12360250 </td>
+
+                <td>2009/09/01 </td>
+                <td>11.15</td>
+                <td>2009/12/23 </td>
+                <td>16.80</td>
+                <td>5.65</td>
+                <td>113</td>
+                <td>50.67%</td>
+                <td>163.68 %</td>
+            </tr>
+            <tr>
+                <th scope="row">34</th>
+                <td> 大毅 (2478)</td>
+                
+
+                <td>96.6 </td>
+                <td>92.77 </td>
+                <td>58.1 </td>
+                <td>66.74 </td>
+                <td>65.15 </td>               
+                <td>3 </td>
+                <td>3 </td>
+                <td>0.79 </td>
+                <td>4 </td>
+                <td>36.21 </td>
+                <td>97.5 </td>
+                <td>36.21 </td>
+                <td>4915333 </td>
+
+                <td>2009/11/02 </td>
+                <td>19.57</td>
+                <td>2009/12/25 </td>
+                <td>30.50</td>
+                <td>10.93</td>
+                <td>53</td>
+                <td>55.85%</td>
+                <td>384.63 %</td>
+            </tr>
+    </tbody>
+</table>
+
+
+
+        <hr>
+        <footer>
+            <p>© 2018 - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="2009_files/jquery-1.js"></script>
+
+    <script src="2009_files/bootstrap.js"></script>
+<script src="2009_files/respond.js"></script>
+
+    
+
+<!-- Visual Studio Browser Link -->
+<script type="application/json" id="__browserLink_initializationData">
+    {"appName":"Firefox","requestId":"4485d86cfd4046b98e9d78f49607da85"}
+</script>
+<script type="text/javascript" src="2009_files/browserLink" async="async"></script>
+<!-- End Browser Link -->
+
+
+
+</body></html>

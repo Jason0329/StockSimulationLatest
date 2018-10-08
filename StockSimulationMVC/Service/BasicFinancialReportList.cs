@@ -24,11 +24,11 @@ namespace StockSimulationMVC.Models
 
             FinancialDataList = FinancialData.ToList();
 
-            var MonthlyData = from CompanyData in InitialData.InitialData_MonthRevenueData
-                                where CompanyData.Company == Company
-                                orderby CompanyData.Date ascending
-                                select CompanyData;
-            RevenueList = MonthlyData.ToList();
+            //var MonthlyData = from CompanyData in InitialData.InitialData_MonthRevenueData
+            //                    where CompanyData.Company == Company
+            //                    orderby CompanyData.Date ascending
+            //                    select CompanyData;
+            //RevenueList = MonthlyData.ToList();
 
         }
                 //public void Initial(string startDate, string EndDate, int company, bool IsOTC = false)

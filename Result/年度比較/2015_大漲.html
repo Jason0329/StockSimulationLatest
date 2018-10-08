@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html style="" class=" js flexbox flexboxlegacy canvas canvastext webgl touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Index</title>
+    <link href="2015_%E5%A4%A7%E6%BC%B2_files/bootstrap.css" rel="stylesheet">
+<link href="2015_%E5%A4%A7%E6%BC%B2_files/site.css" rel="stylesheet">
+
+    <script src="2015_%E5%A4%A7%E6%BC%B2_files/modernizr-2.js"></script>
+
+
+    
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://localhost:13527/Home">Application name</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="http://localhost:13527/Home">Home</a></li>
+                    <li><a href="http://localhost:13527/Help">API</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        
+
+
+
+<form class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>股票篩選</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">起始年度</label>
+            <div class="col-md-4">
+                <input id="StartYear" name="StartYear" placeholder="輸入選股起始年度" class="form-control input-md" value="2016" type="text">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">結束年度</label>
+            <div class="col-md-4">
+                <input id="EndYear" name="EndYear" placeholder="輸入選股結束年度" class="form-control input-md" value="2019" type="text">
+
+            </div>
+        </div>
+
+        <!-- Multiple Radios (inline) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="radios">股票評價參數</label>
+            <div class="col-md-4">
+                <label class="radio-inline" for="radios-0">
+                    <input name="ValuationParameter" id="radios-0" value="3" checked="checked" type="radio">
+                    3
+                </label>
+                <label class="radio-inline" for="radios-1">
+                    <input name="ValuationParameter" id="radios-1" value="4" type="radio">
+                    4
+                </label>
+                <label class="radio-inline" for="radios-2">
+                    <input name="ValuationParameter" id="radios-2" value="5" type="radio">
+                    5
+                </label>
+            </div>
+        </div>
+
+        <!-- Multiple Checkboxes (inline) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="checkboxes">OCF&gt;0</label>
+            <div class="col-md-4">
+                <label class="checkbox-inline" for="checkboxes-0">
+                    <input name="OperationCashFlowSet" id="checkboxes-OCF" value="true" type="checkbox">
+                    加入條件
+                </label>
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">營利率成長連續期數</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="operationIncomePercentageCountCheckbox" type="checkbox">
+                    </span>
+                    <input id="operationIncomePercentageCount" name="operationIncomePercentageCountSet" class="form-control" placeholder="輸入數字" value="0" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">稅後純益率成長連續期數</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="netIncomePercentageCountCheckbox" type="checkbox">
+                    </span>
+                    <input id="netIncomePercentageCountSet" name="netIncomePercentageCount" class="form-control" placeholder="輸入數字" value="0" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPS大於</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPS" name="EPSSet" class="form-control" placeholder="輸入數字" value="-10000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPS連續期數</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSCountCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSCount" name="EPSCountSet" class="form-control" placeholder="輸入數字" value="0" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPSQoQ</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSQoQCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSQoQ" name="EPSQoQSet" class="form-control" placeholder="輸入數字" value="-1000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPSYoY</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSYoYCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSYoY" name="EPSYoYSet" class="form-control" placeholder="輸入數字" value="-1000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">累積EPS YoY</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSAccumulationYoYCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSAccumulationYoY" name="EPSAccumulationYoYSet" class="form-control" placeholder="輸入數字" value="-1000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        <button id="form-send">送出</button>
+
+    </fieldset>
+</form>
+
+
+
+<h2>Index</h2>
+<h2>Win : 4 </h2>
+<h2>Loss: 5</h2>
+<h2>WinRatio: 44.44</h2>
+<h2>平均持有時間: 85</h2>
+<h2>平均報酬: 14.94</h2>
+<h2>最大報酬: 60.03</h2>
+<h2>最低報酬: -18.84</h2>
+<h2>報酬標準差: 35.8922888654374</h2>
+<h2>總報酬: 134.46</h2>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>計數</th>
+            <th>公司</th>
+            
+            <th>評價 1 期</th>
+            <th>評價 2 期</th>
+            <th>評價 3 期</th>
+            <th>評價 4 期</th>
+            <th>評價 5 期</th>
+            <th>營利率連續成長期數</th>
+            <th>稅後純益率連續成長期數</th>
+            <th>EPS</th>
+            <th>EPS 連續成長期數(季)</th>
+            <th>EPS 值的近一季 YoY</th>
+            <th>EPS 值的近一季 QoQ</th>
+            <th>累計EPS YoY</th>
+            <th>市值</th>
+
+            <th>買進日期</th>
+            <th>買進價格</th>
+            <th>賣出日期</th>
+            <th>賣出價格</th>
+            <th>獲利</th>
+            <th>持有天數</th>
+            <th>報酬率</th>
+            <th>年化報酬率</th>
+        </tr>
+    </thead>
+
+
+
+
+    <tbody>
+
+            <tr>
+                <th scope="row">1</th>
+                <td> 新巨 (2420)</td>
+                
+
+                <td>111.01 </td>
+                <td>103.99 </td>
+                <td>87.4 </td>
+                <td>89.59 </td>
+                <td>83.99 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>1.07 </td>
+                <td>2 </td>
+                <td>46.58 </td>
+                <td>62.12 </td>
+                <td>46.58 </td>
+                <td>5876948 </td>
+
+                <td>2015/03/02 </td>
+                <td>37.05</td>
+                <td>2015/07/27 </td>
+                <td>30.07</td>
+                <td>-6.98</td>
+                <td>147</td>
+                <td>-18.84%</td>
+                <td>-46.78 %</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td> 精英 (2331)</td>
+                
+
+                <td>156.9 </td>
+                <td>124.84 </td>
+                <td>70.86 </td>
+                <td>76.77 </td>
+                <td>74.71 </td>               
+                <td>1 </td>
+                <td>3 </td>
+                <td>0.64 </td>
+                <td>3 </td>
+                <td>60 </td>
+                <td>1.59 </td>
+                <td>60 </td>
+                <td>16427295 </td>
+
+                <td>2015/03/24 </td>
+                <td>21.21</td>
+                <td>2015/08/04 </td>
+                <td>17.56</td>
+                <td>-3.65</td>
+                <td>133</td>
+                <td>-17.21%</td>
+                <td>-47.23 %</td>
+            </tr>
+                    <tr>
+                        <td>
+                            2015 Q2
+
+                        </td>
+                    </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td> 創見 (2451)</td>
+                
+
+                <td>293.56 </td>
+                <td>273.16 </td>
+                <td>258.61 </td>
+                <td>252.96 </td>
+                <td>205.79 </td>               
+                <td>1 </td>
+                <td>3 </td>
+                <td>2.39 </td>
+                <td>3 </td>
+                <td>45.73 </td>
+                <td>6.7 </td>
+                <td>45.73 </td>
+                <td>42516111 </td>
+
+                <td>2015/04/08 </td>
+                <td>97.72</td>
+                <td>2015/07/31 </td>
+                <td>82.44</td>
+                <td>-15.28</td>
+                <td>114</td>
+                <td>-15.64%</td>
+                <td>-50.06 %</td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td> 楠梓電 (2316)</td>
+                
+
+                <td>91.86 </td>
+                <td>85.4 </td>
+                <td>85.3 </td>
+                <td>82.02 </td>
+                <td>72.23 </td>               
+                <td>1 </td>
+                <td>2 </td>
+                <td>0.39 </td>
+                <td>2 </td>
+                <td>116.67 </td>
+                <td>95 </td>
+                <td>116.67 </td>
+                <td>4483636 </td>
+
+                <td>2015/04/09 </td>
+                <td>16.23</td>
+                <td>2015/06/02 </td>
+                <td>24.90</td>
+                <td>8.67</td>
+                <td>54</td>
+                <td>53.42%</td>
+                <td>361.08 %</td>
+            </tr>
+                    <tr>
+                        <td>
+                            2015 Q3
+
+                        </td>
+                    </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td> 光寶科 (2301)</td>
+                
+
+                <td>162.22 </td>
+                <td>160.97 </td>
+                <td>170.26 </td>
+                <td>162 </td>
+                <td>159.38 </td>               
+                <td>2 </td>
+                <td>3 </td>
+                <td>0.71 </td>
+                <td>2 </td>
+                <td>14.52 </td>
+                <td>12.7 </td>
+                <td>14.52 </td>
+                <td>94954840 </td>
+
+                <td>2015/07/21 </td>
+                <td>31.23</td>
+                <td>2015/08/21 </td>
+                <td>25.79</td>
+                <td>-5.44</td>
+                <td>31</td>
+                <td>-17.42%</td>
+                <td>-205.10 %</td>
+            </tr>
+            <tr>
+                <th scope="row">6</th>
+                <td> 奇力新 (2456)</td>
+                
+
+                <td>144.66 </td>
+                <td>130.25 </td>
+                <td>105.17 </td>
+                <td>93.88 </td>
+                <td>84.8 </td>               
+                <td>2 </td>
+                <td>5 </td>
+                <td>1.11 </td>
+                <td>2 </td>
+                <td>177.5 </td>
+                <td>33.73 </td>
+                <td>177.5 </td>
+                <td>6856326 </td>
+
+                <td>2015/07/31 </td>
+                <td>39.83</td>
+                <td>2015/12/31 </td>
+                <td>60.82</td>
+                <td>20.99</td>
+                <td>153</td>
+                <td>52.70%</td>
+                <td>125.72 %</td>
+            </tr>
+            <tr>
+                <th scope="row">7</th>
+                <td> 萬海 (2615)</td>
+                
+
+                <td>99.54 </td>
+                <td>89.13 </td>
+                <td>66.24 </td>
+                <td>63.73 </td>
+                <td>55.1 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.93 </td>
+                <td>2 </td>
+                <td>210 </td>
+                <td>20.78 </td>
+                <td>210 </td>
+                <td>85626264 </td>
+
+                <td>2015/07/31 </td>
+                <td>24.20</td>
+                <td>2015/08/21 </td>
+                <td>20.22</td>
+                <td>-3.98</td>
+                <td>21</td>
+                <td>-16.45%</td>
+                <td>-285.85 %</td>
+            </tr>
+            <tr>
+                <th scope="row">8</th>
+                <td> 淘帝-KY (2929)</td>
+                
+
+                <td>380.46 </td>
+                <td>361.08 </td>
+                <td>289 </td>
+                <td>0 </td>
+                <td>0 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>3.21 </td>
+                <td>2 </td>
+                <td>20.22 </td>
+                <td>8.45 </td>
+                <td>20.22 </td>
+                <td>6969600 </td>
+
+                <td>2015/09/09 </td>
+                <td>87.07</td>
+                <td>2015/11/09 </td>
+                <td>133.95</td>
+                <td>46.88</td>
+                <td>61</td>
+                <td>53.84%</td>
+                <td>322.17 %</td>
+            </tr>
+                    <tr>
+                        <td>
+                            2015 Q4
+
+                        </td>
+                    </tr>
+            <tr>
+                <th scope="row">9</th>
+                <td> 智邦 (2345)</td>
+                
+
+                <td>70.48 </td>
+                <td>69.77 </td>
+                <td>66.83 </td>
+                <td>74.88 </td>
+                <td>74.04 </td>               
+                <td>3 </td>
+                <td>2 </td>
+                <td>0.42 </td>
+                <td>2 </td>
+                <td>44.83 </td>
+                <td>100 </td>
+                <td>44.83 </td>
+                <td>7863500 </td>
+
+                <td>2015/10/26 </td>
+                <td>18.39</td>
+                <td>2015/12/16 </td>
+                <td>29.43</td>
+                <td>11.04</td>
+                <td>51</td>
+                <td>60.03%</td>
+                <td>429.65 %</td>
+            </tr>
+    </tbody>
+</table>
+
+
+
+        <hr>
+        <footer>
+            <p>© 2018 - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="2015_%E5%A4%A7%E6%BC%B2_files/jquery-1.js"></script>
+
+    <script src="2015_%E5%A4%A7%E6%BC%B2_files/bootstrap.js"></script>
+<script src="2015_%E5%A4%A7%E6%BC%B2_files/respond.js"></script>
+
+    
+
+<!-- Visual Studio Browser Link -->
+<script type="application/json" id="__browserLink_initializationData">
+    {"appName":"Firefox","requestId":"1ea5ad62b75341c3adf671929eb11ccf"}
+</script>
+<script type="text/javascript" src="2015_%E5%A4%A7%E6%BC%B2_files/browserLink" async="async"></script>
+<!-- End Browser Link -->
+
+
+
+</body></html>

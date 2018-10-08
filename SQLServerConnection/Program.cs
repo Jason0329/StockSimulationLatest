@@ -15,8 +15,8 @@ namespace SQLServerConnection
             Console.WriteLine("Start");
             
 
-            TEJImport importTEJData = new TEJImport("MonthRevenue2017.txt");
-            List<string> importedDataList = importTEJData.Import();
+            TEJImport importTEJData = new TEJImport("StockMarket20181007.txt");
+            List <string> importedDataList = importTEJData.Import();
 
             int count = 0;
             int addCount = 0;
@@ -43,13 +43,13 @@ namespace SQLServerConnection
                 }
 
                 datetime = datetime.Insert(6, "-");
-                datetime = datetime.Insert(4, "-") + "10";
+                datetime = datetime.Insert(4, "-");// + "10";
                 string ID = data.Split(',')[0].Trim() + data.Split(',')[2].Trim();
 
-                string insertCommand = "INSERT INTO [StockDatabase].[dbo].[MonthRevenueModels] VALUES " +
-                    "('" + ID + "','" + data.Split(',')[0].Trim().TrimStart(new char[] { 'T', 'W', 'N' }) + "','" + data.Split(',')[1].Trim() +
-                    "','" + datetime + "',"           + "'" + monthRevenuePublishDatetime + "'," +
-                    data.Split(new char[] { ',' }, 5)[4].Replace("\t", "").Replace(" ", "").Replace(",,", ",null,")
+                string insertCommand = "INSERT INTO [StockDatabase].[dbo].[TechnologicalDataModels] VALUES " +
+                    "('" + ID + "','" + data.Split(',')[0].Trim().TrimStart(new char[] { 'T', 'W', 'N','Y' }) + "','" + data.Split(',')[1].Trim() +
+                    "','" + datetime + "'," +          //+ "'" + monthRevenuePublishDatetime + "'," +
+                    data.Split(new char[] { ',' }, 4)[3].Replace("\t", "").Replace(" ", "").Replace(",,", ",null,")
                     .Replace(",-,", ",null,") + ");";
                 insertCommand = insertCommand.Replace(",-,", ",null,").Replace("-)", "null)").Replace(",NTD,", ",'NTD',")
                 .Replace("H", "0").Replace(",Q,", ",'Q',").Replace(",Y,", ",'Y',").Replace(",L", ",0").Replace(",N,", ",'N',")
@@ -70,7 +70,7 @@ namespace SQLServerConnection
 
             for (int i = 0; i < insertCommandList.Count - 1; i++)
             {
-                InsertDatabase(ref insertCommandList, i, i + 1);
+                InsertDatabase(ref insertCommandList, i, insertCommandList.Count - 1);
             }
 
         }
@@ -84,7 +84,7 @@ namespace SQLServerConnection
             {
                 insertCommnad += InsertCommandList[i];
 
-                if (i % 2000 == 0)
+                if (i % 1000 == 0)
                 {
                     try
                     {

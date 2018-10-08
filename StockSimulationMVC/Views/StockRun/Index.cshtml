@@ -1,4 +1,5 @@
-﻿@model StockSimulationMVC.Service.TransactionList
+﻿
+@model StockSimulationMVC.Service.TransactionList
 
 @{
     ViewBag.Title = "Index";
@@ -241,6 +242,7 @@
             <th>EPS 值的近一季 YoY</th>
             <th>EPS 值的近一季 QoQ</th>
             <th>累計EPS YoY</th>
+            <th>市值</th>
 
             <th>買進日期</th>
             <th>買進價格</th>
@@ -262,39 +264,39 @@
         {
             if (Quater != transction.BuyDetail.Date.Month)
             {
-                if (transction.BuyDetail.Date.Month == 3)
+                if (transction.BuyDetail.Date.Month == 1)
                 {
                 <tr>
                     <td>
                           @transction.BuyDetail.Date.ToString("yyyy") Q1  
-                         @{Quater = 3;}
+                         @{Quater = 1;}
                     </td>
                 </tr>
                              }
-                             else if (transction.BuyDetail.Date.Month == 5)
+                             else if (transction.BuyDetail.Date.Month == 4)
                              {
                     <tr>
                         <td>
                             @transction.BuyDetail.Date.ToString("yyyy") Q2
-                                @{ Quater = 5; }
+                                @{ Quater = 4; }
                         </td>
                     </tr>
                                         }
-                                        else if (transction.BuyDetail.Date.Month == 8)
+                                        else if (transction.BuyDetail.Date.Month == 7)
                                         {
                     <tr>
                         <td>
                             @transction.BuyDetail.Date.ToString("yyyy") Q3
-                                    @{ Quater = 8; }
+                                    @{ Quater = 7; }
                         </td>
                     </tr>
                                         }
-                                        else if (transction.BuyDetail.Date.Month == 11)
+                                        else if (transction.BuyDetail.Date.Month == 10)
                                         {
                     <tr>
                         <td>
                             @transction.BuyDetail.Date.ToString("yyyy") Q4
-                                    @{ Quater = 11; }
+                                    @{ Quater = 10; }
                         </td>
                     </tr>
                                             }
@@ -316,6 +318,7 @@
                 <td>@transction.DataOutput.EPSYoY </td>
                 <td>@transction.DataOutput.EPSQoQ </td>
                 <td>@transction.DataOutput.EPSAccumulationYoY </td>
+                <td>@transction.DataOutput.MarketCap_ </td>
 
                 <td>@transction.BuyDetail.Date.ToString("yyyy/MM/dd") </td>
                 <td>@transction.BuyDetail.Price</td>

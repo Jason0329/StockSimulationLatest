@@ -12,7 +12,7 @@ namespace StockSimulationMVC
     public class GenericRepository<TEntity> : IRepository<TEntity>
        where TEntity : class
     {
-        int StartYear = 2015;
+        int StartYear = 2016;
         int EndYear = 3014;
         #region Fields
 
@@ -121,18 +121,41 @@ namespace StockSimulationMVC
             DateTime StartDateTime = new DateTime(StartYear-1 , 12, 1);
             DateTime EndDateTime = new DateTime(EndYear, 12, 31);
             return this._context.Set<TechnologicalDataModel>().Where(m => m.Date>= StartDateTime && m.Date <= EndDateTime
-               //&&( m.Company == 2330 ||　m.Company == 2327)// || m.Company == 4551 || m.Company == 9911
-               // || m.Company == 2385 || m.Company == 9944 || m.Company == 8464 || m.Company == 2605
-               // || m.Company == 3008 || m.Company == 5243 || m.Company == 9904 || m.Company == 2401
-               // || m.Company == 2426 || m.Company == 4916 || m.Company == 4739 || m.Company == 1539)
+          // &&(m.Company == 2884 || m.Company == 2344 || m.Company == 2104 || m.Company == 2327 || m.Company == 2377 || m.Company == 2352 || m.Company == 2492 || m.Company == 2323 || m.Company == 2474 || m.Company == 2360 || m.Company == 2009 || m.Company == 2472 || m.Company == 2884 || m.Company == 2408 || m.Company == 2428 || m.Company == 2478 || m.Company == 2301 || m.Company == 2477 || m.Company == 2421 || m.Company == 2881 || m.Company == 2882 || m.Company == 2027 || m.Company == 2014 || m.Company == 2340 || m.Company == 2488 || m.Company == 2351 || m.Company == 2397 || m.Company == 2305 || m.Company == 2345 )
+                 && m.Company > 1000 && m.Company < 4000
+               //&& (m.Company == 4755 || m.Company == 2327 )
+              //|| m.Company == 2327 || m.Company == 2428
+              // || m.Company == 8021 || m.Company == 6176 || m.Company == 2634 || m.Company == 2340
+              // || m.Company == 1210 || m.Company == 1201 || m.Company == 2388 || m.Company == 2477
+              // || m.Company == 2856 || m.Company == 2472
+              //)//|| m.Company == 8404 || m.Company == 1539)
                ).AsQueryable();
 
         }
 
-        public IQueryable<BasicFinancialDataModel> GetAllBasic()
+        public IQueryable<TechnologicalDataModel> GetTech9999()
+        {
+            DateTime StartDateTime = new DateTime(StartYear - 1, 12, 1);
+            DateTime EndDateTime = new DateTime(EndYear, 12, 31);
+            return this._context.Set<TechnologicalDataModel>().Where(m => m.Date >= StartDateTime && m.Date <= EndDateTime
+               && (m.Company == 2330)
+               ).AsQueryable();
+
+        }
+
+        public IQueryable<BasicFinancialContainParentDataModel> GetAllBasic()
         {
 
-            return this._context.Set<BasicFinancialDataModel>().Where(m => m.Date.Year >= StartYear && m.Date.Year <= EndYear).AsQueryable();
+            return this._context.Set<BasicFinancialContainParentDataModel>().Where(m => m.Date.Year >=( StartYear - 7) && m.Date.Year <= EndYear
+            // && m.Company == 2327
+             && m.Company > 2000 && m.Company < 3000
+             //  && (m.Company == 4755 || m.Company == 2327 
+             //|| m.Company == 2327 || m.Company == 2428
+             // || m.Company == 8021 || m.Company == 6176 || m.Company == 2634 || m.Company == 2340
+             // || m.Company == 1210 || m.Company == 1201 || m.Company == 2388 || m.Company == 2477
+             // || m.Company == 2856 || m.Company == 2472
+             //)//|| m.Company == 8404 || m.Company == 1539)
+             ).AsQueryable();
         }
 
         public IQueryable<MonthRevenueModel> GetAllMonthRevenue()

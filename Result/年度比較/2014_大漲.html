@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html style="" class=" js flexbox flexboxlegacy canvas canvastext webgl touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Index</title>
+    <link href="2014_%E5%A4%A7%E6%BC%B2_files/bootstrap.css" rel="stylesheet">
+<link href="2014_%E5%A4%A7%E6%BC%B2_files/site.css" rel="stylesheet">
+
+    <script src="2014_%E5%A4%A7%E6%BC%B2_files/modernizr-2.js"></script>
+
+
+    
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://localhost:13527/Home">Application name</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="http://localhost:13527/Home">Home</a></li>
+                    <li><a href="http://localhost:13527/Help">API</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        
+
+
+
+<form class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>股票篩選</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">起始年度</label>
+            <div class="col-md-4">
+                <input id="StartYear" name="StartYear" placeholder="輸入選股起始年度" class="form-control input-md" value="2016" type="text">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">結束年度</label>
+            <div class="col-md-4">
+                <input id="EndYear" name="EndYear" placeholder="輸入選股結束年度" class="form-control input-md" value="2019" type="text">
+
+            </div>
+        </div>
+
+        <!-- Multiple Radios (inline) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="radios">股票評價參數</label>
+            <div class="col-md-4">
+                <label class="radio-inline" for="radios-0">
+                    <input name="ValuationParameter" id="radios-0" value="3" checked="checked" type="radio">
+                    3
+                </label>
+                <label class="radio-inline" for="radios-1">
+                    <input name="ValuationParameter" id="radios-1" value="4" type="radio">
+                    4
+                </label>
+                <label class="radio-inline" for="radios-2">
+                    <input name="ValuationParameter" id="radios-2" value="5" type="radio">
+                    5
+                </label>
+            </div>
+        </div>
+
+        <!-- Multiple Checkboxes (inline) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="checkboxes">OCF&gt;0</label>
+            <div class="col-md-4">
+                <label class="checkbox-inline" for="checkboxes-0">
+                    <input name="OperationCashFlowSet" id="checkboxes-OCF" value="true" type="checkbox">
+                    加入條件
+                </label>
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">營利率成長連續期數</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="operationIncomePercentageCountCheckbox" type="checkbox">
+                    </span>
+                    <input id="operationIncomePercentageCount" name="operationIncomePercentageCountSet" class="form-control" placeholder="輸入數字" value="0" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">稅後純益率成長連續期數</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="netIncomePercentageCountCheckbox" type="checkbox">
+                    </span>
+                    <input id="netIncomePercentageCountSet" name="netIncomePercentageCount" class="form-control" placeholder="輸入數字" value="0" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPS大於</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPS" name="EPSSet" class="form-control" placeholder="輸入數字" value="-10000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPS連續期數</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSCountCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSCount" name="EPSCountSet" class="form-control" placeholder="輸入數字" value="0" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPSQoQ</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSQoQCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSQoQ" name="EPSQoQSet" class="form-control" placeholder="輸入數字" value="-1000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPSYoY</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSYoYCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSYoY" name="EPSYoYSet" class="form-control" placeholder="輸入數字" value="-1000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">累積EPS YoY</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSAccumulationYoYCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSAccumulationYoY" name="EPSAccumulationYoYSet" class="form-control" placeholder="輸入數字" value="-1000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        <button id="form-send">送出</button>
+
+    </fieldset>
+</form>
+
+
+
+<h2>Index</h2>
+<h2>Win : 0 </h2>
+<h2>Loss: 3</h2>
+<h2>WinRatio: 0</h2>
+<h2>平均持有時間: 108</h2>
+<h2>平均報酬: -16.11</h2>
+<h2>最大報酬: 0</h2>
+<h2>最低報酬: -17.15</h2>
+<h2>報酬標準差: 0.691303117308175</h2>
+<h2>總報酬: -48.33</h2>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>計數</th>
+            <th>公司</th>
+            
+            <th>評價 1 期</th>
+            <th>評價 2 期</th>
+            <th>評價 3 期</th>
+            <th>評價 4 期</th>
+            <th>評價 5 期</th>
+            <th>營利率連續成長期數</th>
+            <th>稅後純益率連續成長期數</th>
+            <th>EPS</th>
+            <th>EPS 連續成長期數(季)</th>
+            <th>EPS 值的近一季 YoY</th>
+            <th>EPS 值的近一季 QoQ</th>
+            <th>累計EPS YoY</th>
+            <th>市值</th>
+
+            <th>買進日期</th>
+            <th>買進價格</th>
+            <th>賣出日期</th>
+            <th>賣出價格</th>
+            <th>獲利</th>
+            <th>持有天數</th>
+            <th>報酬率</th>
+            <th>年化報酬率</th>
+        </tr>
+    </thead>
+
+
+
+
+    <tbody>
+
+                    <tr>
+                        <td>
+                            2014 Q2
+
+                        </td>
+                    </tr>
+            <tr>
+                <th scope="row">1</th>
+                <td> 新巨 (2420)</td>
+                
+
+                <td>103.99 </td>
+                <td>87.4 </td>
+                <td>89.59 </td>
+                <td>83.99 </td>
+                <td>66.78 </td>               
+                <td>3 </td>
+                <td>3 </td>
+                <td>1.03 </td>
+                <td>3 </td>
+                <td>171.05 </td>
+                <td>41.1 </td>
+                <td>171.05 </td>
+                <td>5663241 </td>
+
+                <td>2014/04/09 </td>
+                <td>40.58</td>
+                <td>2014/08/07 </td>
+                <td>34.16</td>
+                <td>-6.42</td>
+                <td>120</td>
+                <td>-15.82%</td>
+                <td>-48.12 %</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td> 漢平 (2488)</td>
+                
+
+                <td>118.32 </td>
+                <td>77.6 </td>
+                <td>72.61 </td>
+                <td>82.17 </td>
+                <td>78.94 </td>               
+                <td>4 </td>
+                <td>4 </td>
+                <td>1.48 </td>
+                <td>4 </td>
+                <td>150.85 </td>
+                <td>68.18 </td>
+                <td>150.85 </td>
+                <td>2447969 </td>
+
+                <td>2014/05/08 </td>
+                <td>27.17</td>
+                <td>2014/08/01 </td>
+                <td>22.51</td>
+                <td>-4.66</td>
+                <td>85</td>
+                <td>-17.15%</td>
+                <td>-73.65 %</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td> 藍天 (2362)</td>
+                
+
+                <td>352.54 </td>
+                <td>343.59 </td>
+                <td>84.94 </td>
+                <td>77.77 </td>
+                <td>69.78 </td>               
+                <td>3 </td>
+                <td>2 </td>
+                <td>1.09 </td>
+                <td>2 </td>
+                <td>1.87 </td>
+                <td>113.73 </td>
+                <td>1.87 </td>
+                <td>36275955 </td>
+
+                <td>2014/08/19 </td>
+                <td>49.44</td>
+                <td>2014/12/16 </td>
+                <td>41.85</td>
+                <td>-7.59</td>
+                <td>119</td>
+                <td>-15.35%</td>
+                <td>-47.09 %</td>
+            </tr>
+    </tbody>
+</table>
+
+
+
+        <hr>
+        <footer>
+            <p>© 2018 - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="2014_%E5%A4%A7%E6%BC%B2_files/jquery-1.js"></script>
+
+    <script src="2014_%E5%A4%A7%E6%BC%B2_files/bootstrap.js"></script>
+<script src="2014_%E5%A4%A7%E6%BC%B2_files/respond.js"></script>
+
+    
+
+<!-- Visual Studio Browser Link -->
+<script type="application/json" id="__browserLink_initializationData">
+    {"appName":"Firefox","requestId":"1b41c61d24cb4b1d8467acaf47a202a9"}
+</script>
+<script type="text/javascript" src="2014_%E5%A4%A7%E6%BC%B2_files/browserLink" async="async"></script>
+<!-- End Browser Link -->
+
+
+
+</body></html>

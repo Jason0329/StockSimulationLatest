@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html style="" class=" js flexbox flexboxlegacy canvas canvastext webgl touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Index</title>
+    <link href="2013_files/bootstrap.css" rel="stylesheet">
+<link href="2013_files/site.css" rel="stylesheet">
+
+    <script src="2013_files/modernizr-2.js"></script>
+
+
+    
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://localhost:13527/Home">Application name</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="http://localhost:13527/Home">Home</a></li>
+                    <li><a href="http://localhost:13527/Help">API</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        
+
+
+
+<form class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>股票篩選</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">起始年度</label>
+            <div class="col-md-4">
+                <input id="StartYear" name="StartYear" placeholder="輸入選股起始年度" class="form-control input-md" value="2016" type="text">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">結束年度</label>
+            <div class="col-md-4">
+                <input id="EndYear" name="EndYear" placeholder="輸入選股結束年度" class="form-control input-md" value="2019" type="text">
+
+            </div>
+        </div>
+
+        <!-- Multiple Radios (inline) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="radios">股票評價參數</label>
+            <div class="col-md-4">
+                <label class="radio-inline" for="radios-0">
+                    <input name="ValuationParameter" id="radios-0" value="3" checked="checked" type="radio">
+                    3
+                </label>
+                <label class="radio-inline" for="radios-1">
+                    <input name="ValuationParameter" id="radios-1" value="4" type="radio">
+                    4
+                </label>
+                <label class="radio-inline" for="radios-2">
+                    <input name="ValuationParameter" id="radios-2" value="5" type="radio">
+                    5
+                </label>
+            </div>
+        </div>
+
+        <!-- Multiple Checkboxes (inline) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="checkboxes">OCF&gt;0</label>
+            <div class="col-md-4">
+                <label class="checkbox-inline" for="checkboxes-0">
+                    <input name="OperationCashFlowSet" id="checkboxes-OCF" value="true" type="checkbox">
+                    加入條件
+                </label>
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">營利率成長連續期數</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="operationIncomePercentageCountCheckbox" type="checkbox">
+                    </span>
+                    <input id="operationIncomePercentageCount" name="operationIncomePercentageCountSet" class="form-control" placeholder="輸入數字" value="0" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">稅後純益率成長連續期數</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="netIncomePercentageCountCheckbox" type="checkbox">
+                    </span>
+                    <input id="netIncomePercentageCountSet" name="netIncomePercentageCount" class="form-control" placeholder="輸入數字" value="0" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPS大於</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPS" name="EPSSet" class="form-control" placeholder="輸入數字" value="-10000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPS連續期數</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSCountCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSCount" name="EPSCountSet" class="form-control" placeholder="輸入數字" value="0" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPSQoQ</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSQoQCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSQoQ" name="EPSQoQSet" class="form-control" placeholder="輸入數字" value="-1000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">EPSYoY</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSYoYCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSYoY" name="EPSYoYSet" class="form-control" placeholder="輸入數字" value="-1000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedcheckbox">累積EPS YoY</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input id="EPSAccumulationYoYCheckbox" type="checkbox">
+                    </span>
+                    <input id="EPSAccumulationYoY" name="EPSAccumulationYoYSet" class="form-control" placeholder="輸入數字" value="-1000" type="text">
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        <button id="form-send">送出</button>
+
+    </fieldset>
+</form>
+
+
+
+<h2>Index</h2>
+<h2>Win : 17 </h2>
+<h2>Loss: 9</h2>
+<h2>WinRatio: 65.38</h2>
+<h2>平均持有時間: 155.62</h2>
+<h2>平均報酬: 28.37</h2>
+<h2>最大報酬: 55.67</h2>
+<h2>最低報酬: -17.72</h2>
+<h2>報酬標準差: 32.2535749956497</h2>
+<h2>總報酬: 737.62</h2>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>計數</th>
+            <th>公司</th>
+            
+            <th>評價 1 期</th>
+            <th>評價 2 期</th>
+            <th>評價 3 期</th>
+            <th>評價 4 期</th>
+            <th>評價 5 期</th>
+            <th>營利率連續成長期數</th>
+            <th>稅後純益率連續成長期數</th>
+            <th>EPS</th>
+            <th>EPS 連續成長期數(季)</th>
+            <th>EPS 值的近一季 YoY</th>
+            <th>EPS 值的近一季 QoQ</th>
+            <th>累計EPS YoY</th>
+            <th>市值</th>
+
+            <th>買進日期</th>
+            <th>買進價格</th>
+            <th>賣出日期</th>
+            <th>賣出價格</th>
+            <th>獲利</th>
+            <th>持有天數</th>
+            <th>報酬率</th>
+            <th>年化報酬率</th>
+        </tr>
+    </thead>
+
+
+
+
+    <tbody>
+
+            <tr>
+                <th scope="row">1</th>
+                <td> 廣達 (2382)</td>
+                
+
+                <td>200.68 </td>
+                <td>191.64 </td>
+                <td>175.14 </td>
+                <td>179.54 </td>
+                <td>166.63 </td>               
+                <td>2 </td>
+                <td>3 </td>
+                <td>1.69 </td>
+                <td>3 </td>
+                <td>19.01 </td>
+                <td>8.33 </td>
+                <td>19.01 </td>
+                <td>299749930 </td>
+
+                <td>2012/12/17 </td>
+                <td>51.25</td>
+                <td>2013/04/18 </td>
+                <td>43.43</td>
+                <td>-7.82</td>
+                <td>122</td>
+                <td>-15.26%</td>
+                <td>-45.65 %</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td> 大榮 (2608)</td>
+                
+
+                <td>76.8 </td>
+                <td>74.68 </td>
+                <td>69.39 </td>
+                <td>60.82 </td>
+                <td>60.52 </td>               
+                <td>4 </td>
+                <td>3 </td>
+                <td>0.47 </td>
+                <td>4 </td>
+                <td>11.9 </td>
+                <td>2.17 </td>
+                <td>11.9 </td>
+                <td>20165369 </td>
+
+                <td>2012/12/17 </td>
+                <td>38.80</td>
+                <td>2013/04/30 </td>
+                <td>32.72</td>
+                <td>-6.08</td>
+                <td>134</td>
+                <td>-15.67%</td>
+                <td>-42.68 %</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td> 達欣工 (2535)</td>
+                
+
+                <td>109.2 </td>
+                <td>104.52 </td>
+                <td>99.27 </td>
+                <td>89.04 </td>
+                <td>82.24 </td>               
+                <td>1 </td>
+                <td>3 </td>
+                <td>0.92 </td>
+                <td>4 </td>
+                <td>5.75 </td>
+                <td>22.67 </td>
+                <td>5.75 </td>
+                <td>5117990 </td>
+
+                <td>2012/12/17 </td>
+                <td>13.08</td>
+                <td>2013/06/19 </td>
+                <td>19.99</td>
+                <td>6.91</td>
+                <td>184</td>
+                <td>52.83%</td>
+                <td>104.80 %</td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td> 義隆 (2458)</td>
+                
+
+                <td>89.62 </td>
+                <td>72.69 </td>
+                <td>82.56 </td>
+                <td>69.6 </td>
+                <td>62.07 </td>               
+                <td>5 </td>
+                <td>3 </td>
+                <td>0.93 </td>
+                <td>4 </td>
+                <td>272 </td>
+                <td>25.68 </td>
+                <td>272 </td>
+                <td>21665039 </td>
+
+                <td>2012/12/17 </td>
+                <td>33.74</td>
+                <td>2013/03/11 </td>
+                <td>50.78</td>
+                <td>17.04</td>
+                <td>84</td>
+                <td>50.50%</td>
+                <td>219.45 %</td>
+            </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td> 奇力新 (2456)</td>
+                
+
+                <td>93.26 </td>
+                <td>84.8 </td>
+                <td>96.12 </td>
+                <td>68.06 </td>
+                <td>64.95 </td>               
+                <td>1 </td>
+                <td>3 </td>
+                <td>0.57 </td>
+                <td>3 </td>
+                <td>54.05 </td>
+                <td>3.64 </td>
+                <td>54.05 </td>
+                <td>2859866 </td>
+
+                <td>2012/12/17 </td>
+                <td>15.29</td>
+                <td>2013/10/18 </td>
+                <td>23.12</td>
+                <td>7.83</td>
+                <td>305</td>
+                <td>51.21%</td>
+                <td>61.28 %</td>
+            </tr>
+            <tr>
+                <th scope="row">6</th>
+                <td> 國泰金 (2882)</td>
+                
+
+                <td>101.74 </td>
+                <td>92.43 </td>
+                <td>88.66 </td>
+                <td>92.36 </td>
+                <td>74.24 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>0.71 </td>
+                <td>4 </td>
+                <td>47.92 </td>
+                <td>136.67 </td>
+                <td>47.92 </td>
+                <td>342259628 </td>
+
+                <td>2012/12/17 </td>
+                <td>22.73</td>
+                <td>2013/10/09 </td>
+                <td>34.81</td>
+                <td>12.08</td>
+                <td>296</td>
+                <td>53.15%</td>
+                <td>65.53 %</td>
+            </tr>
+            <tr>
+                <th scope="row">7</th>
+                <td> 震旦行 (2373)</td>
+                
+
+                <td>123.86 </td>
+                <td>123.84 </td>
+                <td>107.46 </td>
+                <td>94.04 </td>
+                <td>84.97 </td>               
+                <td>1 </td>
+                <td>3 </td>
+                <td>1 </td>
+                <td>4 </td>
+                <td>2.04 </td>
+                <td>16.28 </td>
+                <td>2.04 </td>
+                <td>15251926 </td>
+
+                <td>2012/12/17 </td>
+                <td>45.04</td>
+                <td>2013/10/15 </td>
+                <td>68.17</td>
+                <td>23.13</td>
+                <td>302</td>
+                <td>51.35%</td>
+                <td>62.07 %</td>
+            </tr>
+            <tr>
+                <th scope="row">8</th>
+                <td> 三商 (2905)</td>
+                
+
+                <td>83.82 </td>
+                <td>81.16 </td>
+                <td>90.96 </td>
+                <td>72.54 </td>
+                <td>53.74 </td>               
+                <td>2 </td>
+                <td>3 </td>
+                <td>2.17 </td>
+                <td>4 </td>
+                <td>185.53 </td>
+                <td>456.41 </td>
+                <td>185.53 </td>
+                <td>18165110 </td>
+
+                <td>2012/12/17 </td>
+                <td>19.48</td>
+                <td>2013/04/02 </td>
+                <td>16.53</td>
+                <td>-2.95</td>
+                <td>106</td>
+                <td>-15.14%</td>
+                <td>-52.15 %</td>
+            </tr>
+            <tr>
+                <th scope="row">9</th>
+                <td> 茂矽 (2342)</td>
+                
+
+                <td>9.01 </td>
+                <td>-1.13 </td>
+                <td>27.09 </td>
+                <td>26.8 </td>
+                <td>-69.49 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>-0.76 </td>
+                <td>1 </td>
+                <td>280 </td>
+                <td>1166.67 </td>
+                <td>280 </td>
+                <td>1555566 </td>
+
+                <td>2012/12/17 </td>
+                <td>7.28</td>
+                <td>2013/06/20 </td>
+                <td>6.06</td>
+                <td>-1.22</td>
+                <td>185</td>
+                <td>-16.76%</td>
+                <td>-33.06 %</td>
+            </tr>
+            <tr>
+                <th scope="row">10</th>
+                <td> 敬鵬 (2355)</td>
+                
+
+                <td>167.02 </td>
+                <td>143.6 </td>
+                <td>134.56 </td>
+                <td>129.8 </td>
+                <td>114.22 </td>               
+                <td>2 </td>
+                <td>3 </td>
+                <td>1.18 </td>
+                <td>3 </td>
+                <td>10.28 </td>
+                <td>10.28 </td>
+                <td>10.28 </td>
+                <td>13773202 </td>
+
+                <td>2012/12/17 </td>
+                <td>24.57</td>
+                <td>2013/07/09 </td>
+                <td>37.01</td>
+                <td>12.44</td>
+                <td>204</td>
+                <td>50.63%</td>
+                <td>90.59 %</td>
+            </tr>
+            <tr>
+                <th scope="row">11</th>
+                <td> 台達電 (2308)</td>
+                
+
+                <td>208.01 </td>
+                <td>183.56 </td>
+                <td>211.79 </td>
+                <td>172.66 </td>
+                <td>161.99 </td>               
+                <td>4 </td>
+                <td>3 </td>
+                <td>1.95 </td>
+                <td>4 </td>
+                <td>63.87 </td>
+                <td>17.47 </td>
+                <td>63.87 </td>
+                <td>274345504 </td>
+
+                <td>2012/12/17 </td>
+                <td>89.95</td>
+                <td>2013/10/28 </td>
+                <td>135.13</td>
+                <td>45.18</td>
+                <td>315</td>
+                <td>50.23%</td>
+                <td>58.20 %</td>
+            </tr>
+            <tr>
+                <th scope="row">12</th>
+                <td> 順德 (2351)</td>
+                
+
+                <td>98.78 </td>
+                <td>93.78 </td>
+                <td>127.96 </td>
+                <td>93.79 </td>
+                <td>77.26 </td>               
+                <td>2 </td>
+                <td>3 </td>
+                <td>0.65 </td>
+                <td>4 </td>
+                <td>132.14 </td>
+                <td>41.3 </td>
+                <td>132.14 </td>
+                <td>3840749 </td>
+
+                <td>2012/12/17 </td>
+                <td>15.49</td>
+                <td>2013/03/25 </td>
+                <td>23.57</td>
+                <td>8.08</td>
+                <td>98</td>
+                <td>52.16%</td>
+                <td>194.28 %</td>
+            </tr>
+            <tr>
+                <th scope="row">13</th>
+                <td> 錸德 (2349)</td>
+                
+
+                <td>31.48 </td>
+                <td>31.24 </td>
+                <td>40.4 </td>
+                <td>32.8 </td>
+                <td>28.14 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>-0.14 </td>
+                <td>1 </td>
+                <td>180 </td>
+                <td>16.67 </td>
+                <td>180 </td>
+                <td>10297799 </td>
+
+                <td>2012/12/18 </td>
+                <td>5.16</td>
+                <td>2013/05/23 </td>
+                <td>7.89</td>
+                <td>2.73</td>
+                <td>156</td>
+                <td>52.91%</td>
+                <td>123.79 %</td>
+            </tr>
+            <tr>
+                <th scope="row">14</th>
+                <td> 義隆 (2458)</td>
+                
+
+                <td>89.62 </td>
+                <td>72.69 </td>
+                <td>82.56 </td>
+                <td>69.6 </td>
+                <td>62.07 </td>               
+                <td>5 </td>
+                <td>3 </td>
+                <td>0.93 </td>
+                <td>4 </td>
+                <td>272 </td>
+                <td>25.68 </td>
+                <td>272 </td>
+                <td>21665039 </td>
+
+                <td>2013/03/12 </td>
+                <td>48.48</td>
+                <td>2013/08/07 </td>
+                <td>39.89</td>
+                <td>-8.59</td>
+                <td>148</td>
+                <td>-17.72%</td>
+                <td>-43.70 %</td>
+            </tr>
+                    <tr>
+                        <td>
+                            2013 Q2
+
+                        </td>
+                    </tr>
+            <tr>
+                <th scope="row">15</th>
+                <td> 為升 (2231)</td>
+                
+
+                <td>125.96 </td>
+                <td>98.05 </td>
+                <td>144.99 </td>
+                <td>123.68 </td>
+                <td>96.13 </td>               
+                <td>5 </td>
+                <td>4 </td>
+                <td>1.13 </td>
+                <td>2 </td>
+                <td>205.41 </td>
+                <td>3.67 </td>
+                <td>205.41 </td>
+                <td>4207113 </td>
+
+                <td>2013/04/01 </td>
+                <td>43.22</td>
+                <td>2013/08/05 </td>
+                <td>67.28</td>
+                <td>24.06</td>
+                <td>126</td>
+                <td>55.67%</td>
+                <td>161.26 %</td>
+            </tr>
+            <tr>
+                <th scope="row">16</th>
+                <td> 冠德 (2520)</td>
+                
+
+                <td>109.68 </td>
+                <td>104.64 </td>
+                <td>118.18 </td>
+                <td>94.31 </td>
+                <td>69.39 </td>               
+                <td>2 </td>
+                <td>3 </td>
+                <td>1.05 </td>
+                <td>2 </td>
+                <td>61.54 </td>
+                <td>377.27 </td>
+                <td>61.54 </td>
+                <td>10572906 </td>
+
+                <td>2013/04/01 </td>
+                <td>21.96</td>
+                <td>2013/07/17 </td>
+                <td>32.97</td>
+                <td>11.01</td>
+                <td>107</td>
+                <td>50.14%</td>
+                <td>171.03 %</td>
+            </tr>
+            <tr>
+                <th scope="row">17</th>
+                <td> 裕日車 (2227)</td>
+                
+
+                <td>490.72 </td>
+                <td>471.28 </td>
+                <td>404.42 </td>
+                <td>345.6 </td>
+                <td>234.99 </td>               
+                <td>2 </td>
+                <td>1 </td>
+                <td>4.27 </td>
+                <td>2 </td>
+                <td>26.33 </td>
+                <td>22.7 </td>
+                <td>26.33 </td>
+                <td>87750000 </td>
+
+                <td>2013/05/15 </td>
+                <td>198.47</td>
+                <td>2013/12/16 </td>
+                <td>300.62</td>
+                <td>102.15</td>
+                <td>215</td>
+                <td>51.47%</td>
+                <td>87.38 %</td>
+            </tr>
+            <tr>
+                <th scope="row">18</th>
+                <td> 互盛電 (2433)</td>
+                
+
+                <td>142.56 </td>
+                <td>135.45 </td>
+                <td>164.85 </td>
+                <td>130.31 </td>
+                <td>92.16 </td>               
+                <td>1 </td>
+                <td>1 </td>
+                <td>1.16 </td>
+                <td>2 </td>
+                <td>146.81 </td>
+                <td>141.67 </td>
+                <td>146.81 </td>
+                <td>5042910 </td>
+
+                <td>2013/05/15 </td>
+                <td>24.36</td>
+                <td>2013/12/03 </td>
+                <td>37.71</td>
+                <td>13.35</td>
+                <td>202</td>
+                <td>54.80%</td>
+                <td>99.03 %</td>
+            </tr>
+            <tr>
+                <th scope="row">19</th>
+                <td> 微星 (2377)</td>
+                
+
+                <td>119.44 </td>
+                <td>113.08 </td>
+                <td>98.24 </td>
+                <td>100.62 </td>
+                <td>98.48 </td>               
+                <td>2 </td>
+                <td>1 </td>
+                <td>0.5 </td>
+                <td>2 </td>
+                <td>525 </td>
+                <td>2400 </td>
+                <td>525 </td>
+                <td>11912470 </td>
+
+                <td>2013/05/15 </td>
+                <td>10.60</td>
+                <td>2013/11/25 </td>
+                <td>15.95</td>
+                <td>5.35</td>
+                <td>194</td>
+                <td>50.47%</td>
+                <td>94.96 %</td>
+            </tr>
+            <tr>
+                <th scope="row">20</th>
+                <td> 技嘉 (2376)</td>
+                
+
+                <td>168.42 </td>
+                <td>161.17 </td>
+                <td>160.14 </td>
+                <td>169.58 </td>
+                <td>165.84 </td>               
+                <td>2 </td>
+                <td>1 </td>
+                <td>0.97 </td>
+                <td>2 </td>
+                <td>120.45 </td>
+                <td>193.94 </td>
+                <td>120.45 </td>
+                <td>17312688 </td>
+
+                <td>2013/05/15 </td>
+                <td>19.39</td>
+                <td>2013/12/10 </td>
+                <td>29.09</td>
+                <td>9.70</td>
+                <td>209</td>
+                <td>50.03%</td>
+                <td>87.37 %</td>
+            </tr>
+            <tr>
+                <th scope="row">21</th>
+                <td> 華碩 (2357)</td>
+                
+
+                <td>1046.47 </td>
+                <td>1009 </td>
+                <td>894.93 </td>
+                <td>601.38 </td>
+                <td>194.39 </td>               
+                <td>2 </td>
+                <td>1 </td>
+                <td>8.04 </td>
+                <td>2 </td>
+                <td>20.9 </td>
+                <td>2.81 </td>
+                <td>20.9 </td>
+                <td>269111700 </td>
+
+                <td>2013/05/15 </td>
+                <td>244.89</td>
+                <td>2013/06/25 </td>
+                <td>206.72</td>
+                <td>-38.17</td>
+                <td>41</td>
+                <td>-15.59%</td>
+                <td>-138.76 %</td>
+            </tr>
+            <tr>
+                <th scope="row">22</th>
+                <td> 華碩 (2357)</td>
+                
+
+                <td>1046.47 </td>
+                <td>1009 </td>
+                <td>894.93 </td>
+                <td>601.38 </td>
+                <td>194.39 </td>               
+                <td>2 </td>
+                <td>1 </td>
+                <td>8.04 </td>
+                <td>2 </td>
+                <td>20.9 </td>
+                <td>2.81 </td>
+                <td>20.9 </td>
+                <td>269111700 </td>
+
+                <td>2013/06/26 </td>
+                <td>207.44</td>
+                <td>2013/08/08 </td>
+                <td>175.73</td>
+                <td>-31.71</td>
+                <td>43</td>
+                <td>-15.29%</td>
+                <td>-129.76 %</td>
+            </tr>
+            <tr>
+                <th scope="row">23</th>
+                <td> 義隆 (2458)</td>
+                
+
+                <td>109.52 </td>
+                <td>99.84 </td>
+                <td>72.69 </td>
+                <td>82.56 </td>
+                <td>69.6 </td>               
+                <td>7 </td>
+                <td>1 </td>
+                <td>0.99 </td>
+                <td>2 </td>
+                <td>90.38 </td>
+                <td>17.86 </td>
+                <td>90.38 </td>
+                <td>28648386 </td>
+
+                <td>2013/08/08 </td>
+                <td>39.50</td>
+                <td>2013/10/14 </td>
+                <td>32.88</td>
+                <td>-6.62</td>
+                <td>67</td>
+                <td>-16.76%</td>
+                <td>-91.30 %</td>
+            </tr>
+            <tr>
+                <th scope="row">24</th>
+                <td> 怡利電 (2497)</td>
+                
+
+                <td>76.16 </td>
+                <td>72.28 </td>
+                <td>59.37 </td>
+                <td>42.33 </td>
+                <td>14.26 </td>               
+                <td>3 </td>
+                <td>2 </td>
+                <td>0.54 </td>
+                <td>2 </td>
+                <td>38.46 </td>
+                <td>68.75 </td>
+                <td>38.46 </td>
+                <td>3528301 </td>
+
+                <td>2013/08/16 </td>
+                <td>33.07</td>
+                <td>2013/11/20 </td>
+                <td>50.30</td>
+                <td>17.23</td>
+                <td>96</td>
+                <td>52.10%</td>
+                <td>198.09 %</td>
+            </tr>
+            <tr>
+                <th scope="row">25</th>
+                <td> 浩鑫 (2405)</td>
+                
+
+                <td>61.04 </td>
+                <td>55.32 </td>
+                <td>43.3 </td>
+                <td>30.05 </td>
+                <td>21.9 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>0.51 </td>
+                <td>2 </td>
+                <td>218.75 </td>
+                <td>628.57 </td>
+                <td>218.75 </td>
+                <td>4574762 </td>
+
+                <td>2013/08/16 </td>
+                <td>11.73</td>
+                <td>2013/11/11 </td>
+                <td>9.97</td>
+                <td>-1.76</td>
+                <td>87</td>
+                <td>-15.00%</td>
+                <td>-62.95 %</td>
+            </tr>
+            <tr>
+                <th scope="row">26</th>
+                <td> 雄獅 (2731)</td>
+                
+
+                <td>161.86 </td>
+                <td>64.58 </td>
+                <td>55.56 </td>
+                <td>0 </td>
+                <td>0 </td>               
+                <td>2 </td>
+                <td>2 </td>
+                <td>2.21 </td>
+                <td>2 </td>
+                <td>118.81 </td>
+                <td>84.17 </td>
+                <td>118.81 </td>
+                <td>6020000 </td>
+
+                <td>2013/11/15 </td>
+                <td>81.83</td>
+                <td>2013/12/05 </td>
+                <td>123.77</td>
+                <td>41.94</td>
+                <td>20</td>
+                <td>51.25%</td>
+                <td>935.36 %</td>
+            </tr>
+    </tbody>
+</table>
+
+
+
+        <hr>
+        <footer>
+            <p>© 2018 - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="2013_files/jquery-1.js"></script>
+
+    <script src="2013_files/bootstrap.js"></script>
+<script src="2013_files/respond.js"></script>
+
+    
+
+<!-- Visual Studio Browser Link -->
+<script type="application/json" id="__browserLink_initializationData">
+    {"appName":"Firefox","requestId":"2fe002da936b435890a2a4e9d24b8164"}
+</script>
+<script type="text/javascript" src="2013_files/browserLink" async="async"></script>
+<!-- End Browser Link -->
+
+
+
+</body></html>

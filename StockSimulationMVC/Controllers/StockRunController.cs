@@ -161,9 +161,9 @@ namespace StockSimulationMVC.Controllers
                 GetParameters.Add(data.Split('=')[0], data.Split('=')[1]);
             }
 
-            Strategy_Testing Strategy = new Strategy_Testing(GetParameters);
+            ZhaoFinancialSelectStockStrategy Strategy = new ZhaoFinancialSelectStockStrategy(GetParameters);
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 1; i++)
             {
                 InitialData.SetYear(2016 - i, 2019 - i);
                 InitialData.Initial();
@@ -200,7 +200,7 @@ namespace StockSimulationMVC.Controllers
             StreamWriter sw = new StreamWriter(@"C:\Users\user\Desktop\Data\FileCompanyData.csv");
             foreach (var company in StoreCompany.Values)
             {
-                sw.Write(company+",");
+                sw.Write("m.Company==" + company + "||");
             }
             sw.Close();
 

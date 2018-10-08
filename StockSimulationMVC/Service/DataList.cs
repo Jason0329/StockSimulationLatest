@@ -9,7 +9,7 @@ namespace StockSimulationMVC.Models
     public class DataList: LineGraph
     {
         public List<TechnologicalDataModel> TechData = new List<TechnologicalDataModel>();
-        public List<TaiwanStockIndexModel> TaiwanIndex = new List<TaiwanStockIndexModel>();
+        public List<TechnologicalDataModel> TaiwanIndex = new List<TechnologicalDataModel>();
         public List<BasicFinancialDataModel> FinancialData = new List<BasicFinancialDataModel>();
         public BasicFinancialReportListModel FinancialList = new BasicFinancialReportListModel();
 
@@ -20,6 +20,7 @@ namespace StockSimulationMVC.Models
                             orderby CompanyData.Date ascending
                             select CompanyData;
             TechData = _TechData.ToList();
+            TaiwanIndex = InitialData.InitialData_9999;
         }
 
         public DataList()
@@ -35,6 +36,7 @@ namespace StockSimulationMVC.Models
                             select CompanyData;
             TechData = _TechData.ToList();
 
+            TaiwanIndex = InitialData.InitialData_9999;
         }
 
 

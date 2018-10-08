@@ -24,7 +24,8 @@ namespace StockSimulationMVC.Interface
 
         IQueryable<TechnologicalDataModel> GetAllTech();
         IQueryable<MonthRevenueModel> GetAllMonthRevenue();
-        IQueryable<BasicFinancialDataModel> GetAllBasic();
+        IQueryable<BasicFinancialContainParentDataModel> GetAllBasic();
+        IQueryable<TechnologicalDataModel> GetTech9999();
 
         void SetYearRange(int StartYear, int EndYear);
 
